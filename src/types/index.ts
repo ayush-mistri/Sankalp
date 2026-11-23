@@ -2,7 +2,15 @@ export type Language = 'gu' | 'en';
 
 export type StageId = 'beginner' | 'foundation' | 'intermediate' | 'advanced' | 'exam_ready';
 
-export type SubjectId = 'polity' | 'gujarat_history' | 'economy' | 'geography';
+export type SubjectId = 
+  | 'polity' 
+  | 'gujarat_history' 
+  | 'history' 
+  | 'geography' 
+  | 'economy' 
+  | 'science_tech' 
+  | 'ethics' 
+  | 'csat';
 
 export type ActiveTab = 
   | 'roadmap' 
@@ -24,6 +32,14 @@ export interface StageInfo {
   badge: string;
 }
 
+export interface SubjectMetadata {
+  id: SubjectId;
+  nameEn: string;
+  nameGu: string;
+  paper: string;
+  totalTopics: number;
+}
+
 export interface TopicNode {
   id: string;
   subjectId: SubjectId;
@@ -31,6 +47,7 @@ export interface TopicNode {
   titleEn: string;
   titleGu: string;
   code: string;
+  paperCategory: 'Prelims GS-1' | 'Prelims GS-2' | 'Mains GS-1' | 'Mains GS-2' | 'Mains GS-3' | 'General';
   weightageScore: number; // 1-10 priority
   pyqCount: number;
   estimatedMins: number;

@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Language, StageId } from '@/types';
-import { STAGES, TOPIC_NODES } from '@/data/syllabusData';
+import { Language, StageId, SubjectId } from '@/types';
+import { STAGES, TOPIC_NODES, SUBJECT_METADATA } from '@/data/syllabusData';
+import { LEARNING_MODULES } from '@/data/learningModules';
 import { 
   ArrowRight, 
   BookOpen, 
@@ -26,7 +27,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
   onPracticeTopic,
 }) => {
   const [selectedStage, setSelectedStage] = useState<StageId>('foundation');
-  const [filterSubject, setFilterSubject] = useState<'all' | 'polity' | 'gujarat_history'>('all');
+  const [filterSubject, setFilterSubject] = useState<'all' | SubjectId>('all');
 
   const stageData = STAGES.find((s) => s.id === selectedStage) || STAGES[1];
 
@@ -140,37 +141,44 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
         </div>
 
         {/* Subject Filter Pills */}
-        <div className="flex items-center gap-1.5 p-1 bg-stone-100 rounded-xl border border-stone-200 shrink-0 text-xs font-semibold">
+        <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-stone-100 rounded-2xl border border-stone-200 text-xs font-semibold max-w-full">
           <button
             onClick={() => setFilterSubject('all')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all ${
+            className={`px-3 py-1.5 rounded-xl transition-all ${
               filterSubject === 'all'
                 ? 'bg-emerald-700 text-white shadow-xs'
-                : 'text-stone-600 hover:text-stone-900'
+                : 'text-stone-600 hover:text-stone-900 bg-white/70'
             }`}
           >
             {language === 'gu' ? 'બધા વિષયો' : 'All Subjects'}
           </button>
-          <button
-            onClick={() => setFilterSubject('polity')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all ${
-              filterSubject === 'polity'
-                ? 'bg-emerald-700 text-white shadow-xs'
-                : 'text-stone-600 hover:text-stone-900'
-            }`}
-          >
-            {language === 'gu' ? 'બંધારણ (Polity)' : 'Polity'}
-          </button>
-          <button
-            onClick={() => setFilterSubject('gujarat_history')}
-            className={`px-3.5 py-1.5 rounded-lg transition-all ${
-              filterSubject === 'gujarat_history'
-                ? 'bg-emerald-700 text-white shadow-xs'
-                : 'text-stone-600 hover:text-stone-900'
-            }`}
-          >
-            {language === 'gu' ? 'ગુજરાત ઇતિહાસ' : 'Gujarat History'}
-          </button>
+          {SUBJECT_METADATA.map((sub) => {
+            const isSubSelected = filterSubject === sub.id;
+            const countInStage = TOPIC_NODES.filter(
+              (t) => t.stageId === selectedStage && t.subjectId === sub.id
+            ).length;
+
+            return (
+              <button
+                key={sub.id}
+                onClick={() => setFilterSubject(sub.id)}
+                className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                  isSubSelected
+                    ? 'bg-emerald-700 text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900 bg-white/70'
+                }`}
+              >
+                <span>{language === 'gu' ? sub.nameGu.split(' ')[0] : sub.nameEn.split(' ')[0]}</span>
+                {countInStage > 0 && (
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                    isSubSelected ? 'bg-white/25 text-white' : 'bg-stone-200 text-stone-700'
+                  }`}>
+                    {countInStage}
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -183,7 +191,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {filteredTopics.map((topic) => {
-            const hasModule = topic.id === 'topic-f1' || topic.id === 'topic-gh1';
+            const hasModule = Boolean(LEARNING_MODULES[topic.id]);
 
             return (
               <div
@@ -193,9 +201,14 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                 <div>
                   {/* Top Metadata Badges */}
                   <div className="flex items-center justify-between mb-3 text-xs">
-                    <span className="font-mono px-2.5 py-0.5 rounded-md bg-stone-100 text-stone-700 font-bold">
-                      {topic.code}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono px-2.5 py-0.5 rounded-md bg-stone-100 text-stone-700 font-bold">
+                        {topic.code}
+                      </span>
+                      <span className="text-[11px] font-semibold text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                        {topic.paperCategory}
+                      </span>
+                    </div>
                     <div className="flex items-center gap-2">
                       <span className="flex items-center gap-1 font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
                         <Zap className="w-3 h-3 text-emerald-600" />
@@ -246,11 +259,11 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                       className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 shadow-xs transition-all ${
                         hasModule
                           ? 'bg-emerald-700 hover:bg-emerald-800 text-white shadow-emerald-700/20'
-                          : 'bg-stone-200 text-stone-700 hover:bg-stone-300'
+                          : 'bg-stone-100 text-stone-500 hover:bg-stone-200'
                       }`}
                     >
                       <BookOpen className="w-3.5 h-3.5" />
-                      <span>{language === 'gu' ? 'વાંચો' : 'Read'}</span>
+                      <span>{hasModule ? (language === 'gu' ? 'વાંચો' : 'Read') : (language === 'gu' ? 'ટૂંકનોંધ' : 'Overview')}</span>
                       <ArrowRight className="w-3 h-3" />
                     </button>
                   </div>
