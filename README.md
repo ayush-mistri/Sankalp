@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sankalp (સંકલ્પ)
+### Next-Generation GPSC & UPSC Learning Platform
 
-## Getting Started
+A comprehensive, bilingual (Gujarati & English) learning ecosystem designed to manage an aspirant's complete preparation journey from absolute beginner to examination readiness.
 
-First, run the development server:
+---
+
+## 🌟 Core Philosophy
+Unlike conventional platforms that dump passive videos and disconnected PDFs, **Sankalp** acts as a **Learning Journey Operating System** answering:
+1. **What should I study?** — Exact syllabus decomposition into atomic micro-topics.
+2. **Where should I start?** — Diagnostic orientation tailored for beginners, college students, working professionals, and repeaters.
+3. **Which resources should I use?** — Clear *"What to Read vs What to Skip"* standard book guides.
+4. **How can I test my understanding?** — Embedded Active Recall checkpoints after every concept.
+5. **What are my weak areas?** — Real-time Student Readiness Index (SRI) with diagnostic remediation.
+6. **Am I exam-ready?** — Real GPSC & UPSC PYQs with option elimination logic and negative marking risk control.
+
+---
+
+## 🚀 Key Modules & Architecture
+
+- **🧭 Interactive Syllabus Roadmap**: 5-stage progression (Beginner $\to$ Foundation $\to$ Intermediate $\to$ Advanced $\to$ Exam Ready) with priority weightage (`1-10`) and PYQ frequency.
+- **📖 Bilingual Conceptual Reader**: Instant toggle between refined academic Gujarati and English, with interactive vocabulary cards and exam traps.
+- **🎯 Cognitive PYQ Practice Engine**: Past GPSC Class 1/2 and DYSO questions featuring option-by-option elimination reasoning and confidence tagging (Sure, 50-50 Guess, Blind Guess).
+- **📰 Syllabus-Anchored Current Affairs**: Daily news briefs explicitly tagged to GS-1, GS-2, and GS-3 with Prelims factual angles and Mains analytical prompts.
+- **📊 Student Readiness Index (SRI)**: Mathematical readiness score based on syllabus completion, retention, accuracy, and guesswork discipline.
+- **📚 Standard Resource Guide**: Authoritative guide on standard reference books (GCERT, Laxmikanth, Newspapers).
+
+---
+
+## 🛠️ Technology Stack
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router, TypeScript)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Mobile Experience**: Progressive Web App (PWA) installable on Android & iOS homescreens
+
+---
+
+## 💻 Local Development
 
 ```bash
+# Clone the repository
+git clone https://github.com/ayush-mistri/Sankalp.git
+
+# Navigate to project directory
+cd Sankalp
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
