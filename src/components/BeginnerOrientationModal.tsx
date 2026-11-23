@@ -24,17 +24,17 @@ export const BeginnerOrientationModal: React.FC<BeginnerOrientationModalProps> =
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-white dark:bg-stone-900 rounded-2xl shadow-2xl border border-stone-200 dark:border-stone-800 overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-stone-200 overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950/50">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-orange-100 dark:bg-orange-950/60 text-orange-600 rounded-xl">
-              <Compass className="w-5 h-5" />
+        <div className="flex items-center justify-between px-6 py-5 border-b border-stone-200 bg-emerald-50/50">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 bg-emerald-100 text-emerald-800 rounded-2xl border border-emerald-200">
+              <Compass className="w-5 h-5 text-emerald-700" />
             </div>
             <div>
-              <h3 className="font-bold text-lg text-stone-900 dark:text-stone-100">
+              <h3 className="font-extrabold text-lg text-stone-900">
                 {language === 'gu' ? 'તમારો અભ્યાસ ક્યાંથી શરૂ કરવો?' : 'Where Should You Start?'}
               </h3>
               <p className="text-xs text-stone-500">
@@ -46,7 +46,7 @@ export const BeginnerOrientationModal: React.FC<BeginnerOrientationModalProps> =
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800"
+            className="p-2 rounded-xl text-stone-400 hover:text-stone-600 hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -57,10 +57,10 @@ export const BeginnerOrientationModal: React.FC<BeginnerOrientationModalProps> =
           
           {/* Step 1: Who are you? */}
           <div>
-            <label className="block font-bold text-stone-800 dark:text-stone-200 mb-2">
+            <label className="block font-bold text-stone-900 mb-2.5">
               {language === 'gu' ? '૧. તમારી વર્તમાન સ્થિતિ શું છે?' : '1. What best describes your current preparation status?'}
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 {
                   id: 'beginner' as AspirantType,
@@ -94,19 +94,19 @@ export const BeginnerOrientationModal: React.FC<BeginnerOrientationModalProps> =
                 <button
                   key={item.id}
                   onClick={() => setAspirantType(item.id)}
-                  className={`p-3 text-left rounded-xl border transition-all ${
+                  className={`p-3.5 text-left rounded-2xl border transition-all ${
                     aspirantType === item.id
-                      ? 'border-orange-500 bg-orange-50/70 dark:bg-orange-950/30 text-stone-900 dark:text-stone-100 ring-2 ring-orange-500/20'
-                      : 'border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700 bg-white dark:bg-stone-900/50'
+                      ? 'border-emerald-600 bg-emerald-50 text-stone-900 ring-2 ring-emerald-600/20'
+                      : 'border-stone-200 hover:border-emerald-300 bg-white'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-semibold text-xs text-orange-600 dark:text-orange-400">
+                    <span className="font-bold text-xs text-emerald-800">
                       {language === 'gu' ? item.titleGu : item.titleEn}
                     </span>
-                    {aspirantType === item.id && <CheckCircle2 className="w-4 h-4 text-orange-600" />}
+                    {aspirantType === item.id && <CheckCircle2 className="w-4 h-4 text-emerald-700" />}
                   </div>
-                  <p className="text-xs text-stone-500 dark:text-stone-400">
+                  <p className="text-xs text-stone-500">
                     {language === 'gu' ? item.descGu : item.descEn}
                   </p>
                 </button>
@@ -114,18 +114,18 @@ export const BeginnerOrientationModal: React.FC<BeginnerOrientationModalProps> =
             </div>
           </div>
 
-          {/* Golden Rules: The 3 Core Answers */}
-          <div className="bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/40 rounded-xl p-4 space-y-3">
-            <div className="flex items-center gap-2 text-amber-800 dark:text-amber-300 font-bold text-xs uppercase tracking-wider">
-              <Sparkles className="w-4 h-4" />
+          {/* Golden Rules: The 3 Core Answers in Clean Green Box */}
+          <div className="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-5 space-y-3">
+            <div className="flex items-center gap-2 text-emerald-950 font-bold text-xs uppercase tracking-wider">
+              <Sparkles className="w-4 h-4 text-emerald-700" />
               <span>{language === 'gu' ? 'સંકલ્પ માર્ગદર્શિકા: ૩ સુવર્ણ નિયમો' : 'Sankalp Core Rulebook: 3 Principles'}</span>
             </div>
 
-            <div className="space-y-2 text-xs text-stone-700 dark:text-stone-300">
-              <div className="flex items-start gap-2">
-                <span className="w-5 h-5 rounded-full bg-amber-200 text-amber-900 flex items-center justify-center text-xs font-bold shrink-0">1</span>
+            <div className="space-y-2 text-xs text-stone-700">
+              <div className="flex items-start gap-2.5">
+                <span className="w-5 h-5 rounded-full bg-emerald-200 text-emerald-900 flex items-center justify-center text-xs font-bold shrink-0">1</span>
                 <div>
-                  <strong className="text-stone-900 dark:text-stone-100 font-semibold">
+                  <strong className="text-stone-900 font-semibold">
                     {language === 'gu' ? 'શું વાંચવું અને શું છોડવું:' : 'What to Read & What to Skip:'}
                   </strong>{' '}
                   {language === 'gu'
@@ -134,10 +134,10 @@ export const BeginnerOrientationModal: React.FC<BeginnerOrientationModalProps> =
                 </div>
               </div>
 
-              <div className="flex items-start gap-2">
-                <span className="w-5 h-5 rounded-full bg-amber-200 text-amber-900 flex items-center justify-center text-xs font-bold shrink-0">2</span>
+              <div className="flex items-start gap-2.5">
+                <span className="w-5 h-5 rounded-full bg-emerald-200 text-emerald-900 flex items-center justify-center text-xs font-bold shrink-0">2</span>
                 <div>
-                  <strong className="text-stone-900 dark:text-stone-100 font-semibold">
+                  <strong className="text-stone-900 font-semibold">
                     {language === 'gu' ? 'વિડીયો જોવાનો ભ્રમ ટાળો:' : 'Avoid Passive Video Watching:'}
                   </strong>{' '}
                   {language === 'gu'
@@ -146,10 +146,10 @@ export const BeginnerOrientationModal: React.FC<BeginnerOrientationModalProps> =
                 </div>
               </div>
 
-              <div className="flex items-start gap-2">
-                <span className="w-5 h-5 rounded-full bg-amber-200 text-amber-900 flex items-center justify-center text-xs font-bold shrink-0">3</span>
+              <div className="flex items-start gap-2.5">
+                <span className="w-5 h-5 rounded-full bg-emerald-200 text-emerald-900 flex items-center justify-center text-xs font-bold shrink-0">3</span>
                 <div>
-                  <strong className="text-stone-900 dark:text-stone-100 font-semibold">
+                  <strong className="text-stone-900 font-semibold">
                     {language === 'gu' ? 'પાછલા વર્ષોના પ્રશ્નો (PYQ) જ સાચો દીવાદાંડી છે:' : 'PYQs are your True Lighthouse:'}
                   </strong>{' '}
                   {language === 'gu'
@@ -161,11 +161,11 @@ export const BeginnerOrientationModal: React.FC<BeginnerOrientationModalProps> =
           </div>
 
           {/* Recommended Starting Point */}
-          <div className="p-4 rounded-xl bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800/40">
-            <h4 className="font-bold text-stone-900 dark:text-stone-100 text-xs mb-1">
+          <div className="p-5 rounded-2xl bg-emerald-50/40 border border-emerald-200">
+            <h4 className="font-bold text-stone-900 text-xs mb-1">
               {language === 'gu' ? '👉 તમારા માટે ભલામણ કરેલ પ્રથમ પગલું:' : '👉 Your Recommended First Step:'}
             </h4>
-            <p className="text-xs text-stone-600 dark:text-stone-300 mb-3">
+            <p className="text-xs text-stone-600 mb-4 leading-relaxed">
               {aspirantType === 'beginner' || aspirantType === 'college'
                 ? language === 'gu'
                   ? 'પ્રથમ "GPSC વિરુદ્ધ UPSC સિલેબસનું માળખું" સમજો, ત્યારબાદ બંધારણના "આમુખ (Preamble)" થી કન્સેપ્ટ લર્નિંગ શરૂ કરો.'
@@ -182,7 +182,7 @@ export const BeginnerOrientationModal: React.FC<BeginnerOrientationModalProps> =
                   aspirantType === 'repeater' ? 'topic-f1' : 'topic-b1'
                 );
               }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow-md shadow-orange-600/20 transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shadow-md shadow-emerald-700/20 transition-all"
             >
               <span>
                 {language === 'gu' ? 'આ પ્રારંભિક ટોપિક શરૂ કરો' : 'Start Recommended Module'}

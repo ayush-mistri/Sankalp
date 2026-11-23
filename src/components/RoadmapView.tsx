@@ -39,11 +39,11 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       
-      {/* Hero Banner / Vision Statement */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-stone-900 via-stone-900 to-orange-950 text-white p-6 sm:p-8 shadow-xl border border-stone-800">
-        <div className="absolute right-0 top-0 -mt-8 -mr-8 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Hero Banner with Clean Deep Forest & White */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-stone-900 via-emerald-950 to-stone-900 text-white p-7 sm:p-10 shadow-xl border border-emerald-900/40">
+        <div className="absolute right-0 top-0 -mt-10 -mr-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 text-xs font-bold mb-4 border border-orange-500/30">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold mb-4 border border-emerald-500/30">
             <Sparkles className="w-3.5 h-3.5" />
             <span>
               {language === 'gu'
@@ -51,7 +51,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                 : 'GPSC & UPSC Syllabus Knowledge Graph'}
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-3">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white mb-3">
             {language === 'gu'
               ? 'શિખાઉથી અધિકારી સુધીનો સ્પષ્ટ, વૈજ્ઞાનિક માર્ગ'
               : 'From Beginner to Civil Servant: The Structured Path'}
@@ -62,17 +62,17 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
               : 'No more content overload. Every topic is decomposed into its exact exam weightage, historical question frequency, and prerequisite dependencies.'}
           </p>
 
-          <div className="flex flex-wrap gap-4 text-xs font-semibold text-stone-300">
-            <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
-              <Compass className="w-4 h-4 text-orange-400" />
+          <div className="flex flex-wrap gap-4 text-xs font-semibold text-stone-200">
+            <div className="flex items-center gap-1.5 bg-white/10 px-3.5 py-2 rounded-xl border border-white/10">
+              <Compass className="w-4 h-4 text-emerald-400" />
               <span>{language === 'gu' ? '૫ તબક્કાની સફર' : '5-Stage Architecture'}</span>
             </div>
-            <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
-              <Target className="w-4 h-4 text-orange-400" />
+            <div className="flex items-center gap-1.5 bg-white/10 px-3.5 py-2 rounded-xl border border-white/10">
+              <Target className="w-4 h-4 text-emerald-400" />
               <span>{language === 'gu' ? 'PYQ સાથે સીધું જોડાણ' : 'Reverse-Engineered PYQs'}</span>
             </div>
-            <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
-              <Zap className="w-4 h-4 text-orange-400" />
+            <div className="flex items-center gap-1.5 bg-white/10 px-3.5 py-2 rounded-xl border border-white/10">
+              <Zap className="w-4 h-4 text-emerald-400" />
               <span>{language === 'gu' ? 'સક્રિય સ્મૃતિ (Active Recall)' : 'Closed-Loop Retention'}</span>
             </div>
           </div>
@@ -82,39 +82,39 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
       {/* 5-Stage Stepper Navigation */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-xs font-extrabold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+          <h2 className="text-xs font-extrabold uppercase tracking-wider text-stone-500">
             {language === 'gu' ? 'તમારી તૈયારીનો તબક્કો પસંદ કરો:' : 'Select Learning Stage:'}
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
           {STAGES.map((stage, idx) => {
             const isSelected = stage.id === selectedStage;
             return (
               <button
                 key={stage.id}
                 onClick={() => setSelectedStage(stage.id)}
-                className={`p-3.5 rounded-xl text-left border transition-all relative ${
+                className={`p-4 rounded-2xl text-left border transition-all relative ${
                   isSelected
-                    ? 'bg-orange-600 text-white border-orange-600 shadow-lg shadow-orange-600/25 ring-2 ring-orange-500/20'
-                    : 'bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-800 hover:border-stone-300 dark:hover:border-stone-700 text-stone-700 dark:text-stone-300'
+                    ? 'bg-emerald-700 text-white border-emerald-700 shadow-md shadow-emerald-700/25 ring-2 ring-emerald-600/20'
+                    : 'bg-white border-stone-200 hover:border-emerald-300 text-stone-700'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
-                    isSelected ? 'bg-white/20 text-white' : 'bg-stone-100 dark:bg-stone-800 text-stone-500'
+                    isSelected ? 'bg-white/20 text-white' : 'bg-emerald-50 text-emerald-800'
                   }`}>
                     Stage {idx + 1}
                   </span>
-                  {isSelected && <Sparkles className="w-3.5 h-3.5 text-orange-200" />}
+                  {isSelected && <Sparkles className="w-3.5 h-3.5 text-emerald-200" />}
                 </div>
                 <div className="font-bold text-xs line-clamp-1">
                   {language === 'gu' ? stage.nameGu.split(':')[1] : stage.nameEn.split(':')[1]}
                 </div>
                 <div className={`text-[11px] mt-1 line-clamp-1 ${
-                  isSelected ? 'text-orange-100' : 'text-stone-400'
+                  isSelected ? 'text-emerald-100' : 'text-stone-400'
                 }`}>
-                  {language === 'gu' ? stage.badge : stage.badge}
+                  {stage.badge}
                 </div>
               </button>
             );
@@ -123,50 +123,50 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
       </div>
 
       {/* Current Stage Overview Card */}
-      <div className="p-5 rounded-2xl bg-stone-50 dark:bg-stone-900/60 border border-stone-200 dark:border-stone-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-bold text-orange-600 dark:text-orange-400">
+            <span className="text-xs font-bold text-emerald-700">
               {stageData.badge}
             </span>
-            <span className="text-stone-300 dark:text-stone-700">•</span>
-            <h3 className="font-extrabold text-base text-stone-900 dark:text-stone-100">
+            <span className="text-stone-300">•</span>
+            <h3 className="font-extrabold text-base text-stone-900">
               {language === 'gu' ? stageData.nameGu : stageData.nameEn}
             </h3>
           </div>
-          <p className="text-xs text-stone-600 dark:text-stone-400 max-w-2xl leading-relaxed">
+          <p className="text-xs text-stone-600 max-w-2xl leading-relaxed">
             {language === 'gu' ? stageData.descriptionGu : stageData.descriptionEn}
           </p>
         </div>
 
         {/* Subject Filter Pills */}
-        <div className="flex items-center gap-1.5 p-1 bg-white dark:bg-stone-800 rounded-xl border border-stone-200 dark:border-stone-700 shrink-0 text-xs font-semibold">
+        <div className="flex items-center gap-1.5 p-1 bg-stone-100 rounded-xl border border-stone-200 shrink-0 text-xs font-semibold">
           <button
             onClick={() => setFilterSubject('all')}
-            className={`px-3 py-1 rounded-lg transition-all ${
+            className={`px-3.5 py-1.5 rounded-lg transition-all ${
               filterSubject === 'all'
-                ? 'bg-orange-600 text-white'
-                : 'text-stone-600 dark:text-stone-400 hover:text-stone-900'
+                ? 'bg-emerald-700 text-white shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
             }`}
           >
             {language === 'gu' ? 'બધા વિષયો' : 'All Subjects'}
           </button>
           <button
             onClick={() => setFilterSubject('polity')}
-            className={`px-3 py-1 rounded-lg transition-all ${
+            className={`px-3.5 py-1.5 rounded-lg transition-all ${
               filterSubject === 'polity'
-                ? 'bg-orange-600 text-white'
-                : 'text-stone-600 dark:text-stone-400 hover:text-stone-900'
+                ? 'bg-emerald-700 text-white shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
             }`}
           >
             {language === 'gu' ? 'બંધારણ (Polity)' : 'Polity'}
           </button>
           <button
             onClick={() => setFilterSubject('gujarat_history')}
-            className={`px-3 py-1 rounded-lg transition-all ${
+            className={`px-3.5 py-1.5 rounded-lg transition-all ${
               filterSubject === 'gujarat_history'
-                ? 'bg-orange-600 text-white'
-                : 'text-stone-600 dark:text-stone-400 hover:text-stone-900'
+                ? 'bg-emerald-700 text-white shadow-xs'
+                : 'text-stone-600 hover:text-stone-900'
             }`}
           >
             {language === 'gu' ? 'ગુજરાત ઇતિહાસ' : 'Gujarat History'}
@@ -188,21 +188,21 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
             return (
               <div
                 key={topic.id}
-                className="group rounded-2xl p-5 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-orange-500/50 dark:hover:border-orange-500/50 hover:shadow-lg transition-all flex flex-col justify-between"
+                className="group rounded-2xl p-6 bg-white border border-stone-200 hover:border-emerald-500/70 hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
                   {/* Top Metadata Badges */}
                   <div className="flex items-center justify-between mb-3 text-xs">
-                    <span className="font-mono px-2 py-0.5 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 font-bold">
+                    <span className="font-mono px-2.5 py-0.5 rounded-md bg-stone-100 text-stone-700 font-bold">
                       {topic.code}
                     </span>
                     <div className="flex items-center gap-2">
-                      <span className="flex items-center gap-1 font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-800/40">
-                        <Zap className="w-3 h-3" />
+                      <span className="flex items-center gap-1 font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
+                        <Zap className="w-3 h-3 text-emerald-600" />
                         {topic.weightageScore}/10 {language === 'gu' ? 'ભારાંક' : 'Priority'}
                       </span>
                       {topic.pyqCount > 0 && (
-                        <span className="font-bold text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/40 px-2 py-0.5 rounded-md border border-orange-200 dark:border-orange-800/40">
+                        <span className="font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
                           {topic.pyqCount} PYQs
                         </span>
                       )}
@@ -210,15 +210,15 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                   </div>
 
                   {/* Topic Title */}
-                  <h3 className="font-extrabold text-base text-stone-900 dark:text-stone-100 mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                  <h3 className="font-extrabold text-base text-stone-900 mb-2 group-hover:text-emerald-700 transition-colors">
                     {language === 'gu' ? topic.titleGu : topic.titleEn}
                   </h3>
 
                   {/* Learning Objectives */}
                   <div className="space-y-1.5 mb-5">
                     {(language === 'gu' ? topic.learningObjectivesGu : topic.learningObjectivesEn).map((obj, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-stone-600 dark:text-stone-400">
-                        <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-2 text-xs text-stone-600">
+                        <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{obj}</span>
                       </div>
                     ))}
@@ -226,27 +226,27 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                 </div>
 
                 {/* Footer Action Bar */}
-                <div className="pt-4 border-t border-stone-100 dark:border-stone-800/80 flex items-center justify-between">
+                <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-xs text-stone-500 font-medium">
-                    <Clock className="w-3.5 h-3.5" />
+                    <Clock className="w-3.5 h-3.5 text-emerald-600" />
                     <span>{topic.estimatedMins} {language === 'gu' ? 'મિનિટ' : 'mins'}</span>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => onPracticeTopic(topic.id)}
-                      className="px-3 py-1.5 rounded-xl border border-stone-200 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 font-bold text-xs flex items-center gap-1.5 transition-colors"
+                      className="px-3.5 py-2 rounded-xl border border-stone-200 hover:bg-emerald-50 text-stone-700 font-bold text-xs flex items-center gap-1.5 transition-colors"
                     >
-                      <Target className="w-3.5 h-3.5 text-orange-600" />
+                      <Target className="w-3.5 h-3.5 text-emerald-700" />
                       <span>{language === 'gu' ? 'PYQ ટેસ્ટ' : 'PYQ'}</span>
                     </button>
 
                     <button
                       onClick={() => onOpenTopic(topic.id)}
-                      className={`px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 shadow-xs transition-all ${
+                      className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 shadow-xs transition-all ${
                         hasModule
-                          ? 'bg-orange-600 hover:bg-orange-700 text-white shadow-orange-600/20'
-                          : 'bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300'
+                          ? 'bg-emerald-700 hover:bg-emerald-800 text-white shadow-emerald-700/20'
+                          : 'bg-stone-200 text-stone-700 hover:bg-stone-300'
                       }`}
                     >
                       <BookOpen className="w-3.5 h-3.5" />

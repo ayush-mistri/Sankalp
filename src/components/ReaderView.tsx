@@ -57,12 +57,12 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-300">
       
       {/* Top Navigation & Module Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-stone-200 dark:border-stone-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-stone-200">
         <button
           onClick={onBackToRoadmap}
-          className="inline-flex items-center gap-2 text-xs font-bold text-stone-600 dark:text-stone-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-bold text-stone-600 hover:text-emerald-700 transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4 text-emerald-700" />
           <span>{language === 'gu' ? 'પાછા રોડમેપ પર જાઓ' : 'Back to Syllabus Roadmap'}</span>
         </button>
 
@@ -74,10 +74,10 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
               onSelectTopic('topic-f1');
               handleResetQuiz();
             }}
-            className={`px-3 py-1.5 rounded-lg border transition-all ${
+            className={`px-3.5 py-1.5 rounded-xl border transition-all ${
               currentModule.topicId === 'topic-f1'
-                ? 'bg-orange-50 dark:bg-orange-950/40 border-orange-500 text-orange-600 font-bold'
-                : 'border-stone-200 dark:border-stone-800 text-stone-600 hover:bg-stone-50'
+                ? 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold'
+                : 'border-stone-200 text-stone-600 hover:bg-stone-50'
             }`}
           >
             {language === 'gu' ? 'બંધારણનું આમુખ (Polity)' : 'Preamble (Polity)'}
@@ -87,10 +87,10 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
               onSelectTopic('topic-gh1');
               handleResetQuiz();
             }}
-            className={`px-3 py-1.5 rounded-lg border transition-all ${
+            className={`px-3.5 py-1.5 rounded-xl border transition-all ${
               currentModule.topicId === 'topic-gh1'
-                ? 'bg-orange-50 dark:bg-orange-950/40 border-orange-500 text-orange-600 font-bold'
-                : 'border-stone-200 dark:border-stone-800 text-stone-600 hover:bg-stone-50'
+                ? 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold'
+                : 'border-stone-200 text-stone-600 hover:bg-stone-50'
             }`}
           >
             {language === 'gu' ? 'ધોળાવીરા અને લોથલ' : 'Dholavira & Lothal'}
@@ -100,50 +100,50 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
 
       {/* Module Title & Metadata */}
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-950/60 text-orange-800 dark:text-orange-300 text-xs font-bold mb-3">
-          <BookOpen className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold mb-3">
+          <BookOpen className="w-3.5 h-3.5 text-emerald-700" />
           <span>{currentModule.readTimeMins} {language === 'gu' ? 'મિનિટ વાંચન' : 'mins reading'}</span>
           <span>•</span>
           <span>{language === 'gu' ? 'પ્રિલિમ્સ + મેઈન્સ કન્સેપ્ટ' : 'Prelims + Mains High-Yield'}</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-stone-100 tracking-tight leading-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight leading-tight">
           {language === 'gu' ? currentModule.titleGu : currentModule.titleEn}
         </h1>
       </div>
 
-      {/* Interactive Key Terms & Exam Glossary */}
-      <div className="p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/40 space-y-3">
+      {/* Interactive Key Terms & Exam Glossary in Clean Emerald */}
+      <div className="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-200/80 space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400">
-            <Sparkles className="w-4 h-4" />
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-900">
+            <Sparkles className="w-4 h-4 text-emerald-700" />
             <span>{language === 'gu' ? 'મુખ્ય પારિભાષિક શબ્દો (ટૅપ કરીને પરીક્ષા મહત્વ જુઓ)' : 'Core Vocabulary & Exam Significance'}</span>
           </div>
-          <span className="text-[11px] text-amber-700 dark:text-amber-400 font-medium">
+          <span className="text-[11px] text-emerald-700 font-semibold">
             {language === 'gu' ? 'દ્વિભાષી વ્યાખ્યા' : 'Bilingual Definition'}
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {currentModule.keyTerms.map((term, idx) => {
             const isActive = activeGlossaryTerm === term.termEn;
             return (
               <div
                 key={idx}
                 onClick={() => setActiveGlossaryTerm(isActive ? null : term.termEn)}
-                className={`p-3 rounded-xl border text-left cursor-pointer transition-all ${
+                className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all ${
                   isActive
-                    ? 'bg-amber-100/90 dark:bg-amber-900/40 border-amber-400 ring-2 ring-amber-400/20'
-                    : 'bg-white dark:bg-stone-900 border-amber-200/80 dark:border-amber-800/30 hover:border-amber-300'
+                    ? 'bg-emerald-100 border-emerald-500 ring-2 ring-emerald-500/20'
+                    : 'bg-white border-emerald-200/70 hover:border-emerald-400'
                 }`}
               >
-                <div className="font-bold text-xs text-amber-950 dark:text-amber-200 mb-1">
+                <div className="font-bold text-xs text-emerald-950 mb-1">
                   {language === 'gu' ? term.termGu : term.termEn}
                 </div>
-                <div className="text-[11px] text-stone-600 dark:text-stone-400 line-clamp-2">
+                <div className="text-[11px] text-stone-600 line-clamp-2">
                   {language === 'gu' ? term.definitionGu : term.definitionEn}
                 </div>
                 {isActive && (
-                  <div className="mt-2.5 pt-2 border-t border-amber-200 dark:border-amber-800/50 text-[11px] text-amber-900 dark:text-amber-300 font-medium">
+                  <div className="mt-2.5 pt-2 border-t border-emerald-200 text-[11px] text-emerald-900 font-medium">
                     <strong>{language === 'gu' ? 'પરીક્ષા માટે:' : 'Exam Tip:'}</strong>{' '}
                     {language === 'gu' ? term.examSignificanceGu : term.examSignificanceEn}
                   </div>
@@ -155,20 +155,20 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
       </div>
 
       {/* Main Lesson Content Blocks */}
-      <article className="space-y-8 text-stone-800 dark:text-stone-200 leading-relaxed text-sm sm:text-base">
+      <article className="space-y-6 text-stone-800 leading-relaxed text-sm sm:text-base">
         {currentModule.contentBlocks.map((block, idx) => (
-          <div key={idx} className="space-y-3 p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-xs">
-            <h2 className="text-lg font-bold text-stone-900 dark:text-stone-100 tracking-tight">
+          <div key={idx} className="space-y-3 p-6 rounded-2xl bg-white border border-stone-200 shadow-xs">
+            <h2 className="text-lg font-bold text-stone-900 tracking-tight">
               {language === 'gu' ? block.headingGu : block.headingEn}
             </h2>
-            <div className="whitespace-pre-line text-stone-700 dark:text-stone-300 text-sm leading-relaxed">
+            <div className="whitespace-pre-line text-stone-700 text-sm leading-relaxed">
               {language === 'gu' ? block.bodyGu : block.bodyEn}
             </div>
 
             {block.examNoteEn && (
-              <div className="mt-4 p-3.5 rounded-xl bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800/50 flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-orange-600 shrink-0 mt-0.5" />
-                <div className="text-xs text-orange-900 dark:text-orange-200 font-medium">
+              <div className="mt-4 p-4 rounded-xl bg-emerald-50/80 border border-emerald-200 flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
+                <div className="text-xs text-emerald-900 font-medium">
                   <strong>{language === 'gu' ? 'પરીક્ષા ચેતવણી (Exam Trap):' : 'Exam Alert:'}</strong>{' '}
                   {language === 'gu' ? block.examNoteGu : block.examNoteEn}
                 </div>
@@ -179,10 +179,10 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
       </article>
 
       {/* Embedded Active Recall Checkpoint */}
-      <div className="p-6 rounded-2xl bg-stone-900 text-white border border-stone-800 shadow-xl space-y-5">
+      <div className="p-7 rounded-2xl bg-stone-900 text-white border border-emerald-900/40 shadow-xl space-y-5">
         <div className="flex items-center justify-between">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 text-xs font-bold border border-orange-500/30">
-            <Zap className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+            <Zap className="w-3.5 h-3.5 text-emerald-400" />
             <span>{language === 'gu' ? 'સ્વ-મૂલ્યાંકન ચેકપોઇન્ટ (Active Recall)' : 'Active Recall Checkpoint'}</span>
           </div>
           <span className="text-xs text-stone-400">
@@ -205,10 +205,10 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
               if (isCorrect) {
                 optionStyle = 'bg-emerald-950/70 border-emerald-500 text-emerald-200 font-bold';
               } else if (isSelected) {
-                optionStyle = 'bg-rose-950/70 border-rose-500 text-rose-200 line-through';
+                optionStyle = 'bg-stone-800 border-stone-600 text-stone-400 line-through';
               }
             } else if (isSelected) {
-              optionStyle = 'bg-orange-600/30 border-orange-500 text-white font-bold ring-2 ring-orange-500/30';
+              optionStyle = 'bg-emerald-700/30 border-emerald-500 text-white font-bold ring-2 ring-emerald-500/30';
             }
 
             return (
@@ -216,11 +216,11 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
                 key={idx}
                 disabled={hasSubmitted}
                 onClick={() => handleOptionSelect(idx)}
-                className={`w-full p-3.5 rounded-xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between ${optionStyle}`}
+                className={`w-full p-4 rounded-xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between ${optionStyle}`}
               >
                 <span>{opt}</span>
                 {hasSubmitted && isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />}
-                {hasSubmitted && isSelected && !isCorrect && <XCircle className="w-4 h-4 text-rose-400 shrink-0" />}
+                {hasSubmitted && isSelected && !isCorrect && <XCircle className="w-4 h-4 text-stone-400 shrink-0" />}
               </button>
             );
           })}
@@ -231,7 +231,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
           <button
             disabled={selectedOption === null}
             onClick={handleSubmitQuiz}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 disabled:opacity-50 text-white font-bold text-xs tracking-wide shadow-md shadow-orange-600/30 transition-all"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 disabled:opacity-50 text-white font-bold text-xs tracking-wide shadow-md shadow-emerald-700/30 transition-all"
           >
             {language === 'gu' ? 'જવાબ સબમિટ કરો' : 'Submit Answer'}
           </button>
@@ -240,7 +240,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
             <div className={`p-4 rounded-xl border text-xs sm:text-sm ${
               selectedOption === currentModule.checkpoint.correctIndex
                 ? 'bg-emerald-950/40 border-emerald-500/40 text-emerald-300'
-                : 'bg-rose-950/40 border-rose-500/40 text-rose-300'
+                : 'bg-stone-800/60 border-stone-700 text-stone-300'
             }`}>
               <div className="font-bold mb-1">
                 {selectedOption === currentModule.checkpoint.correctIndex
@@ -262,7 +262,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
 
               <button
                 onClick={() => onGoToPractice(currentModule.topicId)}
-                className="px-5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-md shadow-orange-600/30"
+                className="px-5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-md shadow-emerald-700/30"
               >
                 <span>{language === 'gu' ? 'પાછલા વર્ષોના પ્રશ્નો (PYQ) ઉકેલો' : 'Practice Past Exam PYQs'}</span>
                 <ChevronRight className="w-3.5 h-3.5" />

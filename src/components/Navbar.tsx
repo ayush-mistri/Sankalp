@@ -23,16 +23,15 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200/90 shadow-2xs transition-colors">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
-        {/* Increased Navbar Height from h-16 to h-20 (80px) */}
         <div className="flex items-center justify-between h-20 sm:h-22">
           
-          {/* Logo & Brand with increased size & breathing room */}
+          {/* Logo & Brand in Clean Green & White */}
           <div className="flex items-center gap-4">
             <button 
               onClick={() => onTabChange('roadmap')}
               className="flex items-center gap-3 text-left group"
             >
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-amber-600 to-orange-500 text-white flex items-center justify-center font-bold text-2xl shadow-md shadow-orange-500/20 group-hover:scale-105 transition-transform shrink-0">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-emerald-800 to-emerald-600 text-white flex items-center justify-center font-bold text-2xl shadow-md shadow-emerald-700/20 group-hover:scale-105 transition-transform shrink-0">
                 સં
               </div>
               <div>
@@ -40,7 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span className="font-black text-xl sm:text-2xl tracking-tight text-stone-900">
                     Sankalp
                   </span>
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-800">
+                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                     GPSC & UPSC
                   </span>
                 </div>
@@ -57,11 +56,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onTabChange('roadmap')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 activeTab === 'roadmap'
-                  ? 'bg-orange-50 text-orange-600 shadow-xs'
+                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              <Compass className="w-4 h-4 text-orange-500" />
+              <Compass className="w-4 h-4 text-emerald-700" />
               <span>{currentLanguage === 'gu' ? 'સિલેબસ રોડમેપ' : 'Roadmap'}</span>
             </button>
 
@@ -69,11 +68,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onTabChange('reader')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 activeTab === 'reader'
-                  ? 'bg-orange-50 text-orange-600 shadow-xs'
+                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              <BookOpen className="w-4 h-4 text-orange-500" />
+              <BookOpen className="w-4 h-4 text-emerald-700" />
               <span>{currentLanguage === 'gu' ? 'કન્સેપ્ટ લર્નિંગ' : 'Learn'}</span>
             </button>
 
@@ -81,11 +80,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onTabChange('practice')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 activeTab === 'practice'
-                  ? 'bg-orange-50 text-orange-600 shadow-xs'
+                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              <Target className="w-4 h-4 text-orange-500" />
+              <Target className="w-4 h-4 text-emerald-700" />
               <span>{currentLanguage === 'gu' ? 'PYQ પ્રેક્ટિસ' : 'PYQ Practice'}</span>
             </button>
 
@@ -93,11 +92,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onTabChange('current_affairs')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 activeTab === 'current_affairs'
-                  ? 'bg-orange-50 text-orange-600 shadow-xs'
+                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              <Newspaper className="w-4 h-4 text-orange-500" />
+              <Newspaper className="w-4 h-4 text-emerald-700" />
               <span>{currentLanguage === 'gu' ? 'દૈનિક પ્રવાહો' : 'Current Affairs'}</span>
             </button>
 
@@ -105,11 +104,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onTabChange('readiness')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 activeTab === 'readiness'
-                  ? 'bg-orange-50 text-orange-600 shadow-xs'
+                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              <Layers className="w-4 h-4 text-orange-500" />
+              <Layers className="w-4 h-4 text-emerald-700" />
               <span>{currentLanguage === 'gu' ? 'સજ્જતા એનાલિટિક્સ' : 'Readiness'}</span>
             </button>
 
@@ -117,11 +116,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onTabChange('resources')}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
                 activeTab === 'resources'
-                  ? 'bg-orange-50 text-orange-600 shadow-xs'
+                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              <HelpCircle className="w-4 h-4 text-orange-500" />
+              <HelpCircle className="w-4 h-4 text-emerald-700" />
               <span>{currentLanguage === 'gu' ? 'શું વાંચવું?' : 'Resources'}</span>
             </button>
           </nav>
@@ -131,17 +130,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Beginner Orientation Trigger */}
             <button
               onClick={onOpenOrientation}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-amber-300 bg-amber-50/80 text-amber-900 text-xs font-bold hover:bg-amber-100 transition-colors shadow-2xs"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-900 text-xs font-bold hover:bg-emerald-100 transition-colors shadow-2xs"
             >
-              <Sparkles className="w-4 h-4 text-amber-600" />
+              <Sparkles className="w-4 h-4 text-emerald-700" />
               <span className="hidden sm:inline">
                 {currentLanguage === 'gu' ? 'ક્યાંથી શરૂ કરવું?' : 'Where to Start?'}
               </span>
             </button>
 
             {/* Streak Counter */}
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-50 text-orange-700 text-xs font-bold border border-orange-200">
-              <Flame className="w-4 h-4 text-orange-500 fill-orange-500" />
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">
+              <Flame className="w-4 h-4 text-emerald-600 fill-emerald-600" />
               <span>14d</span>
             </div>
 
@@ -151,7 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => onLanguageChange('gu')}
                 className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                   currentLanguage === 'gu'
-                    ? 'bg-white text-orange-600 shadow-xs'
+                    ? 'bg-white text-emerald-800 shadow-xs'
                     : 'text-stone-500 hover:text-stone-800'
                 }`}
               >
@@ -161,7 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => onLanguageChange('en')}
                 className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                   currentLanguage === 'en'
-                    ? 'bg-white text-orange-600 shadow-xs'
+                    ? 'bg-white text-emerald-800 shadow-xs'
                     : 'text-stone-500 hover:text-stone-800'
                 }`}
               >
@@ -177,7 +176,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => onTabChange('roadmap')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'roadmap' ? 'bg-orange-600 text-white' : 'bg-stone-100 text-stone-700'
+              activeTab === 'roadmap' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
             {currentLanguage === 'gu' ? 'રોડમેપ' : 'Roadmap'}
@@ -185,7 +184,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => onTabChange('reader')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'reader' ? 'bg-orange-600 text-white' : 'bg-stone-100 text-stone-700'
+              activeTab === 'reader' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
             {currentLanguage === 'gu' ? 'કન્સેપ્ટ' : 'Learn'}
@@ -193,7 +192,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => onTabChange('practice')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'practice' ? 'bg-orange-600 text-white' : 'bg-stone-100 text-stone-700'
+              activeTab === 'practice' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
             {currentLanguage === 'gu' ? 'PYQ' : 'Practice'}
@@ -201,7 +200,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => onTabChange('current_affairs')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'current_affairs' ? 'bg-orange-600 text-white' : 'bg-stone-100 text-stone-700'
+              activeTab === 'current_affairs' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
             {currentLanguage === 'gu' ? 'કરંટ અફેર્સ' : 'Current Affairs'}
@@ -209,7 +208,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => onTabChange('readiness')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'readiness' ? 'bg-orange-600 text-white' : 'bg-stone-100 text-stone-700'
+              activeTab === 'readiness' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
             {currentLanguage === 'gu' ? 'સજ્જતા' : 'Readiness'}
@@ -217,7 +216,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => onTabChange('resources')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'resources' ? 'bg-orange-600 text-white' : 'bg-stone-100 text-stone-700'
+              activeTab === 'resources' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
             {currentLanguage === 'gu' ? 'પુસ્તકો' : 'Books'}

@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* Top Main Navigation */}
+      {/* Top Main Navigation in Clean Green & White */}
       <Navbar
         currentLanguage={language}
         onLanguageChange={setLanguage}
@@ -54,7 +54,7 @@ export default function Home() {
         onOpenOrientation={() => setIsOrientationOpen(true)}
       />
 
-      {/* Main Content Area with Increased Left & Right Spacing */}
+      {/* Main Content Area with Generous Horizontal Spacing */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-8 sm:py-12">
         {activeTab === 'roadmap' && (
           <RoadmapView
@@ -115,11 +115,11 @@ export default function Home() {
         onSelectStartingTopic={handleOrientationTopicSelect}
       />
 
-      {/* Bottom Footer with Matching Horizontal Spacing */}
+      {/* Bottom Footer in White & Green Accents */}
       <footer className="mt-auto border-t border-stone-200 bg-white py-10 text-xs text-stone-500">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-orange-600 text-white font-bold flex items-center justify-center text-xs shadow-xs">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-emerald-700 text-white font-bold flex items-center justify-center text-sm shadow-xs">
               સં
             </div>
             <span className="font-extrabold text-stone-900 text-sm">
@@ -136,7 +136,7 @@ export default function Home() {
           <div className="flex items-center gap-4 text-stone-400">
             <span>{language === 'gu' ? 'ગોખણપટ્ટી મુક્ત શિક્ષણ' : 'Active Recall & Journey OS'}</span>
             <span>•</span>
-            <span className="text-orange-600 font-bold">
+            <span className="text-emerald-700 font-bold">
               {language === 'gu' ? 'વિદ્યાર્થી પ્રથમ સંકલ્પ' : 'Student-First Mission'}
             </span>
           </div>
