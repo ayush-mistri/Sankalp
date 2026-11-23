@@ -6,7 +6,6 @@ import {
   BookOpen, 
   Compass, 
   Flame, 
-  HelpCircle, 
   Layers, 
   Newspaper, 
   Radio, 
@@ -143,8 +142,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              <HelpCircle className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'પુસ્તકો' : 'Resources'}</span>
+              <BookOpen className="w-4 h-4 text-emerald-700" />
+              <span>{currentLanguage === 'gu' ? 'સિલેબસ & ફ્રી PDF' : 'Syllabus & Free PDFs'}</span>
             </button>
           </nav>
 
@@ -251,7 +250,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               activeTab === 'resources' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
-            {currentLanguage === 'gu' ? 'પુસ્તકો' : 'Books'}
+            {currentLanguage === 'gu' ? 'સિલેબસ & PDF' : 'Syllabus & PDF'}
           </button>
         </div>
 
