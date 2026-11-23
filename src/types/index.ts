@@ -4,6 +4,15 @@ export type StageId = 'beginner' | 'foundation' | 'intermediate' | 'advanced' | 
 
 export type SubjectId = 'polity' | 'gujarat_history' | 'economy' | 'geography';
 
+export type ActiveTab = 
+  | 'roadmap' 
+  | 'reader' 
+  | 'practice' 
+  | 'current_affairs' 
+  | 'live_radar' 
+  | 'readiness' 
+  | 'resources';
+
 export interface StageInfo {
   id: StageId;
   nameEn: string;

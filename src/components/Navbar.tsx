@@ -1,14 +1,24 @@
 'use client';
 
 import React from 'react';
-import { Language, StageId } from '@/types';
-import { BookOpen, Compass, Flame, HelpCircle, Layers, Newspaper, Sparkles, Target } from 'lucide-react';
+import { ActiveTab, Language, StageId } from '@/types';
+import { 
+  BookOpen, 
+  Compass, 
+  Flame, 
+  HelpCircle, 
+  Layers, 
+  Newspaper, 
+  Radio, 
+  Sparkles, 
+  Target 
+} from 'lucide-react';
 
 interface NavbarProps {
   currentLanguage: Language;
   onLanguageChange: (lang: Language) => void;
-  activeTab: 'roadmap' | 'reader' | 'practice' | 'current_affairs' | 'readiness' | 'resources';
-  onTabChange: (tab: 'roadmap' | 'reader' | 'practice' | 'current_affairs' | 'readiness' | 'resources') => void;
+  activeTab: ActiveTab;
+  onTabChange: (tab: ActiveTab) => void;
   currentStageId: StageId;
   onOpenOrientation: () => void;
 }
@@ -25,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
         <div className="flex items-center justify-between h-20 sm:h-22">
           
-          {/* Logo & Brand in Clean Green & White */}
+          {/* Logo & Brand */}
           <div className="flex items-center gap-4">
             <button 
               onClick={() => onTabChange('roadmap')}
@@ -51,77 +61,90 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Center Navigation Links (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-1.5">
+          <nav className="hidden xl:flex items-center gap-1">
             <button
               onClick={() => onTabChange('roadmap')}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'roadmap'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
               <Compass className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'સિલેબસ રોડમેપ' : 'Roadmap'}</span>
+              <span>{currentLanguage === 'gu' ? 'રોડમેપ' : 'Roadmap'}</span>
             </button>
 
             <button
               onClick={() => onTabChange('reader')}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'reader'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
               <BookOpen className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'કન્સેપ્ટ લર્નિંગ' : 'Learn'}</span>
+              <span>{currentLanguage === 'gu' ? 'કન્સેપ્ટ' : 'Learn'}</span>
             </button>
 
             <button
               onClick={() => onTabChange('practice')}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'practice'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
               <Target className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'PYQ પ્રેક્ટિસ' : 'PYQ Practice'}</span>
+              <span>{currentLanguage === 'gu' ? 'PYQ' : 'PYQ'}</span>
             </button>
 
             <button
               onClick={() => onTabChange('current_affairs')}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'current_affairs'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
               <Newspaper className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'દૈનિક પ્રવાહો' : 'Current Affairs'}</span>
+              <span>{currentLanguage === 'gu' ? 'પ્રવાહો' : 'Current Affairs'}</span>
+            </button>
+
+            {/* Real-Time Live Exam Radar Tab */}
+            <button
+              onClick={() => onTabChange('live_radar')}
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'live_radar'
+                  ? 'bg-emerald-700 text-white shadow-xs'
+                  : 'text-emerald-800 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200'
+              }`}
+            >
+              <Radio className="w-4 h-4 text-emerald-500 animate-pulse" />
+              <span>{currentLanguage === 'gu' ? 'લાઇવ રડાર' : 'Live Radar'}</span>
             </button>
 
             <button
               onClick={() => onTabChange('readiness')}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'readiness'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
               <Layers className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'સજ્જતા એનાલિટિક્સ' : 'Readiness'}</span>
+              <span>{currentLanguage === 'gu' ? 'સજ્જતા' : 'Readiness'}</span>
             </button>
 
             <button
               onClick={() => onTabChange('resources')}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'resources'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
               <HelpCircle className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'શું વાંચવું?' : 'Resources'}</span>
+              <span>{currentLanguage === 'gu' ? 'પુસ્તકો' : 'Resources'}</span>
             </button>
           </nav>
 
@@ -172,7 +195,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Mobile Tab Scroller */}
-        <div className="flex lg:hidden items-center gap-2 overflow-x-auto py-2.5 border-t border-stone-100 scrollbar-none text-xs">
+        <div className="flex xl:hidden items-center gap-2 overflow-x-auto py-2.5 border-t border-stone-100 scrollbar-none text-xs">
           <button
             onClick={() => onTabChange('roadmap')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
@@ -180,6 +203,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             {currentLanguage === 'gu' ? 'રોડમેપ' : 'Roadmap'}
+          </button>
+          <button
+            onClick={() => onTabChange('live_radar')}
+            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold flex items-center gap-1.5 ${
+              activeTab === 'live_radar' ? 'bg-emerald-700 text-white' : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+            }`}
+          >
+            <Radio className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
+            <span>{currentLanguage === 'gu' ? 'લાઇવ રડાર' : 'Live Radar'}</span>
           </button>
           <button
             onClick={() => onTabChange('reader')}
