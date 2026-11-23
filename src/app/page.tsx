@@ -40,7 +40,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       {/* Top Main Navigation */}
       <Navbar
         currentLanguage={language}
@@ -54,8 +54,8 @@ export default function Home() {
         onOpenOrientation={() => setIsOrientationOpen(true)}
       />
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      {/* Main Content Area with Increased Left & Right Spacing */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-8 sm:py-12">
         {activeTab === 'roadmap' && (
           <RoadmapView
             language={language}
@@ -115,18 +115,18 @@ export default function Home() {
         onSelectStartingTopic={handleOrientationTopicSelect}
       />
 
-      {/* Bottom Footer */}
-      <footer className="mt-auto border-t border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-950 py-8 text-xs text-stone-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-orange-600 text-white font-bold flex items-center justify-center text-xs">
+      {/* Bottom Footer with Matching Horizontal Spacing */}
+      <footer className="mt-auto border-t border-stone-200 bg-white py-10 text-xs text-stone-500">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-lg bg-orange-600 text-white font-bold flex items-center justify-center text-xs shadow-xs">
               સં
             </div>
-            <span className="font-bold text-stone-900 dark:text-stone-200">
+            <span className="font-extrabold text-stone-900 text-sm">
               Sankalp (સંકલ્પ)
             </span>
             <span>—</span>
-            <span>
+            <span className="text-stone-600">
               {language === 'gu'
                 ? 'ગુજરાતી અને અંગ્રેજી માધ્યમના ઉમેદવારો માટે આગામી પેઢીનું લર્નિંગ પ્લેટફોર્મ'
                 : 'Next-Generation GPSC & UPSC Learning Ecosystem'}
@@ -136,7 +136,7 @@ export default function Home() {
           <div className="flex items-center gap-4 text-stone-400">
             <span>{language === 'gu' ? 'ગોખણપટ્ટી મુક્ત શિક્ષણ' : 'Active Recall & Journey OS'}</span>
             <span>•</span>
-            <span className="text-orange-600 font-semibold">
+            <span className="text-orange-600 font-bold">
               {language === 'gu' ? 'વિદ્યાર્થી પ્રથમ સંકલ્પ' : 'Student-First Mission'}
             </span>
           </div>
