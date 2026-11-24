@@ -689,7 +689,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'GPSC તૈયારીનો સુવર્ણ પાયો. ગુજરાત સરકાર દ્વારા પ્રકાશિત અધિકૃત મફત પાઠ્યપુસ્તકો. પ્રોવિઝનલ આન્સર કી સામે આધાર રજૂ કરવા આ પુસ્તકો જ સર્વોપરી ગણાય છે.',
     is100PercentFree: true,
     recommendedFor: 'Prelims & Mains Foundations (Must read for all beginners)',
-    coverImageUrl: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80',
+    coverImageUrl: '/images/books/books-1.jpg',
   },
   {
     id: 'pdf-ncert-all',
@@ -707,7 +707,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'ભારત સરકારનું સત્તાવાર પોર્ટલ. રાષ્ટ્રીય ઇતિહાસ, ભૌતિક ભૂગોળ અને સ્થૂળ અર્થતંત્રના મૂળભૂત સિદ્ધાંતો માટે શ્રેષ્ઠ સ્ત્રોત.',
     is100PercentFree: true,
     recommendedFor: 'National topics, UPSC cross-preparation, and Macroeconomics',
-    coverImageUrl: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80',
+    coverImageUrl: '/images/books/books-2.jpg',
   },
   {
     id: 'pdf-constitution-official',
@@ -725,7 +725,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'ભારત સરકારના કાયદા મંત્રાલય દ્વારા પ્રકાશિત ભારતનું મૂળ બંધારણ. કલમ ૧ થી ૩૯૫, તમામ પરિશિષ્ટો અને તાજેતરના તમામ બંધારણીય સુધારાઓ સાથે.',
     is100PercentFree: true,
     recommendedFor: 'Accurate article numbers, schedules, and word-by-word constitutional interpretation',
-    coverImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Preamble_to_the_Constitution_of_India.jpg/800px-Preamble_to_the_Constitution_of_India.jpg',
+    coverImageUrl: '/images/books/books-3.jpg',
   },
   {
     id: 'pdf-gujarat-budget-ser',
@@ -743,7 +743,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'ગુજરાતના અર્થતંત્ર માટે સૌથી આધારભૂત સરકારી દસ્તાવેજ. રાજ્યનો GSDP, ક્ષેત્રીય વૃદ્ધિદર, ખેતી, સિંચાઈ, ઊર્જા અને તમામ કલ્યાણકારી યોજનાઓના સચોટ આંકડા.',
     is100PercentFree: true,
     recommendedFor: 'Prelims Economy statistics & Mains GS-3 high-scoring evidence',
-    coverImageUrl: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80',
+    coverImageUrl: '/images/books/books-4.jpg',
   },
   {
     id: 'pdf-gujarat-pakshik',
@@ -761,7 +761,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'દર મહિને બે વાર પ્રકાશિત થતું સરકારનું સત્તાવાર મેગેઝિન. મંત્રીમંડળના નિર્ણયો, નવી સરકારી નીતિઓ, આદિવાસી કલ્યાણ અને ગુજરાતના વર્તમાન પ્રવાહોનો સચોટ સ્ત્રોત.',
     is100PercentFree: true,
     recommendedFor: 'Gujarat Current Affairs & Mains Essay/Answer examples',
-    coverImageUrl: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=600&q=80',
+    coverImageUrl: '/images/books/books-5.jpg',
   },
   {
     id: 'pdf-prs-india',
@@ -779,7 +779,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'સંસદમાં રજૂ થતા દરેક ખરડા (Bills), સંસદીય સમિતિઓના અહેવાલો અને કાયદાઓનું નિષ્પક્ષ, મુદ્દાસર વિશ્લેષણ.',
     is100PercentFree: true,
     recommendedFor: 'Mains GS-2 Polity, Governance, and Legislative analysis',
-    coverImageUrl: 'https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?auto=format&fit=crop&w=600&q=80',
+    coverImageUrl: '/images/books/books-6.jpg',
   },
   {
     id: 'pdf-pib-releases',
@@ -797,7 +797,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'કેન્દ્ર સરકારની તમામ યોજનાઓ, કેબિનેટ નિર્ણયો અને મંત્રાલયના વર્ષાંત અહેવાલોનો સીધો સ્ત્રોત. ફેક ન્યૂઝથી મુક્ત સત્તાવાર માહિતી.',
     is100PercentFree: true,
     recommendedFor: 'Daily Current Affairs, Science & Tech updates, Central Schemes',
-    coverImageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80',
+    coverImageUrl: '/images/books/books-7.jpg',
   },
   {
     id: 'pdf-gpsc-official-syllabus',
@@ -815,7 +815,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'આયોગ દ્વારા બહાર પાડવામાં આવેલ કાનૂની પરિપત્ર જેમાં પરીક્ષા પદ્ધતિ, લઘુત્તમ લાયકાત, વયમર્યાદા અને સત્તાવાર સિલેબસ આપેલ છે.',
     is100PercentFree: true,
     recommendedFor: 'Final official verification of exam rules and scope',
-    coverImageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80',
+    coverImageUrl: '/images/books/books-8.jpg',
   },
   {
     id: 'pdf-arc2-reports',
@@ -833,7 +833,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'મેઈન્સ GS-૪ નીતિશાસ્ત્ર અને GS-૨ શાસન માટેનો સર્વોચ્ચ સંદર્ભ. રિપોર્ટ ૪ "Ethics in Governance" માંથી દર વર્ષે સીધા પ્રશ્નો પૂછાય છે.',
     is100PercentFree: true,
     recommendedFor: 'Mains GS-4 Ethics high-scoring answer frameworks & case studies',
-    coverImageUrl: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80',
+    coverImageUrl: '/images/books/books-9.jpg',
   },
 ];
 
@@ -894,3 +894,92 @@ export const SIX_MONTH_STUDY_PLAN: StudyMonthPlan[] = [
     milestonesGu: '૩ કલાકના સમયબદ્ધ વાતાવરણમાં ૫ ફુલ લેન્થ મોક ટેસ્ટ આપો. ૧૩૦+ ચોક્કસ અટેમ્પટનો લક્ષ્યાંક રાખો.',
   },
 ];
+
+export interface RecommendedBookSubject {
+  subjectEn: string;
+  subjectGu: string;
+  paperTag: string;
+  beginnerBookGu: string;
+  advancedEnglishRef: string;
+  revisionBookGu: string;
+  freeOfficialAlternative: string;
+}
+
+export const RECOMMENDED_BOOKS_BY_SUBJECT: RecommendedBookSubject[] = [
+  {
+    subjectEn: 'History (Ancient, Medieval, Modern & Gujarat)',
+    subjectGu: 'ઇતિહાસ (પ્રાચીન, મધ્યકાલીન, આધુનિક અને ગુજરાતનો ઇતિહાસ)',
+    paperTag: 'Prelims & Mains GS-1',
+    beginnerBookGu: 'GCERT ધોરણ ૬ થી ૧૦ સામાજિક વિજ્ઞાન + વર્લ્ડ ઇનબૉક્સ / લિબર્ટી પબ્લિકેશન (ગુજરાતનો ઇતિહાસ)',
+    advancedEnglishRef: "India's Ancient Past (R.S. Sharma), Medieval India (Satish Chandra), A Brief History of Modern India (Spectrum)",
+    revisionBookGu: 'યુવા ઉપનિષદ પબ્લિકેશન - ભારત અને ગુજરાતનો ઇતિહાસ (રિવિઝન ચાર્ટ્સ)',
+    freeOfficialAlternative: 'GCERT ધોરણ ૬-૧૦ સામાજિક વિજ્ઞાન & ૧૧-૧૨ ઇતિહાસ (સત્તાવાર ગવર્નમેન્ટ PDF)',
+  },
+  {
+    subjectEn: 'Cultural Heritage & Literature of Gujarat & India',
+    subjectGu: 'સાંસ્કૃતિક વારસો અને ગુજરાતી સાહિત્ય',
+    paperTag: 'Prelims & Mains GS-1',
+    beginnerBookGu: 'ગુજરાતની અસ્મિતા (રજની વ્યાસ) / યુવા ઉપનિષદ કલા અને સંસ્કૃતિ',
+    advancedEnglishRef: 'Indian Art and Culture by Nitin Singhania',
+    revisionBookGu: 'હેરીટેજ ઓફ ગુજરાત - ગ્રંથ નિર્માણ બોર્ડ પુસ્તકો',
+    freeOfficialAlternative: 'ગુજરાત પાક્ષિક સાંસ્કૃતિક વિશેષાંક & ગ્રંથ નિર્માણ બોર્ડ PDF',
+  },
+  {
+    subjectEn: 'Indian Constitution & Polity',
+    subjectGu: 'ભારતીય બંધારણ અને રાજ્યવ્યવસ્થા',
+    paperTag: 'Prelims & Mains GS-2',
+    beginnerBookGu: 'ભારતીય બંધારણ અને રાજ્યવ્યવસ્થા - વિકલ્પ કોટવાલ (લિબર્ટી) / યુવા ઉપનિષદ',
+    advancedEnglishRef: 'Indian Polity by M. Laxmikanth (7th Edition)',
+    revisionBookGu: 'ડેલ્ટા પબ્લિકેશન અથવા સેલ્ફ આર્ટિકલ સમરી નોટ્સ (કલમ ૧ થી ૫૧A)',
+    freeOfficialAlternative: 'ભારત સરકારના કાયદા મંત્રાલયનું અધિકૃત બંધારણ (સત્તાવાર Legislative Dept PDF)',
+  },
+  {
+    subjectEn: 'Indian Economy & Gujarat State Finances',
+    subjectGu: 'ભારતીય અર્થતંત્ર, ગુજરાત બજેટ અને સરકારી યોજનાઓ',
+    paperTag: 'Prelims & Mains GS-3',
+    beginnerBookGu: 'ભારતીય અર્થતંત્ર - યુવા ઉપનિષદ / આયોજન અને નીતિ આયોગ',
+    advancedEnglishRef: 'Indian Economy by Ramesh Singh or Nitin Singhania',
+    revisionBookGu: 'ગુજરાત રાજ્યનું તાજેતરનું બજેટ હાઇલાઇટ્સ & સામાજિક-આર્થિક સમીક્ષા',
+    freeOfficialAlternative: 'ગુજરાત સરકાર બજેટ અને Socio-Economic Review (સત્તાવાર Finance Dept PDF)',
+  },
+  {
+    subjectEn: 'Geography (Physical, India & Gujarat)',
+    subjectGu: 'ભૂગોળ (ભૌતિક, ભારત અને ગુજરાતની ભૂગોળ)',
+    paperTag: 'Prelims & Mains GS-1',
+    beginnerBookGu: 'ગુજરાતની ભૂગોળ (મંજુલાબેન દવે) & GCERT ધોરણ ૯-૧૧ ભૂગોળ',
+    advancedEnglishRef: 'Certificate Physical and Human Geography (G.C. Leong) & Majid Husain',
+    revisionBookGu: 'વર્લ્ડ ઇનબૉક્સ - ભારત અને ગુજરાતની ભૂગોળ એટલાસ',
+    freeOfficialAlternative: "NCERT Class 11 'Fundamentals of Physical Geography' PDF",
+  },
+  {
+    subjectEn: 'Science & Technology',
+    subjectGu: 'સામાન્ય વિજ્ઞાન, સ્પેસ, સંરક્ષણ અને IT',
+    paperTag: 'Prelims & Mains GS-3',
+    beginnerBookGu: 'સામાન્ય વિજ્ઞાન - યુવા ઉપનિષદ & GCERT ધોરણ ૬-૧૦ વિજ્ઞાન',
+    advancedEnglishRef: 'Science and Technology by Ravi P. Agrahari (McGraw Hill)',
+    revisionBookGu: 'ઇસરો, ડીઆરડીઓ મિશન પરિશિષ્ટ અને AI નોટ્સ',
+    freeOfficialAlternative: 'PIB સાયન્સ એન્ડ ટેકનોલોજી વાર્ષિક રિવ્યુ & ISRO સત્તાવાર પોર્ટલ',
+  },
+  {
+    subjectEn: 'General Mental Ability (Reasoning & Data Interpretation)',
+    subjectGu: 'સામાન્ય બૌદ્ધિક ક્ષમતા, તાર્કિક કસોટી અને ગણિત',
+    paperTag: 'Prelims Screening',
+    beginnerBookGu: 'તાર્કિક કસોટી અને ગણિત - અંકિત પટેલ / યુવા ઉપનિષદ',
+    advancedEnglishRef: 'Quantitative Aptitude & Logical Reasoning by R.S. Aggarwal',
+    revisionBookGu: 'પાછલા વર્ષોના પેપર્સ (PYQ) ૨૦૧૭-૨૦૨૪ પ્રેક્ટિસ',
+    freeOfficialAlternative: 'GPSC પાછલા વર્ષોના સોલ્વ કરેલા ગણિત-રીઝનિંગ પ્રશ્નો',
+  },
+  {
+    subjectEn: 'Ethics, Integrity & Aptitude (GS-4)',
+    subjectGu: 'નીતિશાસ્ત્ર, સત્યનિષ્ઠા અને યોગ્યતા (GS-4)',
+    paperTag: 'Mains GS-4 Merit',
+    beginnerBookGu: 'નીતિશાસ્ત્ર, સત્યનિષ્ઠા અને અભિરુચિ - ડૉ. હસમુખ પટેલ / યુવા ઉપનિષદ',
+    advancedEnglishRef: 'Lexicon for Ethics, Integrity & Aptitude / Subba Rao',
+    revisionBookGu: 'નોલાન કમિટીના ૭ સિદ્ધાંતો અને કેસ સ્ટડી સોલ્યુશન્સ',
+    freeOfficialAlternative: '2nd ARC 4th Report "Ethics in Governance" (સત્તાવાર DARPG PDF)',
+  },
+];
+
+export const FREE_OFFICIAL_PDF_VAULT = FREE_PDF_VAULT;
+export const RECOMMENDED_BOOKS = RECOMMENDED_BOOKS_BY_SUBJECT;
+

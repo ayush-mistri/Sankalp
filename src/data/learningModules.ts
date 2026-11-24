@@ -8,7 +8,7 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleGu: 'ભારતીય બંધારણનું આમુખ અને મૂળભૂત માળખાનો સિદ્ધાંત',
     readTimeMins: 12,
     heroImage: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Preamble_to_the_Constitution_of_India.jpg/800px-Preamble_to_the_Constitution_of_India.jpg',
+      url: '/images/modules/preamble-constitution.jpg',
       captionEn: 'The original illustrated Preamble calligraphed by Prem Behari Narain Raizada with borders by Beohar Rammanohar Sinha (1949)',
       captionGu: '૧૯૪૯ માં પ્રેમ બિહારી નારાયણ રાયજાદા દ્વારા સુલેખિત અને રામમનોહર સિન્હા દ્વારા ચિત્રિત ભારતનું મૂળ આમુખ',
       source: 'National Archives of India / Public Domain',
@@ -112,7 +112,7 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleGu: 'ગુજરાતમાં હડપ્પન સંસ્કૃતિ: ધોળાવીરા અને લોથલનું ઐતિહાસિક મહત્વ',
     readTimeMins: 14,
     heroImage: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Reservoir_at_Dholavira.jpg/800px-Reservoir_at_Dholavira.jpg',
+      url: '/images/modules/dholavira-lothal.jpg',
       captionEn: 'Massive stone-cut water reservoir at Dholavira, Kutch (UNESCO World Heritage Site)',
       captionGu: 'ધોળાવીરા (ખદીર બેટ, કચ્છ) ખાતે પથ્થરો કોતરીને બનાવેલો વિશાળ ઐતિહાસિક જળાશય (યુનેસ્કો વર્લ્ડ હેરિટેજ સાઇટ)',
       source: 'Archaeological Survey of India (ASI)',
@@ -206,7 +206,7 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleGu: 'મૂળભૂત અધિકારો: કલમ ૧૨-૩૫, સુવર્ણ ત્રિકોણ અને રિટ અધિકારક્ષેત્ર',
     readTimeMins: 18,
     heroImage: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Supreme_Court_of_India_01.jpg/800px-Supreme_Court_of_India_01.jpg',
+      url: '/images/modules/fundamental-rights.jpg',
       captionEn: 'Supreme Court of India, New Delhi - The designated protector and guarantor of Fundamental Rights under Article 32',
       captionGu: 'ભારતની સર્વોચ્ચ અદાલત (નવી દિલ્હી) - કલમ ૩૨ હેઠળ નાગરિકોના મૂળભૂત અધિકારોનું સંરક્ષક અને બાંયધરી આપનાર સર્વોચ્ચ અંગ',
       source: 'Supreme Court of India / Public Domain',
@@ -304,7 +304,7 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleGu: 'રાજ્યનીતિના માર્ગદર્શક સિદ્ધાંતો (DPSP) અને મૂળભૂત ફરજો: કલમ ૩૬-૫૧A',
     readTimeMins: 16,
     heroImage: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Dr._Babasaheb_Ambedkar_delivering_a_speech_to_the_Constituent_Assembly.jpg/800px-Dr._Babasaheb_Ambedkar_delivering_a_speech_to_the_Constituent_Assembly.jpg',
+      url: '/images/modules/dpsp-duties.jpg',
       captionEn: 'Dr. B.R. Ambedkar addressing the Constituent Assembly on economic democracy and Directive Principles (1949)',
       captionGu: '૧૯૪૯ માં બંધારણ સભામાં ડૉ. બાબાસાહેબ આંબેડકરનું ઐતિહાસિક સંબોધન: સામાજિક-આર્થિક લોકશાહી અને માર્ગદર્શક સિદ્ધાંતો',
       source: 'National Archives of India / Public Domain',
@@ -402,7 +402,7 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleGu: 'વલ્લભીનો મૈત્રક વંશ અને બૌદ્ધ વિદ્યાપીઠનો સુવર્ણકાળ',
     readTimeMins: 15,
     heroImage: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Uparkot_Buddhist_Caves%2C_Junagadh.jpg/800px-Uparkot_Buddhist_Caves%2C_Junagadh.jpg',
+      url: '/images/modules/gujarat-sultanate.jpg',
       captionEn: 'Ancient Buddhist rock-cut vihara structures in Saurashtra from the Maitraka and post-Gupta era',
       captionGu: 'સૌરાષ્ટ્રમાં મૈત્રક અને ઉત્તર-ગુપ્ત કાળના પ્રાચીન બૌદ્ધ વિહારો અને શૈલગુફાઓ (વલ્લભી કાળનું સ્થાપત્ય)',
       source: 'Archaeological Survey of India (ASI)',
@@ -500,7 +500,7 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleGu: 'ગુજરાતનો સુવર્ણયુગ: સોલંકી કાળ, સ્થાપત્ય અને હેમચંદ્રાચાર્ય',
     readTimeMins: 20,
     heroImage: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Sun_Temple_Modhera_Gujarat.jpg/800px-Sun_Temple_Modhera_Gujarat.jpg',
+      url: '/images/modules/solanki-modhera.jpg',
       captionEn: 'Sun Temple at Modhera (1026 CE) on the Pushpavati River - Maru-Gurjara Architecture',
       captionGu: 'રાજા ભીમદેવ ૧લા દ્વારા ૧૦૨૬ માં બંધાયેલું મોઢેરાનું સૂર્ય મંદિર (પુષ્પાવતી નદી કાંઠે) - મારુ-ગુર્જર સ્થાપત્ય શૈલી',
       source: 'UNESCO / Archaeological Survey of India',
@@ -598,7 +598,7 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleGu: 'સંસદ વિરુદ્ધ રાજ્ય વિધાનમંડળ: નાણાં વિધેયક અને સંસદીય પ્રક્રિયાઓ',
     readTimeMins: 17,
     heroImage: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/New_Parliament_House%2C_New_Delhi_01.jpg/800px-New_Parliament_House%2C_New_Delhi_01.jpg',
+      url: '/images/modules/parliament-procedures.jpg',
       captionEn: 'Sansad Bhavan (New Parliament House), New Delhi - The temple of Indian democracy housing the Lok Sabha and Rajya Sabha',
       captionGu: 'સંસદ ભવન (નવી દિલ્હી) - લોકસભા અને રાજ્યસભાની કાયદાકીય પ્રક્રિયાઓનું કેન્દ્રબિંદુ',
       source: 'Press Information Bureau (PIB) / Government of India',
@@ -696,7 +696,7 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleGu: 'મહાગુજરાત આંદોલન: ઈન્દુલાલ યાજ્ઞિક અને ગુજરાતની સ્થાપના (૧૯૬૦)',
     readTimeMins: 16,
     heroImage: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Sabarmati_Ashram_Ahmedabad_Gujarat.jpg/800px-Sabarmati_Ashram_Ahmedabad_Gujarat.jpg',
+      url: '/images/modules/mahagujarat-movement.jpg',
       captionEn: 'Sabarmati Ashram (Hriday Kunj), Ahmedabad - Where revered Ravishankar Maharaj formally inaugurated Gujarat State on May 1, 1960',
       captionGu: 'સાબરમતી આશ્રમ (હૃદયકુંજ), અમદાવાદ - જ્યાં ૧ મે, ૧૯૬૦ ના રોજ પૂજ્ય રવિશંકર મહારાજના વરદ હસ્તે નવરચિત ગુજરાત રાજ્યનું મંગલ ઉદ્ઘાટન થયું હતું',
       source: 'Sabarmati Ashram Preservation and Memorial Trust / Public Domain',
@@ -794,7 +794,7 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleGu: 'ન્યાયિક પુનરાવલોકન, કોલેજિયમ પ્રણાલી અને સર્વોચ્ચ અદાલતના ઐતિહાસિક ચુકાદાઓ',
     readTimeMins: 20,
     heroImage: {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/800px-Emblem_of_India.svg.png',
+      url: '/images/modules/basic-structure-judiciary.jpg',
       captionEn: 'State Emblem of India with motto "Satyameva Jayate" - Symbol of Constitutional Supremacy and Judicial Independence',
       captionGu: 'ભારતનું રાષ્ટ્રીય પ્રતીક (અશોક સ્તંભ) અને "સત્યમેવ જયતે" - બંધારણીય સર્વોચ્ચતા અને સ્વતંત્ર ન્યાયતંત્રનું પ્રતીક',
       source: 'Government of India / Public Domain',

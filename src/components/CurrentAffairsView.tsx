@@ -28,7 +28,7 @@ export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language
   });
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in duration-300">
+    <div className="w-full space-y-6 animate-in fade-in duration-300">
       
       {/* Header Banner in Emerald & White */}
       <div className="p-7 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-800 via-emerald-800 to-emerald-700 text-white shadow-lg space-y-2.5">

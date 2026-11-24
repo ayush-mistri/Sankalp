@@ -3,10 +3,11 @@
 import React from 'react';
 import { ActiveTab, Language, StageId } from '@/types';
 import { 
-  BookOpen, 
-  Compass, 
+  FileText, 
   Flame, 
-  Layers, 
+  GraduationCap, 
+  Home, 
+  Library, 
   Newspaper, 
   Radio, 
   Sparkles, 
@@ -31,19 +32,24 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200/90 shadow-2xs transition-colors">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-16">
+      <div className="w-[92%] sm:w-[88%] lg:w-[84%] max-w-[1500px] mx-auto">
         <div className="flex items-center justify-between h-20 sm:h-22">
           
           {/* Logo & Brand */}
           <div className="flex items-center gap-4">
             <button 
-              onClick={() => onTabChange('roadmap')}
+              onClick={() => onTabChange('home')}
               className="flex items-center gap-3 text-left group"
             >
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-emerald-800 to-emerald-600 text-white flex items-center justify-center font-bold text-2xl shadow-md shadow-emerald-700/20 group-hover:scale-105 transition-transform shrink-0">
-                સં
+              {/* Official Transparent Sankalp Buddhist Logo */}
+              <div className="h-11 sm:h-12 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                <img 
+                  src="/sankalp-logo.png" 
+                  alt="Sankalp Logo" 
+                  className="h-10 sm:h-12 w-auto object-contain" 
+                />
               </div>
-              <div>
+              <div className="hidden sm:block">
                 <div className="flex items-center gap-2">
                   <span className="font-black text-xl sm:text-2xl tracking-tight text-stone-900">
                     Sankalp
@@ -53,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                 </div>
                 <p className="text-xs text-stone-500 font-medium">
-                  {currentLanguage === 'gu' ? 'સ્માર્ટ લર્નિંગ ઇકોસિસ્ટમ' : 'Learning Journey OS'}
+                  {currentLanguage === 'gu' ? 'સંકલ્પ: સ્માર્ટ લર્નિંગ ઇકોસિસ્ટમ' : 'Smart Civil Services Ecosystem'}
                 </p>
               </div>
             </button>
@@ -62,44 +68,68 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Center Navigation Links (Desktop) */}
           <nav className="hidden xl:flex items-center gap-1">
             <button
-              onClick={() => onTabChange('roadmap')}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'roadmap'
+              onClick={() => onTabChange('home')}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'home'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              <Compass className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'રોડમેપ' : 'Roadmap'}</span>
+              <Home className="w-4 h-4 text-emerald-700" />
+              <span>{currentLanguage === 'gu' ? 'હોમ' : 'Home'}</span>
             </button>
 
             <button
-              onClick={() => onTabChange('reader')}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'reader'
+              onClick={() => onTabChange('syllabus')}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'syllabus'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
-              <BookOpen className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'કન્સેપ્ટ' : 'Learn'}</span>
+              <GraduationCap className="w-4 h-4 text-emerald-700" />
+              <span>{currentLanguage === 'gu' ? 'સિલેબસ' : 'Syllabus'}</span>
+            </button>
+
+            <button
+              onClick={() => onTabChange('books')}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'books'
+                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
+              }`}
+            >
+              <Library className="w-4 h-4 text-emerald-700" />
+              <span>{currentLanguage === 'gu' ? 'ફ્રી પુસ્તકો' : 'Books'}</span>
+            </button>
+
+            <button
+              onClick={() => onTabChange('notes')}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                activeTab === 'notes'
+                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
+              }`}
+            >
+              <FileText className="w-4 h-4 text-emerald-700" />
+              <span>{currentLanguage === 'gu' ? 'નોટ્સ' : 'Notes'}</span>
             </button>
 
             <button
               onClick={() => onTabChange('practice')}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'practice'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
               }`}
             >
               <Target className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'PYQ' : 'PYQ'}</span>
+              <span>{currentLanguage === 'gu' ? 'PYQ બેંક' : 'PYQ Bank'}</span>
             </button>
 
             <button
               onClick={() => onTabChange('current_affairs')}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'current_affairs'
                   ? 'bg-emerald-50 text-emerald-800 shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
@@ -112,7 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Real-Time Live Exam Radar Tab */}
             <button
               onClick={() => onTabChange('live_radar')}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'live_radar'
                   ? 'bg-emerald-700 text-white shadow-xs'
                   : 'text-emerald-800 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200'
@@ -121,34 +151,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Radio className="w-4 h-4 text-emerald-500 animate-pulse" />
               <span>{currentLanguage === 'gu' ? 'લાઇવ રડાર' : 'Live Radar'}</span>
             </button>
-
-            <button
-              onClick={() => onTabChange('readiness')}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'readiness'
-                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
-              }`}
-            >
-              <Layers className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'સજ્જતા' : 'Readiness'}</span>
-            </button>
-
-            <button
-              onClick={() => onTabChange('resources')}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'resources'
-                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
-              }`}
-            >
-              <BookOpen className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'સિલેબસ & ફ્રી PDF' : 'Syllabus & Free PDFs'}</span>
-            </button>
           </nav>
 
           {/* Right Action Bar */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             {/* Beginner Orientation Trigger */}
             <button
               onClick={onOpenOrientation}
@@ -169,16 +175,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Language Switcher Toggle */}
             <div className="flex items-center p-1 bg-stone-100 rounded-xl border border-stone-200">
               <button
-                onClick={() => onLanguageChange('gu')}
-                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
-                  currentLanguage === 'gu'
-                    ? 'bg-white text-emerald-800 shadow-xs'
-                    : 'text-stone-500 hover:text-stone-800'
-                }`}
-              >
-                ગુજરાતી
-              </button>
-              <button
                 onClick={() => onLanguageChange('en')}
                 className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                   currentLanguage === 'en'
@@ -188,6 +184,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 EN
               </button>
+              <button
+                onClick={() => onLanguageChange('gu')}
+                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                  currentLanguage === 'gu'
+                    ? 'bg-white text-emerald-800 shadow-xs'
+                    : 'text-stone-500 hover:text-stone-800'
+                }`}
+              >
+                ગુજરાતી
+              </button>
             </div>
           </div>
 
@@ -196,29 +202,36 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Mobile Tab Scroller */}
         <div className="flex xl:hidden items-center gap-2 overflow-x-auto py-2.5 border-t border-stone-100 scrollbar-none text-xs">
           <button
-            onClick={() => onTabChange('roadmap')}
+            onClick={() => onTabChange('home')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'roadmap' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
+              activeTab === 'home' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
-            {currentLanguage === 'gu' ? 'રોડમેપ' : 'Roadmap'}
+            {currentLanguage === 'gu' ? 'હોમ' : 'Home'}
           </button>
           <button
-            onClick={() => onTabChange('live_radar')}
-            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold flex items-center gap-1.5 ${
-              activeTab === 'live_radar' ? 'bg-emerald-700 text-white' : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+            onClick={() => onTabChange('syllabus')}
+            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
+              activeTab === 'syllabus' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
-            <Radio className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
-            <span>{currentLanguage === 'gu' ? 'લાઇવ રડાર' : 'Live Radar'}</span>
+            {currentLanguage === 'gu' ? 'સિલેબસ' : 'Syllabus'}
           </button>
           <button
-            onClick={() => onTabChange('reader')}
+            onClick={() => onTabChange('books')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'reader' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
+              activeTab === 'books' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
-            {currentLanguage === 'gu' ? 'કન્સેપ્ટ' : 'Learn'}
+            {currentLanguage === 'gu' ? 'ફ્રી પુસ્તકો' : 'Books'}
+          </button>
+          <button
+            onClick={() => onTabChange('notes')}
+            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
+              activeTab === 'notes' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
+            }`}
+          >
+            {currentLanguage === 'gu' ? 'નોટ્સ' : 'Notes'}
           </button>
           <button
             onClick={() => onTabChange('practice')}
@@ -226,7 +239,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               activeTab === 'practice' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
-            {currentLanguage === 'gu' ? 'PYQ' : 'Practice'}
+            {currentLanguage === 'gu' ? 'PYQ બેંક' : 'PYQ Bank'}
           </button>
           <button
             onClick={() => onTabChange('current_affairs')}
@@ -234,26 +247,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               activeTab === 'current_affairs' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
             }`}
           >
-            {currentLanguage === 'gu' ? 'કરંટ અફેર્સ' : 'Current Affairs'}
+            {currentLanguage === 'gu' ? 'પ્રવાહો' : 'Current Affairs'}
           </button>
           <button
-            onClick={() => onTabChange('readiness')}
+            onClick={() => onTabChange('live_radar')}
             className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'readiness' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
+              activeTab === 'live_radar' ? 'bg-emerald-700 text-white' : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
             }`}
           >
-            {currentLanguage === 'gu' ? 'સજ્જતા' : 'Readiness'}
-          </button>
-          <button
-            onClick={() => onTabChange('resources')}
-            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'resources' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
-            }`}
-          >
-            {currentLanguage === 'gu' ? 'સિલેબસ & PDF' : 'Syllabus & PDF'}
+            {currentLanguage === 'gu' ? 'લાઇવ રડાર' : 'Live Radar'}
           </button>
         </div>
-
       </div>
     </header>
   );

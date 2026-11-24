@@ -15,7 +15,7 @@ export const CURRENT_AFFAIRS: CurrentAffairItem[] = [
     prelimsAngleGu: 'IFSCA ની સ્થાપના IFSCA એક્ટ, ૨૦૧૯ હેઠળ ૨૦૨૦ માં કરવામાં આવી હતી, જે ગિફ્ટ સિટી માટે RBI, SEBI, IRDAI અને PFRDA નું સંયુક્ત નિયમનકારી વૈધાનિક સત્તામંડળ છે.',
     mainsAngleEn: '"Evaluate the potential of Gujarat’s GIFT City as a global financial gateway in the context of Indias goal to achieve a $5 Trillion economy." (250 words)',
     mainsAngleGu: '"ભારતના $૫ ટ્રિલિયન અર્થતંત્રના લક્ષ્યના સંદર્ભમાં વૈશ્વિક નાણાકીય પ્રવેશદ્વાર તરીકે ગુજરાતના ગિફ્ટ સિટીની સંભાવનાઓનું મૂલ્યાંકન કરો." (૨૫૦ શબ્દો)',
-    imageUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb186f5f7?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/current_affairs/current_affairs-1.jpg',
   },
   {
     id: 'ca-02',
@@ -31,7 +31,7 @@ export const CURRENT_AFFAIRS: CurrentAffairItem[] = [
     prelimsAngleGu: 'આ ચુકાદાએ ૨૦૦૪ ના ઇ.વી. ચિન્નૈયા કેસના ૫ જજોના ચુકાદાને રદ કર્યો, અને સ્પષ્ટ કર્યું કે અનુચ્છેદ ૩૪૧ હેઠળ વિશ્વસનીય આંકડાકીય માહિતીના આધારે પ્રાથમિકતા આપી શકાય છે.',
     mainsAngleEn: '"Critically analyze the balance between the principle of non-discrimination (Article 14) and affirmative social justice in light of the SC sub-classification verdict." (150 words)',
     mainsAngleGu: '"સુપ્રીમ કોર્ટના તાજેતરના ચુકાદાના સંદર્ભમાં અનુચ્છેદ ૧૪ (સમાનતા) અને સામાજિક ન્યાયના સિદ્ધાંત વચ્ચેના સંતુલનનું વિવેચનાત્મક પરીક્ષણ કરો." (૧૫૦ શબ્દો)',
-    imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/current_affairs/current_affairs-2.jpg',
   },
   {
     id: 'ca-03',
@@ -47,6 +47,6 @@ export const CURRENT_AFFAIRS: CurrentAffairItem[] = [
     prelimsAngleGu: 'લોથલ અમદાવાદ જિલ્લાના ભોગાવો નદી કાંઠે આવેલું છે, જે વિશ્વના સૌથી પ્રાચીન ભરતી આધારિત ડૉકયાર્ડ અને ચોખાની ખેતીના પુરાવા માટે પ્રખ્યાત છે.',
     mainsAngleEn: '"How can the revitalisation of archaeological heritage sites like Lothal and Dholavira boost cultural tourism and local economic resilience in Gujarat?" (150 words)',
     mainsAngleGu: '"લોથલ અને ધોળાવીરા જેવા ઐતિહાસિક સ્થળોનું આધુનિક સંવર્ધન ગુજરાતમાં સાંસ્કૃતિક પ્રવાસન અને સ્થાનિક અર્થતંત્રને કેવી રીતે વેગ આપી શકે?" (૧૫૦ શબ્દો)',
-    imageUrl: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/current_affairs/current_affairs-3.jpg',
   },
 ];

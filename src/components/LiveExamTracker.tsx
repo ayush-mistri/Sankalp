@@ -2,16 +2,23 @@
 
 import React, { useState, useEffect } from 'react';
 import { Language } from '@/types';
-import { EXAM_COUNTDOWNS, OFFICIAL_NOTIFICATIONS } from '@/data/examTrackerData';
+import { EXAM_COUNTDOWNS, OFFICIAL_NOTIFICATIONS, CONCLUDED_EXAM_PAPERS } from '@/data/examTrackerData';
 import { 
   Bell, 
   Clock, 
   ExternalLink, 
-  Users 
+  Users,
+  Sparkles,
+  ChevronRight,
+  Award,
+  Zap,
+  CheckCircle2
 } from 'lucide-react';
+
 
 interface LiveExamTrackerProps {
   language: Language;
+  onOpenPaper?: (paperId: string) => void;
 }
 
 interface TimeRemaining {
@@ -35,7 +42,7 @@ function calculateTimeLeft(targetDateStr: string): TimeRemaining {
   };
 }
 
-export const LiveExamTracker: React.FC<LiveExamTrackerProps> = ({ language }) => {
+export const LiveExamTracker: React.FC<LiveExamTrackerProps> = ({ language, onOpenPaper }) => {
   const [selectedExamId, setSelectedExamId] = useState<string>('gpsc-class-12');
   const [timeLeft, setTimeLeft] = useState<TimeRemaining>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -52,7 +59,7 @@ export const LiveExamTracker: React.FC<LiveExamTrackerProps> = ({ language }) =>
   }, [activeExam]);
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-300">
+    <div className="space-y-8 animate-in fade-in duration-300">
       
       {/* Live Status Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-emerald-50/50 border border-emerald-200">
@@ -98,77 +105,160 @@ export const LiveExamTracker: React.FC<LiveExamTrackerProps> = ({ language }) =>
         {/* Exam Title & Authority */}
         <div className="space-y-2 relative z-10">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold">
-              {activeExam.authority} {activeExam.stage}
+            <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              {activeExam.authority} • {activeExam.stage}
             </span>
-            <span className="text-xs text-stone-400 flex items-center gap-1.5">
+            <span className="flex items-center gap-1.5 text-xs text-stone-300 bg-white/5 px-3 py-1 rounded-full border border-white/10">
               <Users className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{activeExam.seatsCount} {language === 'gu' ? 'અંદાજિત જગ્યાઓ' : 'Expected Vacancies'}</span>
+              <span>{activeExam.seatsCount} {language === 'gu' ? 'જગ્યાઓ' : 'Vacancies'}</span>
+            </span>
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+              activeExam.status === 'confirmed' ? 'bg-emerald-500/30 text-emerald-300' : 'bg-amber-500/30 text-amber-300'
+            }`}>
+              {activeExam.status === 'confirmed' ? (language === 'gu' ? 'તારીખ નિશ્ચિત' : 'Confirmed Date') : (language === 'gu' ? 'સંભવિત તારીખ' : 'Tentative')}
             </span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
             {language === 'gu' ? activeExam.nameGu : activeExam.nameEn}
           </h2>
+          <p className="text-xs sm:text-sm text-stone-300 font-medium">
+            {language === 'gu' ? 'પરીક્ષા તારીખ:' : 'Target Exam Date:'} {new Date(activeExam.targetDate).toLocaleDateString(language === 'gu' ? 'gu-IN' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
         </div>
 
-        {/* Real-Time Live Clock Tickers */}
-        <div className="grid grid-cols-4 gap-3 sm:gap-6 max-w-2xl relative z-10">
-          <div className="p-4 sm:p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md text-center space-y-1">
-            <div className="text-3xl sm:text-5xl font-black text-emerald-400 font-mono">
-              {String(timeLeft.days).padStart(2, '0')}
+        {/* Four Segment Countdown Clock */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 relative z-10">
+          {[
+            { label: language === 'gu' ? 'દિવસ' : 'DAYS', value: timeLeft.days },
+            { label: language === 'gu' ? 'કલાક' : 'HOURS', value: timeLeft.hours },
+            { label: language === 'gu' ? 'મિનિટ' : 'MINUTES', value: timeLeft.minutes },
+            { label: language === 'gu' ? 'સેકન્ડ' : 'SECONDS', value: timeLeft.seconds },
+          ].map((unit, idx) => (
+            <div
+              key={idx}
+              className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col items-center justify-center space-y-1"
+            >
+              <div className="text-3xl sm:text-5xl font-black font-mono text-emerald-300 tracking-tight">
+                {String(unit.value).padStart(2, '0')}
+              </div>
+              <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-400">
+                {unit.label}
+              </div>
             </div>
-            <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-300">
-              {language === 'gu' ? 'દિવસો (Days)' : 'Days'}
-            </div>
-          </div>
-
-          <div className="p-4 sm:p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md text-center space-y-1">
-            <div className="text-3xl sm:text-5xl font-black text-emerald-400 font-mono">
-              {String(timeLeft.hours).padStart(2, '0')}
-            </div>
-            <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-300">
-              {language === 'gu' ? 'કલાક (Hours)' : 'Hours'}
-            </div>
-          </div>
-
-          <div className="p-4 sm:p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md text-center space-y-1">
-            <div className="text-3xl sm:text-5xl font-black text-emerald-400 font-mono">
-              {String(timeLeft.minutes).padStart(2, '0')}
-            </div>
-            <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-300">
-              {language === 'gu' ? 'મિનિટ (Mins)' : 'Minutes'}
-            </div>
-          </div>
-
-          <div className="p-4 sm:p-6 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-md text-center space-y-1">
-            <div className="text-3xl sm:text-5xl font-black text-emerald-300 font-mono animate-pulse">
-              {String(timeLeft.seconds).padStart(2, '0')}
-            </div>
-            <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-stone-300">
-              {language === 'gu' ? 'સેકન્ડ (Secs)' : 'Seconds'}
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Action Bar: Official Link */}
-        <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10 text-xs">
-          <div className="text-stone-300 font-medium">
-            {language === 'gu'
-              ? 'સત્તાવાર ઓજસ / GPSC પોર્ટલ પરથી સત્યાપિત માહિતી'
-              : 'Verified directly against official GPSC / OJAS examination schedule'}
+        {/* Card Footer Link */}
+        <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-stone-300 border-t border-white/10 relative z-10">
+          <div>
+            <span>{language === 'gu' ? 'સત્તાવાર GPSC / OJAS પોર્ટલ પરથી સત્યાપિત' : 'Directly synchronized with official commission calendars'}</span>
           </div>
-
           <a
             href={activeExam.officialNoticeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all shadow-md shadow-emerald-600/30 shrink-0"
+            className="inline-flex items-center gap-1.5 font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
           >
-            <span>{language === 'gu' ? 'સત્તાવાર પોર્ટલ ખોલો' : 'Open Official Portal'}</span>
-            <ExternalLink className="w-4 h-4" />
+            <span>{language === 'gu' ? 'સત્તાવાર પોર્ટલ પર જાઓ' : 'Official Commission Portal'}</span>
+            <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* SECTION: NEWLY CONCLUDED EXAMS & LIVE POST-EXAM INGESTION */}
+      {/* ========================================================================= */}
+      <div className="p-7 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-xs space-y-6">
+        
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-stone-100">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2.5 bg-emerald-50 text-emerald-800 rounded-2xl border border-emerald-200">
+              <Zap className="w-5 h-5 text-emerald-700" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-100 text-rose-800 animate-pulse">
+                  POST-EXAM RADAR
+                </span>
+                <span className="text-xs text-stone-400 font-mono">Live Ingestion</span>
+              </div>
+              <h3 className="font-black text-lg text-stone-900">
+                {language === 'gu' ? 'તાજેતરમાં પૂર્ણ થયેલી પરીક્ષાઓ — પેપર્સ અને સોલ્યુશન લાઇવ' : 'Recently Concluded Exams — Post-Exam Papers & Solutions'}
+              </h3>
+            </div>
+          </div>
+
+          <div className="text-xs text-stone-500 font-medium">
+            {language === 'gu' ? 'પરીક્ષા પૂર્ણ થતાં જ પેપર અને આન્સર કી ઉપલબ્ધ થાય છે' : 'Paper & solutions available hours after exam finishes'}
+          </div>
+        </div>
+
+        {/* Concluded Exam Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {CONCLUDED_EXAM_PAPERS.map((paper) => (
+            <div
+              key={paper.id}
+              className="p-5 rounded-2xl bg-stone-50 border border-stone-200 hover:border-emerald-300 transition-all flex flex-col justify-between space-y-4"
+            >
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-extrabold ${
+                    paper.authority === 'UPSC' ? 'bg-blue-100 text-blue-800' : 'bg-emerald-100 text-emerald-800'
+                  }`}>
+                    {paper.authority}
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    <span>{paper.provisionalKeyStatus}</span>
+                  </span>
+                </div>
+
+                <h4 className="font-bold text-sm text-stone-900 leading-snug">
+                  {language === 'gu' ? paper.examNameGu : paper.examNameEn}
+                </h4>
+
+                <p className="text-xs text-stone-500 line-clamp-1">
+                  {language === 'gu' ? paper.paperTypeGu : paper.paperTypeEn}
+                </p>
+
+                <div className="p-2.5 rounded-xl bg-amber-50/70 border border-amber-200 text-amber-900 text-[11px] font-semibold flex items-center gap-1.5">
+                  <Award className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                  <span>{language === 'gu' ? paper.expectedCutoffGu : paper.expectedCutoffEn}</span>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-stone-200 flex items-center justify-between gap-2">
+                <span className="text-[11px] font-mono text-stone-400">
+                  {paper.totalQuestions} Qs
+                </span>
+
+                <button
+                  onClick={() => onOpenPaper && onOpenPaper(paper.paperId)}
+                  className="px-3.5 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold flex items-center gap-1 transition-all shadow-xs"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  <span>{language === 'gu' ? 'સોલ્વ કરો & સોલ્યુશન' : 'Solve & Solutions'}</span>
+                  <ChevronRight className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Live Exam Day Fast-Track Process Explainer */}
+        <div className="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200 space-y-2">
+          <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-emerald-950">
+            <Zap className="w-4 h-4 text-emerald-700" />
+            <span>{language === 'gu' ? 'આગામી પરીક્ષાઓ માટે લાઈવ પેપર રિલીઝ પ્રોટોકોલ:' : 'Live Post-Exam Release Protocol for Upcoming Exams:'}</span>
+          </div>
+          <p className="text-xs text-stone-700 leading-relaxed font-medium">
+            {language === 'gu'
+              ? 'જ્યારે પણ નવી GPSC અથવા UPSC પરીક્ષા પૂર્ણ થાય છે (રવિવારે બપોરે), ત્યારે થોડા જ કલાકોમાં આ પોર્ટલ પર સમગ્ર માસ્ટર ક્વેશ્ચન પેપર, વિષયવાર પ્રશ્ન વિભાજન, સંભવિત આન્સર કી અને અપેક્ષિત કટ-ઓફ કેલ્ક્યુલેટર લાઈવ થઈ જાય છે, જેથી વિદ્યાર્થીઓ તરત જ પોતાનો સ્કોર ચકાસી શકે.'
+              : 'As soon as any upcoming GPSC or UPSC exam concludes on exam Sunday, the complete master question paper, subject-wise distribution, provisional answer key, and cut-off calculator are released on Sankalp within hours, enabling aspirants to check their score and review solutions immediately.'}
+          </p>
+        </div>
+
       </div>
 
       {/* Official Notifications & Bulletins Feed */}

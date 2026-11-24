@@ -3,6 +3,10 @@
 import React, { useState } from 'react';
 import { ActiveTab, Language, StageId } from '@/types';
 import { Navbar } from '@/components/Navbar';
+import { HomeView } from '@/components/HomeView';
+import { SyllabusView } from '@/components/SyllabusView';
+import { BooksView } from '@/components/BooksView';
+import { NotesView } from '@/components/NotesView';
 import { RoadmapView } from '@/components/RoadmapView';
 import { ReaderView } from '@/components/ReaderView';
 import { PracticeView } from '@/components/PracticeView';
@@ -10,15 +14,15 @@ import { CurrentAffairsView } from '@/components/CurrentAffairsView';
 import { LiveExamTracker } from '@/components/LiveExamTracker';
 import { LiveStudyTimer } from '@/components/LiveStudyTimer';
 import { ReadinessView } from '@/components/ReadinessView';
-import { ResourceGuideView } from '@/components/ResourceGuideView';
 import { BeginnerOrientationModal } from '@/components/BeginnerOrientationModal';
 
 export default function Home() {
-  const [language, setLanguage] = useState<Language>('gu');
-  const [activeTab, setActiveTab] = useState<ActiveTab>('roadmap');
+  const [language, setLanguage] = useState<Language>('en');
+  const [activeTab, setActiveTab] = useState<ActiveTab>('home');
   const [currentStageId, setCurrentStageId] = useState<StageId>('foundation');
   const [selectedTopicId, setSelectedTopicId] = useState<string>('topic-f1');
   const [isOrientationOpen, setIsOrientationOpen] = useState<boolean>(false);
+  const [requestedPaperId, setRequestedPaperId] = useState<string | null>(null);
 
   const handleOpenTopic = (topicId: string) => {
     setSelectedTopicId(topicId);
@@ -39,8 +43,14 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleOpenPaperFromRadar = (paperId: string) => {
+    setRequestedPaperId(paperId);
+    setActiveTab('practice');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white text-stone-900">
       {/* Top Main Navigation */}
       <Navbar
         currentLanguage={language}
@@ -54,15 +64,44 @@ export default function Home() {
         onOpenOrientation={() => setIsOrientationOpen(true)}
       />
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 py-8 sm:py-12 space-y-8">
+      {/* Main Content Area Covering ~80% Screen */}
+      <main className="flex-1 w-[92%] sm:w-[88%] lg:w-[84%] max-w-[1500px] mx-auto py-8 sm:py-12 space-y-8">
         
-        {/* Real-time Focus Timer Bar (Shown across Roadmap & Practice) */}
-        {(activeTab === 'roadmap' || activeTab === 'practice' || activeTab === 'reader') && (
+        {/* Real-time Focus Timer Bar */}
+        {(activeTab === 'practice' || activeTab === 'reader' || activeTab === 'notes') && (
           <LiveStudyTimer language={language} />
         )}
 
         {/* Tab Views */}
+        {activeTab === 'home' && (
+          <HomeView
+            language={language}
+            onNavigateTab={(tab) => {
+              setActiveTab(tab);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onOpenOrientation={() => setIsOrientationOpen(true)}
+          />
+        )}
+
+        {activeTab === 'syllabus' && (
+          <SyllabusView
+            language={language}
+            onExploreTopic={handleOpenTopic}
+          />
+        )}
+
+        {(activeTab === 'books' || activeTab === 'resources') && (
+          <BooksView language={language} />
+        )}
+
+        {activeTab === 'notes' && (
+          <NotesView
+            language={language}
+            onReadFullModule={handleOpenTopic}
+          />
+        )}
+
         {activeTab === 'roadmap' && (
           <RoadmapView
             language={language}
@@ -72,7 +111,10 @@ export default function Home() {
         )}
 
         {activeTab === 'live_radar' && (
-          <LiveExamTracker language={language} />
+          <LiveExamTracker 
+            language={language} 
+            onOpenPaper={handleOpenPaperFromRadar}
+          />
         )}
 
         {activeTab === 'reader' && (
@@ -80,7 +122,7 @@ export default function Home() {
             language={language}
             selectedTopicId={selectedTopicId}
             onSelectTopic={(tId) => setSelectedTopicId(tId)}
-            onBackToRoadmap={() => setActiveTab('roadmap')}
+            onBackToRoadmap={() => setActiveTab('home')}
             onGoToPractice={(tId) => {
               setSelectedTopicId(tId);
               setActiveTab('practice');
@@ -91,11 +133,13 @@ export default function Home() {
         {activeTab === 'practice' && (
           <PracticeView
             language={language}
-            onBackToRoadmap={() => setActiveTab('roadmap')}
+            onBackToRoadmap={() => setActiveTab('home')}
             onReadConcept={(tId) => {
               setSelectedTopicId(tId);
               setActiveTab('reader');
             }}
+            initialPaperId={requestedPaperId}
+            onClearInitialPaper={() => setRequestedPaperId(null)}
           />
         )}
 
@@ -112,10 +156,6 @@ export default function Home() {
             }}
           />
         )}
-
-        {activeTab === 'resources' && (
-          <ResourceGuideView language={language} />
-        )}
       </main>
 
       {/* Orientation Diagnostic Modal */}
@@ -126,12 +166,16 @@ export default function Home() {
         onSelectStartingTopic={handleOrientationTopicSelect}
       />
 
-      {/* Bottom Footer */}
+      {/* Bottom Footer with Official Transparent Logo */}
       <footer className="mt-auto border-t border-stone-200 bg-white py-10 text-xs text-stone-500">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-16 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="w-[92%] sm:w-[88%] lg:w-[84%] max-w-[1500px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-emerald-700 text-white font-bold flex items-center justify-center text-sm shadow-xs">
-              સં
+            <div className="h-9 flex items-center justify-center shrink-0">
+              <img 
+                src="/sankalp-logo.png" 
+                alt="Sankalp Logo" 
+                className="h-8 w-auto object-contain" 
+              />
             </div>
             <span className="font-extrabold text-stone-900 text-sm">
               Sankalp (સંકલ્પ)

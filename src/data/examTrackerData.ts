@@ -100,3 +100,68 @@ export const OFFICIAL_NOTIFICATIONS: OfficialNotification[] = [
     isNew: false,
   },
 ];
+
+export interface ConcludedExamPaper {
+  id: string;
+  paperId: string;
+  examNameEn: string;
+  examNameGu: string;
+  concludedDateEn: string;
+  concludedDateGu: string;
+  authority: 'GPSC' | 'UPSC';
+  totalQuestions: number;
+  provisionalKeyStatus: 'Released' | 'Awaiting' | 'Final Key Out';
+  expectedCutoffEn: string;
+  expectedCutoffGu: string;
+  paperTypeEn: string;
+  paperTypeGu: string;
+}
+
+export const CONCLUDED_EXAM_PAPERS: ConcludedExamPaper[] = [
+  {
+    id: 'concluded-gpsc-2024',
+    paperId: 'gpsc-prelims-2024-gs1',
+    examNameEn: 'GPSC Class 1 & 2 (Advt 47/2023-24) Prelims GS-1',
+    examNameGu: 'GPSC વર્ગ ૧ અને ૨ (જાહેરાત ૪૭/૨૦૨૩-૨૪) પ્રિલિમ્સ GS-1',
+    concludedDateEn: 'Exam Concluded (Jan 2024)',
+    concludedDateGu: 'પરીક્ષા પૂર્ણ (જાન્યુઆરી ૨૦૨૪)',
+    authority: 'GPSC',
+    totalQuestions: 200,
+    provisionalKeyStatus: 'Final Key Out',
+    expectedCutoffEn: 'Provisional General Male Cutoff: ~139.5 Marks',
+    expectedCutoffGu: 'જનરલ કટ-ઓફ: ~૧૩૯.૫ ગુણ',
+    paperTypeEn: 'General Studies Paper-1 (History, Heritage, Polity, Mental Ability)',
+    paperTypeGu: 'સામાન્ય અભ્યાસ પેપર-૧ (ઇતિહાસ, વારસો, બંધારણ, ગણિત-રીઝનિંગ)',
+  },
+  {
+    id: 'concluded-upsc-2024',
+    paperId: 'upsc-prelims-2024-gs1',
+    examNameEn: 'UPSC Civil Services (Preliminary) Examination 2024 GS-1',
+    examNameGu: 'UPSC સિવિલ સર્વિસીસ (પ્રાથમિક) પરીક્ષા ૨૦૨૪ GS-1',
+    concludedDateEn: 'Exam Concluded (June 2024)',
+    concludedDateGu: 'પરીક્ષા પૂર્ણ (જૂન ૨૦૨૪)',
+    authority: 'UPSC',
+    totalQuestions: 100,
+    provisionalKeyStatus: 'Released',
+    expectedCutoffEn: 'Expected General Cutoff: ~88 - 92 Marks',
+    expectedCutoffGu: 'અપેક્ષિત કટ-ઓફ: ~૮૮ - ૯૨ ગુણ',
+    paperTypeEn: 'General Studies Paper-1',
+    paperTypeGu: 'સામાન્ય અભ્યાસ પેપર-૧',
+  },
+  {
+    id: 'concluded-gpsc-dyso-2023',
+    paperId: 'gpsc-prelims-2023-dyso',
+    examNameEn: 'GPSC DYSO / Nayab Mamlatdar (Advt 42/2023-24)',
+    examNameGu: 'GPSC નાયબ સેક્શન ઑફિસર (DYSO)',
+    concludedDateEn: 'Exam Concluded (Oct 2023)',
+    concludedDateGu: 'પરીક્ષા પૂર્ણ (ઓક્ટોબર ૨૦૨૩)',
+    authority: 'GPSC',
+    totalQuestions: 200,
+    provisionalKeyStatus: 'Final Key Out',
+    expectedCutoffEn: 'Official Cutoff: 99.42 Marks',
+    expectedCutoffGu: 'સત્તાવાર કટ-ઓફ: ૯૯.૪૨ ગુણ',
+    paperTypeEn: 'General Studies Composite Paper (200 Questions)',
+    paperTypeGu: 'સામાન્ય અભ્યાસ સંયુક્ત પેપર (૨૦૦ પ્રશ્નો)',
+  }
+];
+

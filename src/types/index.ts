@@ -13,12 +13,16 @@ export type SubjectId =
   | 'csat';
 
 export type ActiveTab = 
-  | 'roadmap' 
+  | 'home'
+  | 'syllabus'
+  | 'books'
+  | 'notes'
+  | 'practice'
   | 'reader' 
-  | 'practice' 
   | 'current_affairs' 
   | 'live_radar' 
   | 'readiness' 
+  | 'roadmap'
   | 'resources';
 
 export interface StageInfo {
@@ -126,20 +130,77 @@ export interface QuestionOption {
   whyWrongGu?: string;
 }
 
+export type ExamAgency = 'GPSC' | 'UPSC';
+export type PaperStage = 'Prelims' | 'Mains';
+export type PaperMedium = 'Bilingual' | 'Gujarati' | 'English';
+
+export interface PrelimsPaperMeta {
+  id: string;
+  examAgency: ExamAgency;
+  year: number;
+  stage?: PaperStage;
+  medium?: PaperMedium;
+  advertisementNo?: string;
+  examDate?: string;
+  fileSize?: string;
+  source?: string;
+  paperCode?: string;
+  alternativeSources?: { name: string; url: string }[];
+  examNameEn: string;
+  examNameGu: string;
+  paperTypeEn: string;
+  paperTypeGu: string;
+  totalQuestions: number;
+  totalMarks: number;
+  durationMinutes: number;
+  negativeMarkingEn: string;
+  negativeMarkingGu: string;
+  cutoffTextEn?: string;
+  cutoffTextGu?: string;
+  difficultyRating: 'Moderate' | 'Moderate to Tough' | 'Tough / Analytical' | 'Direct / Conceptual';
+  officialPaperPdfUrl?: string;
+  officialAnswerKeyPdfUrl?: string;
+  sankalpPdfUrl?: string;
+  subjectBreakdown: {
+    subjectEn: string;
+    subjectGu: string;
+    questionCount: number;
+    color: string;
+  }[];
+  keyTakeawaysEn: string[];
+  keyTakeawaysGu: string[];
+}
+
+
+export type QuestionSubject = 
+  | 'history'
+  | 'heritage'
+  | 'polity'
+  | 'mental_ability'
+  | 'economy'
+  | 'geography'
+  | 'environment'
+  | 'science_tech'
+  | 'current_affairs';
+
 export interface PYQQuestion {
   id: string;
   topicId: string;
+  examAgency?: ExamAgency;
   examName: string;
   examYear: number;
-  paperType: 'Prelims GS-1' | 'Prelims GS-2' | 'Mains GS-1' | 'Mains GS-2';
+  paperType: 'Prelims GS-1' | 'Prelims GS-2' | 'Mains GS-1' | 'Mains GS-2' | 'Mains GS-3' | 'Mains GS-4' | 'Essay';
+  subject?: QuestionSubject;
+  cognitiveType: 'factual' | 'conceptual' | 'multi_statement' | 'elimination_trap';
   questionEn: string;
   questionGu: string;
-  cognitiveType: 'factual' | 'conceptual' | 'multi_statement' | 'elimination_trap';
   options: QuestionOption[];
   explanationEn: string;
   explanationGu: string;
   sourceConceptEn: string;
   sourceConceptGu: string;
+  mainsAnswerFrameworkEn?: string;
+  mainsAnswerFrameworkGu?: string;
 }
 
 export interface CurrentAffairItem {
