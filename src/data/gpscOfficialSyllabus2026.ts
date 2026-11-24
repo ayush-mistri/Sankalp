@@ -49,6 +49,7 @@ export interface FreePdfResource {
   descriptionGu: string;
   is100PercentFree: boolean;
   recommendedFor: string;
+  coverImageUrl?: string;
 }
 
 export interface StudyMonthPlan {
@@ -688,6 +689,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'GPSC તૈયારીનો સુવર્ણ પાયો. ગુજરાત સરકાર દ્વારા પ્રકાશિત અધિકૃત મફત પાઠ્યપુસ્તકો. પ્રોવિઝનલ આન્સર કી સામે આધાર રજૂ કરવા આ પુસ્તકો જ સર્વોપરી ગણાય છે.',
     is100PercentFree: true,
     recommendedFor: 'Prelims & Mains Foundations (Must read for all beginners)',
+    coverImageUrl: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'pdf-ncert-all',
@@ -705,6 +707,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'ભારત સરકારનું સત્તાવાર પોર્ટલ. રાષ્ટ્રીય ઇતિહાસ, ભૌતિક ભૂગોળ અને સ્થૂળ અર્થતંત્રના મૂળભૂત સિદ્ધાંતો માટે શ્રેષ્ઠ સ્ત્રોત.',
     is100PercentFree: true,
     recommendedFor: 'National topics, UPSC cross-preparation, and Macroeconomics',
+    coverImageUrl: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'pdf-constitution-official',
@@ -722,6 +725,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'ભારત સરકારના કાયદા મંત્રાલય દ્વારા પ્રકાશિત ભારતનું મૂળ બંધારણ. કલમ ૧ થી ૩૯૫, તમામ પરિશિષ્ટો અને તાજેતરના તમામ બંધારણીય સુધારાઓ સાથે.',
     is100PercentFree: true,
     recommendedFor: 'Accurate article numbers, schedules, and word-by-word constitutional interpretation',
+    coverImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Preamble_to_the_Constitution_of_India.jpg/800px-Preamble_to_the_Constitution_of_India.jpg',
   },
   {
     id: 'pdf-gujarat-budget-ser',
@@ -739,6 +743,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'ગુજરાતના અર્થતંત્ર માટે સૌથી આધારભૂત સરકારી દસ્તાવેજ. રાજ્યનો GSDP, ક્ષેત્રીય વૃદ્ધિદર, ખેતી, સિંચાઈ, ઊર્જા અને તમામ કલ્યાણકારી યોજનાઓના સચોટ આંકડા.',
     is100PercentFree: true,
     recommendedFor: 'Prelims Economy statistics & Mains GS-3 high-scoring evidence',
+    coverImageUrl: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'pdf-gujarat-pakshik',
@@ -756,6 +761,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'દર મહિને બે વાર પ્રકાશિત થતું સરકારનું સત્તાવાર મેગેઝિન. મંત્રીમંડળના નિર્ણયો, નવી સરકારી નીતિઓ, આદિવાસી કલ્યાણ અને ગુજરાતના વર્તમાન પ્રવાહોનો સચોટ સ્ત્રોત.',
     is100PercentFree: true,
     recommendedFor: 'Gujarat Current Affairs & Mains Essay/Answer examples',
+    coverImageUrl: 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'pdf-prs-india',
@@ -773,6 +779,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'સંસદમાં રજૂ થતા દરેક ખરડા (Bills), સંસદીય સમિતિઓના અહેવાલો અને કાયદાઓનું નિષ્પક્ષ, મુદ્દાસર વિશ્લેષણ.',
     is100PercentFree: true,
     recommendedFor: 'Mains GS-2 Polity, Governance, and Legislative analysis',
+    coverImageUrl: 'https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'pdf-pib-releases',
@@ -790,6 +797,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'કેન્દ્ર સરકારની તમામ યોજનાઓ, કેબિનેટ નિર્ણયો અને મંત્રાલયના વર્ષાંત અહેવાલોનો સીધો સ્ત્રોત. ફેક ન્યૂઝથી મુક્ત સત્તાવાર માહિતી.',
     is100PercentFree: true,
     recommendedFor: 'Daily Current Affairs, Science & Tech updates, Central Schemes',
+    coverImageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'pdf-gpsc-official-syllabus',
@@ -807,6 +815,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'આયોગ દ્વારા બહાર પાડવામાં આવેલ કાનૂની પરિપત્ર જેમાં પરીક્ષા પદ્ધતિ, લઘુત્તમ લાયકાત, વયમર્યાદા અને સત્તાવાર સિલેબસ આપેલ છે.',
     is100PercentFree: true,
     recommendedFor: 'Final official verification of exam rules and scope',
+    coverImageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'pdf-arc2-reports',
@@ -824,6 +833,7 @@ export const FREE_PDF_VAULT: FreePdfResource[] = [
     descriptionGu: 'મેઈન્સ GS-૪ નીતિશાસ્ત્ર અને GS-૨ શાસન માટેનો સર્વોચ્ચ સંદર્ભ. રિપોર્ટ ૪ "Ethics in Governance" માંથી દર વર્ષે સીધા પ્રશ્નો પૂછાય છે.',
     is100PercentFree: true,
     recommendedFor: 'Mains GS-4 Ethics high-scoring answer frameworks & case studies',
+    coverImageUrl: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80',
   },
 ];
 

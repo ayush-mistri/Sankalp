@@ -4,11 +4,14 @@ import React, { useState } from 'react';
 import { Language } from '@/types';
 import { CURRENT_AFFAIRS } from '@/data/currentAffairs';
 import { 
+  Maximize2,
   Newspaper, 
   PenTool, 
   Sparkles, 
   Tag 
 } from 'lucide-react';
+import { CurrentAffairItem } from '@/types';
+import { InteractiveImageModal } from '@/components/InteractiveImageModal';
 
 interface CurrentAffairsViewProps {
   language: Language;
@@ -18,6 +21,7 @@ type FilterPaperType = 'all' | 'GS-1' | 'GS-2' | 'GS-3';
 
 export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language }) => {
   const [selectedPaper, setSelectedPaper] = useState<FilterPaperType>('all');
+  const [modalItem, setModalItem] = useState<CurrentAffairItem | null>(null);
 
   const filteredItems = CURRENT_AFFAIRS.filter((item) => {
     return selectedPaper === 'all' || item.gsPaper === selectedPaper;
@@ -87,6 +91,31 @@ export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language
               <span className="text-stone-400 font-medium">{item.date}</span>
             </div>
 
+            {/* Visual Thematic Image */}
+            {item.imageUrl && (
+              <div 
+                onClick={() => setModalItem(item)}
+                className="relative h-48 sm:h-56 w-full rounded-xl overflow-hidden border border-stone-200 group bg-stone-100 cursor-pointer hover:border-emerald-500 transition-all"
+                title={language === 'gu' ? 'ઇન્ટરેક્ટિવ ઝૂમ અને વિશ્લેષણ માટે ક્લિક કરો' : 'Click to inspect visual reference in high-res'}
+              >
+                <img
+                  src={item.imageUrl}
+                  alt={language === 'gu' ? item.headlineGu : item.headlineEn}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/75 via-transparent to-transparent flex items-end justify-between p-3.5">
+                  <span className="text-[11px] text-white/95 font-semibold drop-shadow-xs">
+                    {language === 'gu' ? 'વિઝ્યુઅલ કેસ સ્ટડી • ' + item.topicTagGu : 'Visual Reference • ' + item.topicTagEn}
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-stone-900/80 backdrop-blur-xs text-[10px] font-bold text-white group-hover:bg-emerald-700 transition-colors">
+                    <Maximize2 className="w-3 h-3 text-emerald-300" />
+                    <span>{language === 'gu' ? 'ઝૂમ & એનાલિસિસ' : 'Zoom & Clues'}</span>
+                  </span>
+                </div>
+              </div>
+            )}
+
             {/* Headline */}
             <h2 className="text-lg font-bold text-stone-900 leading-snug">
               {language === 'gu' ? item.headlineGu : item.headlineEn}
@@ -125,6 +154,35 @@ export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language
           </div>
         ))}
       </div>
+
+      {/* Interactive Modal for Current Affairs Image */}
+      {modalItem && modalItem.imageUrl && (
+        <InteractiveImageModal
+          isOpen={!!modalItem}
+          onClose={() => setModalItem(null)}
+          imageUrl={modalItem.imageUrl}
+          titleEn={modalItem.headlineEn}
+          titleGu={modalItem.headlineGu}
+          captionEn={modalItem.summaryEn}
+          captionGu={modalItem.summaryGu}
+          source={`The Hindu / Indian Express / PIB (${modalItem.date})`}
+          annotations={[
+            {
+              tagEn: '🎯 Prelims Focus',
+              tagGu: '🎯 પ્રિલિમ્સ એંગલ',
+              noteEn: modalItem.prelimsAngleEn,
+              noteGu: modalItem.prelimsAngleGu,
+            },
+            {
+              tagEn: '✍️ Mains Thought Prompt',
+              tagGu: '✍️ મેઈન્સ વિચાર પ્રશ્ન',
+              noteEn: modalItem.mainsAngleEn,
+              noteGu: modalItem.mainsAngleGu,
+            },
+          ]}
+          language={language}
+        />
+      )}
 
     </div>
   );

@@ -7,6 +7,32 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleEn: 'The Preamble & Basic Structure Doctrine',
     titleGu: 'ભારતીય બંધારણનું આમુખ અને મૂળભૂત માળખાનો સિદ્ધાંત',
     readTimeMins: 12,
+    heroImage: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Preamble_to_the_Constitution_of_India.jpg/800px-Preamble_to_the_Constitution_of_India.jpg',
+      captionEn: 'The original illustrated Preamble calligraphed by Prem Behari Narain Raizada with borders by Beohar Rammanohar Sinha (1949)',
+      captionGu: '૧૯૪૯ માં પ્રેમ બિહારી નારાયણ રાયજાદા દ્વારા સુલેખિત અને રામમનોહર સિન્હા દ્વારા ચિત્રિત ભારતનું મૂળ આમુખ',
+      source: 'National Archives of India / Public Domain',
+      annotations: [
+        {
+          tagEn: '🖋️ Prem Behari Raizada',
+          tagGu: '🖋️ પ્રેમ બિહારી રાયજાદા',
+          noteEn: 'Calligraphed the entire Constitution in flowing italic style without charging any fee, only asking to write his name and his grandfather’s name on each page.',
+          noteGu: 'સમગ્ર બંધારણનું અંગ્રેજી સુલેખન કોઈપણ ફી લીધા વિના કર્યું, માત્ર દરેક પૃષ્ઠ પર પોતાનું અને પોતાના દાદાનું નામ લખવાની મંજૂરી માગી હતી.',
+        },
+        {
+          tagEn: '🎨 Shantiniketan Borders',
+          tagGu: '🎨 શાંતિનિકેતન બોર્ડર ચિત્રકામ',
+          noteEn: 'Illustrated by Beohar Rammanohar Sinha and artist team from Visva-Bharati, Shantiniketan under master artist Nandalal Bose.',
+          noteGu: 'નંદલાલ બોઝના માર્ગદર્શન હેઠળ શાંતિનિકેતનના કલાકાર બિઓહર રામમનોહર સિન્હા દ્વારા આ સુંદર કલાત્મક કિનારીઓ તૈયાર કરાઈ હતી.',
+        },
+        {
+          tagEn: '⚖️ 42nd Amendment (1976)',
+          tagGu: '⚖️ ૪૨મો બંધારણીય સુધારો',
+          noteEn: 'The Preamble was amended only once in 1976 to insert three words: "Socialist", "Secular", and "Integrity".',
+          noteGu: '૧૯૭૬ માં ૪૨મા સુધારા દ્વારા માત્ર એક જ વાર આમુખમાં ત્રણ શબ્દો ઉમેરાયા: "સમાજવાદી", "બિનસાંપ્રદાયિક" અને "અખંડિતતા".',
+        },
+      ],
+    },
     keyTerms: [
       {
         termEn: 'Sovereign (સાર્વભૌમ)',
@@ -85,6 +111,32 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleEn: 'Indus Valley Sites in Gujarat: Dholavira & Lothal',
     titleGu: 'ગુજરાતમાં હડપ્પન સંસ્કૃતિ: ધોળાવીરા અને લોથલનું ઐતિહાસિક મહત્વ',
     readTimeMins: 14,
+    heroImage: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Reservoir_at_Dholavira.jpg/800px-Reservoir_at_Dholavira.jpg',
+      captionEn: 'Massive stone-cut water reservoir at Dholavira, Kutch (UNESCO World Heritage Site)',
+      captionGu: 'ધોળાવીરા (ખદીર બેટ, કચ્છ) ખાતે પથ્થરો કોતરીને બનાવેલો વિશાળ ઐતિહાસિક જળાશય (યુનેસ્કો વર્લ્ડ હેરિટેજ સાઇટ)',
+      source: 'Archaeological Survey of India (ASI)',
+      annotations: [
+        {
+          tagEn: '💧 16 Rock-Cut Reservoirs',
+          tagGu: '💧 ૧૬ ખડક-કોતરેલા જળાશયો',
+          noteEn: 'Engineered to harvest every drop of rain from Mansar and Manhar rivulets in the arid Rann of Kutch.',
+          noteGu: 'કચ્છના સૂકા રણમાં માનસર અને મનહર નદીઓના વરસાદી પાણીનું એક એક ટીપું સંગ્રહવા માટે ખડકો કોતરીને બનાવેલા ૧૬ જળાશયો.',
+        },
+        {
+          tagEn: '🏛️ Tripartite Fortification',
+          tagGu: '🏛️ ત્રિ-સ્તરીય નગર રચના',
+          noteEn: 'Unique among Harappan sites: Citadel (Castle), Middle Town, and Lower Town, each secured with stone masonry walls.',
+          noteGu: 'હડપ્પન સંસ્કૃતિમાં અનોખી નગરરચના: શાસક કિલ્લો (Citadel), મધ્ય નગર અને નીચલું નગર એમ ત્રણ ભાગમાં વહેંચાયેલું હતું.',
+        },
+        {
+          tagEn: '📜 10-Symbol Signboard',
+          tagGu: '📜 ૧૦ અક્ષરોનું સાઈનબોર્ડ',
+          noteEn: 'Discovered at the northern gateway, carved with gypsum inlay in wood — world’s oldest known civic advertisement board.',
+          noteGu: 'ઉત્તરી પ્રવેશદ્વારેથી મળી આવેલ સફેદ ખડી (Gypsum) થી લખાયેલું ૧૦ અક્ષરોનું શિલાલેખ સાઈનબોર્ડ.',
+        },
+      ],
+    },
     keyTerms: [
       {
         termEn: 'Tripartite Layout (ત્રિ-સ્તરીય નગર રચના)',
@@ -153,6 +205,32 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleEn: 'Fundamental Rights: Articles 12-35, Golden Triangle & Writs',
     titleGu: 'મૂળભૂત અધિકારો: કલમ ૧૨-૩૫, સુવર્ણ ત્રિકોણ અને રિટ અધિકારક્ષેત્ર',
     readTimeMins: 18,
+    heroImage: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Supreme_Court_of_India_01.jpg/800px-Supreme_Court_of_India_01.jpg',
+      captionEn: 'Supreme Court of India, New Delhi - The designated protector and guarantor of Fundamental Rights under Article 32',
+      captionGu: 'ભારતની સર્વોચ્ચ અદાલત (નવી દિલ્હી) - કલમ ૩૨ હેઠળ નાગરિકોના મૂળભૂત અધિકારોનું સંરક્ષક અને બાંયધરી આપનાર સર્વોચ્ચ અંગ',
+      source: 'Supreme Court of India / Public Domain',
+      annotations: [
+        {
+          tagEn: '🔺 Golden Triangle (14, 19, 21)',
+          tagGu: '🔺 સુવર્ણ ત્રિકોણ (૧૪, ૧૯, ૨૧)',
+          noteEn: 'Maneka Gandhi case (1978) ruled that Articles 14, 19, and 21 are mutually inclusive; state action depriving personal liberty must be just, fair, and reasonable.',
+          noteGu: 'મેનકા ગાંધી કેસ (૧૯૭૮) માં ઠરાવાયું કે કલમ ૧૪, ૧૯ અને ૨૧ એકબીજાના પૂરક છે; વ્યક્તિગત સ્વતંત્રતા છીનવતી કોઈપણ પ્રક્રિયા વાજબી અને ન્યાયી હોવી જ જોઈએ.',
+        },
+        {
+          tagEn: '📜 5 Constitutional Writs',
+          tagGu: '📜 ૫ બંધારણીય રિટ (Writs)',
+          noteEn: 'Habeas Corpus, Mandamus, Prohibition, Certiorari, and Quo-Warranto can be invoked directly under Article 32.',
+          noteGu: 'બંદી પ્રત્યક્ષીકરણ, પરમાદેશ, પ્રતિષેધ, ઉત્પ્રક્ષણ અને અધિકાર પૃચ્છા - કલમ ૩૨ હેઠળ સીધા સુપ્રીમ કોર્ટમાં જઈ શકાય છે.',
+        },
+        {
+          tagEn: '🔒 Article 12 "State"',
+          tagGu: '🔒 કલમ ૧૨: "રાજ્ય" ની વ્યાખ્યા',
+          noteEn: 'Includes Government, Parliament, state legislatures, local panchayats/municipalities, and public authorities like LIC, ONGC.',
+          noteGu: 'ભાગ-૩ ના અધિકારો રાજ્ય સામે રક્ષણ આપે છે, જેમાં કેન્દ્ર-રાજ્ય સરકાર, પંચાયતો અને LIC, ONGC જેવા સરકારી સાહસો સામેલ છે.',
+        },
+      ],
+    },
     keyTerms: [
       {
         termEn: 'Definition of "State" (કલમ ૧૨ - રાજ્યની વ્યાખ્યા)',
@@ -225,6 +303,32 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleEn: 'Directive Principles & Fundamental Duties: Articles 36-51A',
     titleGu: 'રાજ્યનીતિના માર્ગદર્શક સિદ્ધાંતો (DPSP) અને મૂળભૂત ફરજો: કલમ ૩૬-૫૧A',
     readTimeMins: 16,
+    heroImage: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Dr._Babasaheb_Ambedkar_delivering_a_speech_to_the_Constituent_Assembly.jpg/800px-Dr._Babasaheb_Ambedkar_delivering_a_speech_to_the_Constituent_Assembly.jpg',
+      captionEn: 'Dr. B.R. Ambedkar addressing the Constituent Assembly on economic democracy and Directive Principles (1949)',
+      captionGu: '૧૯૪૯ માં બંધારણ સભામાં ડૉ. બાબાસાહેબ આંબેડકરનું ઐતિહાસિક સંબોધન: સામાજિક-આર્થિક લોકશાહી અને માર્ગદર્શક સિદ્ધાંતો',
+      source: 'National Archives of India / Public Domain',
+      annotations: [
+        {
+          tagEn: '🇮🇪 Irish Provenance',
+          tagGu: '🇮🇪 આયર્લેન્ડનો સ્ત્રોત',
+          noteEn: 'DPSPs were borrowed from the Irish Constitution (1937), which had derived them from the Spanish Constitution.',
+          noteGu: 'DPSP આયર્લેન્ડના બંધારણમાંથી લેવામાં આવ્યા છે, જેમણે તે સ્પેનના બંધારણમાંથી સ્વીકાર્યા હતા.',
+        },
+        {
+          tagEn: '⚖️ Non-Justiciable (Art 37)',
+          tagGu: '⚖️ બિન-ન્યાયિક દરજ્જો (કલમ ૩૭)',
+          noteEn: 'Cannot be enforced in court, but are declared fundamental in the governance of the nation and duty of the state to apply.',
+          noteGu: 'અદાલતો દ્વારા સીધા લાગુ કરી શકાતા નથી, પરંતુ દેશના શાસનમાં પાયારૂપ છે અને કાયદા બનાવતી વખતે તેનો અમલ કરવો રાજ્યની ફરજ છે.',
+        },
+        {
+          tagEn: '🇷🇺 Fundamental Duties (Part IV-A)',
+          tagGu: '🇷🇺 મૂળભૂત ફરજો (USSR મોડેલ)',
+          noteEn: 'Inspired by USSR Constitution, recommended by Swaran Singh Committee (1976), enacted via 42nd Amendment (10 duties) & 86th Amendment (11th duty).',
+          noteGu: 'સોવિયેત યુનિયન (USSR) થી પ્રેરિત, સ્વર્ણ સિંહ સમિતિની ભલામણથી ૪૨મા સુધારા (૧૯૭૬) દ્વારા ૧૦ ફરજો અને ૮૬મા સુધારાથી ૧૧મી ફરજ ઉમેરાઈ.',
+        },
+      ],
+    },
     keyTerms: [
       {
         termEn: 'Instrument of Instructions (સૂચના પત્ર)',
@@ -297,6 +401,32 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleEn: 'Maitraka Dynasty of Vallabhi & Buddhist Learning Center',
     titleGu: 'વલ્લભીનો મૈત્રક વંશ અને બૌદ્ધ વિદ્યાપીઠનો સુવર્ણકાળ',
     readTimeMins: 15,
+    heroImage: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Uparkot_Buddhist_Caves%2C_Junagadh.jpg/800px-Uparkot_Buddhist_Caves%2C_Junagadh.jpg',
+      captionEn: 'Ancient Buddhist rock-cut vihara structures in Saurashtra from the Maitraka and post-Gupta era',
+      captionGu: 'સૌરાષ્ટ્રમાં મૈત્રક અને ઉત્તર-ગુપ્ત કાળના પ્રાચીન બૌદ્ધ વિહારો અને શૈલગુફાઓ (વલ્લભી કાળનું સ્થાપત્ય)',
+      source: 'Archaeological Survey of India (ASI)',
+      annotations: [
+        {
+          tagEn: '🎓 Vallabhi University',
+          tagGu: '🎓 વલ્લભી વિદ્યાપીઠ',
+          noteEn: 'Housed over 100 viharas and 6,000 Buddhist monks; served as the Western Indian counterpart of Nalanda University.',
+          noteGu: '૧૦૦ જેટલા વિહારો અને ૬,૦૦૦ થી વધુ ભિક્ષુઓ; નાલંદા સમકક્ષ પશ્ચિમ ભારતનું સર્વોચ્ચ શૈક્ષણિક કેન્દ્ર હતું.',
+        },
+        {
+          tagEn: '📜 Xuanzang (640 CE)',
+          tagGu: '📜 હ્યુએન ત્સાંગની મુલાકાત',
+          noteEn: 'Chinese Buddhist pilgrim Hiuen Tsang chronicled the intellectual glory and generous royal patronage under King Dhruvasena II.',
+          noteGu: 'ચીની મુસાફર હ્યુએન ત્સાંગે ઈ.સ. ૬૪૦ માં મુલાકાત લઈ વલ્લભીની સમૃદ્ધિ અને રાજા ધ્રુવસેન ૨જા ના શાસનનું વિસ્તૃત વર્ણન કર્યું.',
+        },
+        {
+          tagEn: '🪙 Maitraka Copper Plates',
+          tagGu: '🪙 મૈત્રક કાલીન તામ્રપત્રો',
+          noteEn: 'Primary historical records detailing land grants, tax units (Bhaga, Bhoga, Hiranya), and administrative divisions (Ahara, Vishaya).',
+          noteGu: 'જમીન દાન, કર વ્યવસ્થા (ભાગ, ભોગ, હિરણ્ય) અને વહીવટી વિભાગો (આહાર, વિષય, દ્રંગ) જાણવા માટેના મુખ્ય દસ્તાવેજી પુરાવા.',
+        },
+      ],
+    },
     keyTerms: [
       {
         termEn: 'Senapati Bhatarka (સેનાપતિ ભટાર્ક)',
@@ -369,6 +499,32 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleEn: 'Solanki Golden Era: Architecture, Modhera & Hemchandracharya',
     titleGu: 'ગુજરાતનો સુવર્ણયુગ: સોલંકી કાળ, સ્થાપત્ય અને હેમચંદ્રાચાર્ય',
     readTimeMins: 20,
+    heroImage: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Sun_Temple_Modhera_Gujarat.jpg/800px-Sun_Temple_Modhera_Gujarat.jpg',
+      captionEn: 'Sun Temple at Modhera (1026 CE) on the Pushpavati River - Maru-Gurjara Architecture',
+      captionGu: 'રાજા ભીમદેવ ૧લા દ્વારા ૧૦૨૬ માં બંધાયેલું મોઢેરાનું સૂર્ય મંદિર (પુષ્પાવતી નદી કાંઠે) - મારુ-ગુર્જર સ્થાપત્ય શૈલી',
+      source: 'UNESCO / Archaeological Survey of India',
+      annotations: [
+        {
+          tagEn: '☀️ Equinox Alignment',
+          tagGu: '☀️ વિષુવવૃત્તીય સૂર્યકિરણો',
+          noteEn: 'On solar equinoxes (21 March & 23 September), the first rays of the dawn sun pierced directly into the sanctum sanctorum.',
+          noteGu: '૨૧ માર્ચ અને ૨૩ સપ્ટેમ્બરના રોજ ઉગતા સૂર્યનું સૌપ્રથમ કિરણ સીધું ગર્ભગૃહમાં સ્થાપિત સૂર્યદેવની પ્રતિમાના રત્ન પર પડતું.',
+        },
+        {
+          tagEn: '🏛️ 52 Carved Pillars',
+          tagGu: '🏛️ ૫૨ સ્તંભોવાળો સભા મંડપ',
+          noteEn: 'The magnificent Sabha Mandapa rests on 52 intricately carved pillars representing the 52 weeks of the solar year.',
+          noteGu: 'સભા મંડપ વર્ષના ૫૨ અઠવાડિયાનું પ્રતીક દર્શાવતા ૫૨ કલાત્મક કોતરણીવાળા સ્તંભો પર આધારિત છે.',
+        },
+        {
+          tagEn: '⚡ India’s 1st 24x7 Solar Village',
+          tagGu: '⚡ ભારતનું પ્રથમ ૨૪x૭ સૌર ગામ',
+          noteEn: 'Modhera was officially declared India’s first 100% round-the-clock solar-powered village in October 2022.',
+          noteGu: 'ઓક્ટોબર ૨૦૨૨ માં મોઢેરાને દેશનું સર્વપ્રથમ ૨૪ કલાક સૌર ઊર્જા સંચાલિત નેટ-ઝીરો ગામ જાહેર કરાયું હતું.',
+        },
+      ],
+    },
     keyTerms: [
       {
         termEn: 'Maru-Gurjara Style (સોલંકી સ્થાપત્ય શૈલી)',
@@ -441,6 +597,32 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleEn: 'Parliament vs State Legislature: Money Bills & Procedures',
     titleGu: 'સંસદ વિરુદ્ધ રાજ્ય વિધાનમંડળ: નાણાં વિધેયક અને સંસદીય પ્રક્રિયાઓ',
     readTimeMins: 17,
+    heroImage: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/New_Parliament_House%2C_New_Delhi_01.jpg/800px-New_Parliament_House%2C_New_Delhi_01.jpg',
+      captionEn: 'Sansad Bhavan (New Parliament House), New Delhi - The temple of Indian democracy housing the Lok Sabha and Rajya Sabha',
+      captionGu: 'સંસદ ભવન (નવી દિલ્હી) - લોકસભા અને રાજ્યસભાની કાયદાકીય પ્રક્રિયાઓનું કેન્દ્રબિંદુ',
+      source: 'Press Information Bureau (PIB) / Government of India',
+      annotations: [
+        {
+          tagEn: '💰 Money Bill (Article 110)',
+          tagGu: '💰 નાણાં વિધેયક (કલમ ૧૧૦)',
+          noteEn: 'Can originate ONLY in Lok Sabha with President’s recommendation; Rajya Sabha cannot amend or reject it and has only 14 days.',
+          noteGu: 'માત્ર લોકસભામાં જ રાષ્ટ્રપતિની પૂર્વ ભલામણથી રજૂ થાય છે; રાજ્યસભા તેમાં સુધારો કે રદ કરી શકતી નથી અને માત્ર ૧૪ દિવસ રાખી શકે છે.',
+        },
+        {
+          tagEn: '🤝 Joint Sitting (Article 108)',
+          tagGu: '🤝 સંયુક્ત બેઠક (કલમ ૧૦૮)',
+          noteEn: 'Summoned by President to resolve legislative deadlock between Houses; presided over by Speaker. Not allowed for Money or Amendment Bills.',
+          noteGu: 'બંને ગૃહો વચ્ચેની મડાગાંઠ ઉકેલવા રાષ્ટ્રપતિ દ્વારા બોલાવાય છે અને સ્પીકર અધ્યક્ષ બને છે. બંધારણીય સુધારા કે નાણાં વિધેયક માટે લાગુ પડતી નથી.',
+        },
+        {
+          tagEn: '📊 Public Accounts Committee',
+          tagGu: '📊 જાહેર હિસાબ સમિતિ (PAC)',
+          noteEn: 'Oldest committee (1921), 22 members (15 LS + 7 RS), audits CAG reports. Chaired by convention by Leader of Opposition.',
+          noteGu: 'સૌથી જૂની સમિતિ (૧૯૨૧), ૨૨ સભ્યો (૧૫ લોકસભા + ૭ રાજ્યસભા), CAG ના અહેવાલ તપાસે છે અને વિરોધ પક્ષના નેતા અધ્યક્ષ બને છે.',
+        },
+      ],
+    },
     keyTerms: [
       {
         termEn: 'Money Bill - Article 110 (નાણાં વિધેયક)',
@@ -513,6 +695,32 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleEn: 'Maha Gujarat Movement: Indulal Yagnik & 1960 Formation',
     titleGu: 'મહાગુજરાત આંદોલન: ઈન્દુલાલ યાજ્ઞિક અને ગુજરાતની સ્થાપના (૧૯૬૦)',
     readTimeMins: 16,
+    heroImage: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Sabarmati_Ashram_Ahmedabad_Gujarat.jpg/800px-Sabarmati_Ashram_Ahmedabad_Gujarat.jpg',
+      captionEn: 'Sabarmati Ashram (Hriday Kunj), Ahmedabad - Where revered Ravishankar Maharaj formally inaugurated Gujarat State on May 1, 1960',
+      captionGu: 'સાબરમતી આશ્રમ (હૃદયકુંજ), અમદાવાદ - જ્યાં ૧ મે, ૧૯૬૦ ના રોજ પૂજ્ય રવિશંકર મહારાજના વરદ હસ્તે નવરચિત ગુજરાત રાજ્યનું મંગલ ઉદ્ઘાટન થયું હતું',
+      source: 'Sabarmati Ashram Preservation and Memorial Trust / Public Domain',
+      annotations: [
+        {
+          tagEn: '🕊️ May 1, 1960 Inauguration',
+          tagGu: '🕊️ ૧ મે, ૧૯૬૦ ઉદ્ઘાટન',
+          noteEn: 'Formally blessed and inaugurated by Gandhian leader Ravishankar Maharaj at Sabarmati Ashram; Dr. Jivraj Mehta sworn in as 1st Chief Minister.',
+          noteGu: 'પૂજ્ય રવિશંકર મહારાજે સાબરમતી આશ્રમ ખાતે ગુજરાત રાજ્યનું ઉદ્ઘાટન કર્યું અને ડૉ. જીવરાજ મહેતા પ્રથમ મુખ્યમંત્રી બન્યા.',
+        },
+        {
+          tagEn: '✊ Indulal Yagnik (Induchacha)',
+          tagGu: '✊ ઈન્દુલાલ યાજ્ઞિક (ઈન્દુચાચા)',
+          noteEn: 'Formed the Mahagujarat Janata Parishad in September 1956 and mobilized millions against the unwieldy bilingual Bombay State.',
+          noteGu: 'સપ્ટેમ્બર ૧૯૫૬ માં મહાગુજરાત જનતા પરિષદની સ્થાપના કરી દ્વિભાષી મુંબઈ રાજ્ય સામે અહિંસક જનઆંદોલનનું નેતૃત્વ કર્યું.',
+        },
+        {
+          tagEn: '🕊️ Shahid Smarak (8 Aug 1956)',
+          tagGu: '🕊️ શહીદ સ્મારક (૮ ઓગસ્ટ ૧૯૫૬)',
+          noteEn: 'Commemorates student martyrs Kaushik Vyas, Suresh Patel, and Abdul Karim who fell to police firing outside Ahmedabad Congress House.',
+          noteGu: 'કોંગ્રેસ ભવન બહાર પોલીસ ગોળીબારમાં અલગ ગુજરાત રાજ્ય માટે બલિદાન આપનાર કૌશિક વ્યાસ, સુરેશ પટેલ વગેરે તેજસ્વી યુવાનોની અમર સ્મૃતિ.',
+        },
+      ],
+    },
     keyTerms: [
       {
         termEn: 'Indulal Yagnik (ઈન્દુચાચા)',
@@ -585,6 +793,32 @@ export const LEARNING_MODULES: Record<string, LearningModule> = {
     titleEn: 'Judicial Review, Collegium System & Landmark Judgments',
     titleGu: 'ન્યાયિક પુનરાવલોકન, કોલેજિયમ પ્રણાલી અને સર્વોચ્ચ અદાલતના ઐતિહાસિક ચુકાદાઓ',
     readTimeMins: 20,
+    heroImage: {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/800px-Emblem_of_India.svg.png',
+      captionEn: 'State Emblem of India with motto "Satyameva Jayate" - Symbol of Constitutional Supremacy and Judicial Independence',
+      captionGu: 'ભારતનું રાષ્ટ્રીય પ્રતીક (અશોક સ્તંભ) અને "સત્યમેવ જયતે" - બંધારણીય સર્વોચ્ચતા અને સ્વતંત્ર ન્યાયતંત્રનું પ્રતીક',
+      source: 'Government of India / Public Domain',
+      annotations: [
+        {
+          tagEn: '⚖️ Kesavananda Bharati (1973)',
+          tagGu: '⚖️ કેશવાનંદ ભારતી કેસ (૧૯૭૩)',
+          noteEn: 'Largest ever 13-judge bench ruled 7:6 that Parliament’s amending power under Art 368 cannot destroy the Basic Structure of the Constitution.',
+          noteGu: '૧૩ જજોની સર્વોચ્ચ બેંચે ૭:૬ ની બહુમતીથી ઠરાવ્યું કે સંસદ કલમ ૩૬૮ હેઠળ સુધારો કરી શકે છે પરંતુ "મૂળભૂત માળખું" નષ્ટ કરી શકતી નથી.',
+        },
+        {
+          tagEn: '🏛️ Collegium Evolution',
+          tagGu: '🏛️ કોલેજિયમ પ્રણાલીનો ઉદ્ભવ',
+          noteEn: 'Evolved across Three Judges Cases (1981, 1993, 1998): CJI + 4 senior-most judges recommend Supreme Court appointments.',
+          noteGu: 'ત્રણ ન્યાયાધીશોના કેસ (૧૯૮૧, ૧૯૯૩, ૧૯૯૮) દ્વારા વિકાસ: CJI + ૪ વરિષ્ઠ જજની કોલેજિયમ જજોની નિમણૂકની ભલામણ કરે છે.',
+        },
+        {
+          tagEn: '🔒 Privacy Right (2017)',
+          tagGu: '🔒 ગોપનીયતાનો અધિકાર (૨૦૧૭)',
+          noteEn: 'Justice K.S. Puttaswamy v. Union of India: 9-judge bench unanimously declared Right to Privacy as intrinsic to Article 21.',
+          noteGu: 'પુટ્ટસ્વામી કેસમાં ૯ જજોની બંધારણીય બેંચે ગોપનીયતાના અધિકારને કલમ ૨૧ હેઠળ મૂળભૂત અધિકાર જાહેર કર્યો.',
+        },
+      ],
+    },
     keyTerms: [
       {
         termEn: 'Three Judges Cases (ત્રણ ન્યાયાધીશોના કેસ)',

@@ -74,6 +74,11 @@ export interface ContentBlock {
   bodyGu: string;
   examNoteEn?: string;
   examNoteGu?: string;
+  illustration?: {
+    url: string;
+    captionEn: string;
+    captionGu: string;
+  };
 }
 
 export interface CheckpointQuestion {
@@ -87,12 +92,26 @@ export interface CheckpointQuestion {
   explanationGu: string;
 }
 
+export interface ImageAnnotation {
+  tagEn: string;
+  tagGu: string;
+  noteEn: string;
+  noteGu: string;
+}
+
 export interface LearningModule {
   id: string;
   topicId: string;
   titleEn: string;
   titleGu: string;
   readTimeMins: number;
+  heroImage?: {
+    url: string;
+    captionEn: string;
+    captionGu: string;
+    source: string;
+    annotations?: ImageAnnotation[];
+  };
   keyTerms: KeyTerm[];
   contentBlocks: ContentBlock[];
   checkpoint: CheckpointQuestion;
@@ -137,6 +156,7 @@ export interface CurrentAffairItem {
   prelimsAngleGu: string;
   mainsAngleEn: string;
   mainsAngleGu: string;
+  imageUrl?: string;
 }
 
 export interface ResourceItem {

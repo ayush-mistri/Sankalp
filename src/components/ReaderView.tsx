@@ -9,10 +9,13 @@ import {
   BookOpen, 
   CheckCircle2, 
   ChevronRight, 
+  Eye, 
+  Maximize2, 
   Sparkles, 
   XCircle, 
   Zap 
 } from 'lucide-react';
+import { InteractiveImageModal } from '@/components/InteractiveImageModal';
 
 interface ReaderViewProps {
   language: Language;
@@ -35,6 +38,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
   const [activeGlossaryTerm, setActiveGlossaryTerm] = useState<string | null>(null);
+  const [isImageModalOpen, setIsImageModalOpen] = useState<boolean>(false);
 
   const handleOptionSelect = (index: number) => {
     if (!hasSubmitted) {
@@ -57,50 +61,48 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
     <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-300">
       
       {/* Top Navigation & Module Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-stone-200">
-        <button
-          onClick={onBackToRoadmap}
-          className="inline-flex items-center gap-2 text-xs font-bold text-stone-600 hover:text-emerald-700 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4 text-emerald-700" />
-          <span>{language === 'gu' ? 'પાછા રોડમેપ પર જાઓ' : 'Back to Syllabus Roadmap'}</span>
-        </button>
+      {/* Top Navigation & Dynamic Module Switcher */}
+      <div className="flex flex-col gap-3 pb-4 border-b border-stone-200">
+        <div className="flex items-center justify-between">
+          <button
+            onClick={onBackToRoadmap}
+            className="inline-flex items-center gap-2 text-xs font-bold text-stone-600 hover:text-emerald-700 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 text-emerald-700" />
+            <span>{language === 'gu' ? 'પાછા રોડમેપ પર જાઓ' : 'Back to Syllabus Roadmap'}</span>
+          </button>
+          <span className="text-[11px] font-bold text-stone-400">
+            {Object.keys(LEARNING_MODULES).length} {language === 'gu' ? 'મોડ્યુલ્સ ઉપલબ્ધ' : 'Modules Available'}
+          </span>
+        </div>
 
-        {/* Quick Module Switcher */}
-        <div className="flex items-center gap-2 text-xs font-semibold">
-          <span className="text-stone-400">{language === 'gu' ? 'ટોપિક બદલો:' : 'Switch Module:'}</span>
-          <button
-            onClick={() => {
-              onSelectTopic('topic-f1');
-              handleResetQuiz();
-            }}
-            className={`px-3.5 py-1.5 rounded-xl border transition-all ${
-              currentModule.topicId === 'topic-f1'
-                ? 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold'
-                : 'border-stone-200 text-stone-600 hover:bg-stone-50'
-            }`}
-          >
-            {language === 'gu' ? 'બંધારણનું આમુખ (Polity)' : 'Preamble (Polity)'}
-          </button>
-          <button
-            onClick={() => {
-              onSelectTopic('topic-gh1');
-              handleResetQuiz();
-            }}
-            className={`px-3.5 py-1.5 rounded-xl border transition-all ${
-              currentModule.topicId === 'topic-gh1'
-                ? 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold'
-                : 'border-stone-200 text-stone-600 hover:bg-stone-50'
-            }`}
-          >
-            {language === 'gu' ? 'ધોળાવીરા અને લોથલ' : 'Dholavira & Lothal'}
-          </button>
+        {/* Dynamic Module Scrollable Pills */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-semibold scrollbar-thin">
+          {Object.values(LEARNING_MODULES).map((mod) => {
+            const isCurrent = currentModule.topicId === mod.topicId;
+            return (
+              <button
+                key={mod.topicId}
+                onClick={() => {
+                  onSelectTopic(mod.topicId);
+                  handleResetQuiz();
+                }}
+                className={`px-3 py-1.5 rounded-xl border whitespace-nowrap transition-all shrink-0 ${
+                  isCurrent
+                    ? 'bg-emerald-700 border-emerald-700 text-white font-bold shadow-xs'
+                    : 'bg-white border-stone-200 text-stone-600 hover:border-emerald-400'
+                }`}
+              >
+                {language === 'gu' ? mod.titleGu.split(':')[0] : mod.titleEn.split(':')[0]}
+              </button>
+            );
+          })}
         </div>
       </div>
 
       {/* Module Title & Metadata */}
-      <div>
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold mb-3">
+      <div className="space-y-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
           <BookOpen className="w-3.5 h-3.5 text-emerald-700" />
           <span>{currentModule.readTimeMins} {language === 'gu' ? 'મિનિટ વાંચન' : 'mins reading'}</span>
           <span>•</span>
@@ -109,6 +111,69 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
         <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight leading-tight">
           {language === 'gu' ? currentModule.titleGu : currentModule.titleEn}
         </h1>
+
+        {/* Interactive Visual Hero Image with Evidence Badge */}
+        {currentModule.heroImage && (
+          <div className="space-y-3 mt-4">
+            <div 
+              onClick={() => setIsImageModalOpen(true)}
+              className="rounded-2xl overflow-hidden border border-stone-200 bg-stone-100 shadow-xs group relative cursor-pointer hover:border-emerald-500 transition-all"
+              title={language === 'gu' ? 'ઇન્ટરેક્ટિવ દ્રશ્ય વિશ્લેષણ અને ઝૂમ માટે ક્લિક કરો' : 'Click to open interactive visual deep-dive & zoom'}
+            >
+              <div className="relative h-64 sm:h-84 w-full overflow-hidden">
+                <img
+                  src={currentModule.heroImage.url}
+                  alt={language === 'gu' ? currentModule.titleGu : currentModule.titleEn}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/25 to-transparent" />
+                
+                {/* Floating Interactive Badge */}
+                <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-stone-900/80 backdrop-blur-md border border-stone-700 text-white text-xs font-bold shadow-lg group-hover:bg-emerald-700 group-hover:border-emerald-600 transition-all">
+                  <Maximize2 className="w-3.5 h-3.5 text-emerald-300" />
+                  <span>{language === 'gu' ? 'ઇન્ટરેક્ટિવ ઝૂમ & વિશ્લેષણ' : 'Interactive Zoom & Clues'}</span>
+                </div>
+
+                {/* Caption & Archaeological Evidence metadata */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 text-white space-y-1.5">
+                  <p className="text-xs sm:text-sm font-bold text-white drop-shadow-sm leading-snug">
+                    {language === 'gu' ? currentModule.heroImage.captionGu : currentModule.heroImage.captionEn}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2 text-[11px] text-stone-300">
+                    <span>{language === 'gu' ? 'સ્ત્રોત:' : 'Source:'} {currentModule.heroImage.source}</span>
+                    <span>•</span>
+                    <span className="text-emerald-300 font-semibold">{language === 'gu' ? 'ઐતિહાસિક પુરાતત્વીય પ્રમાણ' : 'Archaeological Evidence'}</span>
+                    <span>•</span>
+                    <span className="text-stone-300 underline underline-offset-2 flex items-center gap-1">
+                      <Eye className="w-3 h-3 text-emerald-400" />
+                      {language === 'gu' ? 'મોટું કરવા ક્લિક કરો' : 'Click to expand'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Interactive Visual Clue Pills under image */}
+            {currentModule.heroImage.annotations && currentModule.heroImage.annotations.length > 0 && (
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-800 flex items-center gap-1">
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+                  <span>{language === 'gu' ? 'દ્રશ્ય સંકેતો:' : 'Visual Clues:'}</span>
+                </span>
+                {currentModule.heroImage.annotations.map((ann, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setIsImageModalOpen(true)}
+                    className="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200/80 text-xs font-semibold transition-colors flex items-center gap-1"
+                  >
+                    <span>{language === 'gu' ? ann.tagGu : ann.tagEn}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Interactive Key Terms & Exam Glossary in Clean Emerald */}
@@ -271,6 +336,22 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
           </div>
         )}
       </div>
+
+      {/* Interactive Full-Screen Image Lightbox & Clues Modal */}
+      {currentModule.heroImage && (
+        <InteractiveImageModal
+          isOpen={isImageModalOpen}
+          onClose={() => setIsImageModalOpen(false)}
+          imageUrl={currentModule.heroImage.url}
+          titleEn={currentModule.titleEn}
+          titleGu={currentModule.titleGu}
+          captionEn={currentModule.heroImage.captionEn}
+          captionGu={currentModule.heroImage.captionGu}
+          source={currentModule.heroImage.source}
+          annotations={currentModule.heroImage.annotations}
+          language={language}
+        />
+      )}
 
     </div>
   );
