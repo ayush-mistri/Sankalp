@@ -248,6 +248,48 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     ]
   },
   {
+    id: 'gpsc-mains-2023-gs2',
+    examAgency: 'GPSC',
+    year: 2023,
+    stage: 'Mains',
+    medium: 'Bilingual',
+    advertisementNo: '20/2022-23',
+    examDate: 'June 2023',
+    fileSize: '0.8 MB',
+    paperCode: 'CSM-GS2',
+    source: 'GPSC official',
+    examNameEn: 'GPSC Class 1 & 2 Mains Examination (Advt 20/2022-23)',
+    examNameGu: 'GPSC વર્ગ-૧ અને ૨ મુખ્ય લેખિત પરીક્ષા (જાહેરાત ૨૦/૨૦૨૨-૨૩)',
+    paperTypeEn: 'General Studies Paper-2 (Constitution, Governance, Public Administration & Ethics in Service)',
+    paperTypeGu: 'સામાન્ય અભ્યાસ પેપર-૨ (બંધારણ, રાજ્યવ્યવસ્થા, જાહેર વહીવટ અને નૈતિકતા)',
+    totalQuestions: 15,
+    totalMarks: 150,
+    durationMinutes: 180,
+    negativeMarkingEn: 'No negative marking (Descriptive answer evaluation)',
+    negativeMarkingGu: 'કોઈ ઋણ ગુણાંકન નથી (વર્ણનાત્મક મૂલ્યાંકન)',
+    cutoffTextEn: 'Qualifying for Interview: General Male ~425 / 900 Total',
+    cutoffTextGu: 'ઇન્ટરવ્યુ કટ-ઓફ: સામાન્ય પુરુષ ~૪૨૫ / ૯૦૦',
+    difficultyRating: 'Moderate to Tough',
+    officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/',
+    alternativeSources: [
+      { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' }
+    ],
+    subjectBreakdown: [
+      { subjectEn: 'Indian Constitution & Federalism', subjectGu: 'ભારતીય બંધારણ અને સંઘવાદ', questionCount: 6, color: '#047857' },
+      { subjectEn: 'Public Administration & E-Governance (SWAGAT)', subjectGu: 'જાહેર વહીવટ અને ઈ-ગવર્નન્સ', questionCount: 5, color: '#0284c7' },
+      { subjectEn: 'Citizen Centric Governance & RTI', subjectGu: 'સુશાસન અને RTI', questionCount: 4, color: '#9333ea' },
+    ],
+    keyTakeawaysEn: [
+      'Heavy focus on Gujarat administrative reforms including SWAGAT and Digital Gujarat.',
+      'Judicial review of Governor’s constitutional powers under Article 163-174.'
+    ],
+    keyTakeawaysGu: [
+      'ગુજરાતના વહીવટી સુધારાઓ જેવા કે સ્વાગત અને ડિજિટલ સેવા સેતુ પર વિશેષ પ્રશ્નો.',
+      'રાજ્યપાલની બંધારણીય સત્તાઓ અને સંઘવાદ પર વિશ્લેષણાત્મક પ્રશ્નો.'
+    ]
+  },
+  {
     id: 'gpsc-prelims-2022-class12-gs1',
     examAgency: 'GPSC',
     year: 2022,
@@ -717,6 +759,49 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     keyTakeawaysGu: [
       'પ્રાચીન શૈલ-સ્થાપત્ય અને સામાજિક-આર્થિક પરિપ્રેક્ષ્ય પર પ્રશ્નો.',
       'શહેરી પૂર, ક્લાઇમેટ ચેન્જ અને ક્રિટિકલ મિનરલ્સની ભૂગોળ પર પ્રશ્નો.'
+    ]
+  },
+  {
+    id: 'upsc-mains-2024-gs2',
+    examAgency: 'UPSC',
+    year: 2024,
+    stage: 'Mains',
+    medium: 'Bilingual',
+    advertisementNo: '05/2024-CSM',
+    examDate: 'September 2024',
+    fileSize: '0.8 MB',
+    paperCode: 'CSM GS-2',
+    source: 'UPSC official',
+    examNameEn: 'UPSC Civil Services (Main) Examination 2024',
+    examNameGu: 'UPSC સિવિલ સર્વિસીસ (મુખ્ય) પરીક્ષા ૨૦૨૪',
+    paperTypeEn: 'General Studies Paper-2 (Governance, Constitution, Polity, Social Justice & IR)',
+    paperTypeGu: 'સામાન્ય અભ્યાસ પેપર-૨ (શાસન, બંધારણ, રાજ્યવ્યવસ્થા, સામાજિક ન્યાય અને આંતરરાષ્ટ્રીય સંબંધો)',
+    totalQuestions: 20,
+    totalMarks: 250,
+    durationMinutes: 180,
+    negativeMarkingEn: 'Descriptive written evaluation (No negative deduction)',
+    negativeMarkingGu: 'વર્ણનાત્મક મૂલ્યાંકન (ઋણ ગુણાંકન નથી)',
+    cutoffTextEn: 'Written Qualifying Benchmark: ~735 / 1750',
+    cutoffTextGu: 'લેખિત કટ-ઓફ: ~૭૩૫ / ૧૭૫૦',
+    difficultyRating: 'Tough / Analytical',
+    officialPaperPdfUrl: 'https://www.upsc.gov.in/',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
+    alternativeSources: [
+      { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' }
+    ],
+    subjectBreakdown: [
+      { subjectEn: 'Constitution & Parliamentary Functioning', subjectGu: 'બંધારણ અને સંસદીય કાર્યપદ્ધતિ', questionCount: 6, color: '#047857' },
+      { subjectEn: 'Welfare Schemes & Social Justice', subjectGu: 'સામાજિક ન્યાય અને કલ્યાણકારી યોજનાઓ', questionCount: 5, color: '#ea580c' },
+      { subjectEn: 'Governance, Civil Services & Transparency', subjectGu: 'સુશાસન અને પારદર્શિતા', questionCount: 4, color: '#0284c7' },
+      { subjectEn: 'International Relations & Global South (Quad/IMEC)', subjectGu: 'આંતરરાષ્ટ્રીય સંબંધો (ક્વાડ/IMEC)', questionCount: 5, color: '#d97706' },
+    ],
+    keyTakeawaysEn: [
+      'Questions on basic structure review in light of recent tribunal reforms.',
+      'India’s multi-aligned diplomacy balancing West, Russia and the Global South.'
+    ],
+    keyTakeawaysGu: [
+      'ટ્રિબ્યુનલ સુધારાઓ અને મૂળભૂત માળખાના સિદ્ધાંત પર પ્રશ્નો.',
+      'ભારતની વ્યૂહાત્મક સ્વાયત્તતા અને ગ્લોબલ સાઉથ નેતૃત્વ પર પ્રશ્નો.'
     ]
   },
   {

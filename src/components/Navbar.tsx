@@ -1,27 +1,151 @@
 'use client';
 
-import React from 'react';
-import { ActiveTab, Language, StageId } from '@/types';
-import { 
-  FileText, 
-  Flame, 
-  GraduationCap, 
-  Home, 
-  Library, 
-  Newspaper, 
-  Radio, 
-  Sparkles, 
-  Target 
-} from 'lucide-react';
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { ActiveTab, Language } from '@/types';
+import { ChevronDown, Menu, Sparkles, X } from 'lucide-react';
 
 interface NavbarProps {
   currentLanguage: Language;
   onLanguageChange: (lang: Language) => void;
   activeTab: ActiveTab;
   onTabChange: (tab: ActiveTab) => void;
-  currentStageId: StageId;
   onOpenOrientation: () => void;
 }
+
+interface NavigationProps {
+  activeTab: ActiveTab;
+  currentLanguage: Language;
+  onTabChange: (tab: ActiveTab) => void;
+  onSelect?: () => void;
+  layout: 'inline' | 'stacked';
+  includeMore: boolean;
+}
+
+const primaryLinks: Array<{ tab: ActiveTab; en: string; gu: string }> = [
+  { tab: 'home', en: 'Home', gu: 'હોમ' },
+  { tab: 'syllabus', en: 'Syllabus', gu: 'સિલેબસ' },
+  { tab: 'roadmap', en: 'Roadmap', gu: 'અભ્યાસ માર્ગ' },
+  { tab: 'books', en: 'Books', gu: 'પુસ્તકો' },
+  { tab: 'notes', en: 'Notes', gu: 'નોટ્સ' },
+  { tab: 'practice', en: 'PYQ Practice', gu: 'PYQ અભ્યાસ' },
+  { tab: 'current_affairs', en: 'Current Affairs', gu: 'વર્તમાન પ્રવાહો' },
+];
+
+const secondaryLinks: Array<{ tab: ActiveTab; en: string; gu: string }> = [
+  { tab: 'readiness', en: 'Readiness', gu: 'તૈયારી' },
+  { tab: 'live_radar', en: 'Live Exam Radar', gu: 'લાઇવ એક્ઝામ રડાર' },
+  { tab: 'reader', en: 'Continue Reading', gu: 'વાંચન ચાલુ રાખો' },
+];
+
+const isCurrentTab = (activeTab: ActiveTab, tab: ActiveTab) =>
+  activeTab === tab || (tab === 'books' && activeTab === 'resources');
+
+const Navigation: React.FC<NavigationProps> = ({
+  activeTab,
+  currentLanguage,
+  onTabChange,
+  onSelect,
+  layout,
+  includeMore,
+}) => {
+  const isStacked = layout === 'stacked';
+  const linkClass = (isActive: boolean) =>
+    `whitespace-nowrap rounded-lg border px-3 py-2 text-sm font-semibold transition ${
+      isStacked
+        ? 'w-full text-left'
+        : 'shrink-0'
+    } ${
+      isActive
+        ? 'border-emerald-300 bg-emerald-100 text-emerald-950 shadow-sm'
+        : 'border-transparent text-stone-700 hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-900'
+    }`;
+
+  const chooseTab = (tab: ActiveTab) => {
+    onTabChange(tab);
+    onSelect?.();
+  };
+
+  return (
+    <nav
+      aria-label={currentLanguage === 'gu' ? 'મુખ્ય નેવિગેશન' : 'Main navigation'}
+      className={`flex ${
+        isStacked ? 'flex-col items-stretch gap-1' : 'items-center gap-0.5'
+      }`}
+    >
+      {primaryLinks.map(({ tab, en, gu }) => {
+        const isActive = isCurrentTab(activeTab, tab);
+
+        return (
+          <button
+            key={tab}
+            type="button"
+            onClick={() => chooseTab(tab)}
+            aria-current={isActive ? 'page' : undefined}
+            className={linkClass(isActive)}
+          >
+            {currentLanguage === 'gu' ? gu : en}
+          </button>
+        );
+      })}
+
+      {includeMore ? (
+        <details className="group relative shrink-0">
+          <summary
+            className={`flex cursor-pointer list-none items-center gap-1 rounded-lg border px-3 py-2 text-sm font-semibold transition ${
+              secondaryLinks.some(({ tab }) => isCurrentTab(activeTab, tab))
+                ? 'border-emerald-300 bg-emerald-100 text-emerald-950 shadow-sm'
+                : 'border-transparent text-stone-700 hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-900'
+            }`}
+          >
+            {currentLanguage === 'gu' ? 'વધુ' : 'More'}
+            <ChevronDown className="h-3.5 w-3.5 transition-transform group-open:rotate-180" />
+          </summary>
+          <div className="absolute right-0 top-full z-50 mt-2 w-52 rounded-xl border border-stone-200 bg-white p-1.5 shadow-lg shadow-stone-900/10">
+            {secondaryLinks.map(({ tab, en, gu }) => {
+              const isActive = isCurrentTab(activeTab, tab);
+
+              return (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={(event) => {
+                    chooseTab(tab);
+                    event.currentTarget.closest('details')?.removeAttribute('open');
+                  }}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`w-full rounded-lg px-3 py-2.5 text-left text-[13px] font-semibold transition ${
+                    isActive
+                      ? 'bg-emerald-100 text-emerald-950'
+                        : 'text-stone-700 hover:bg-emerald-50 hover:text-emerald-900'
+                  }`}
+                >
+                  {currentLanguage === 'gu' ? gu : en}
+                </button>
+              );
+            })}
+          </div>
+        </details>
+      ) : (
+        secondaryLinks.map(({ tab, en, gu }) => {
+          const isActive = isCurrentTab(activeTab, tab);
+
+          return (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => chooseTab(tab)}
+              aria-current={isActive ? 'page' : undefined}
+              className={linkClass(isActive)}
+            >
+              {currentLanguage === 'gu' ? gu : en}
+            </button>
+          );
+        })
+      )}
+    </nav>
+  );
+};
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentLanguage,
@@ -30,234 +154,133 @@ export const Navbar: React.FC<NavbarProps> = ({
   onTabChange,
   onOpenOrientation,
 }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200/90 shadow-2xs transition-colors">
-      <div className="w-[92%] sm:w-[88%] lg:w-[84%] max-w-[1500px] mx-auto">
-        <div className="flex items-center justify-between h-20 sm:h-22">
-          
-          {/* Logo & Brand */}
-          <div className="flex items-center gap-4">
-            <button 
-              onClick={() => onTabChange('home')}
-              className="flex items-center gap-3 text-left group"
+    <header className="sticky top-0 z-50 border-b border-stone-200/80 bg-white/95 backdrop-blur-xl">
+      <div className="mx-auto w-[90%] max-w-[1680px]">
+        <div className="flex h-[88px] items-center justify-between gap-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-stone-200 text-stone-600 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-800 md:hidden"
+              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
-              {/* Official Transparent Sankalp Buddhist Logo */}
-              <div className="h-11 sm:h-12 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
-                <img 
-                  src="/sankalp-logo.png" 
-                  alt="Sankalp Logo" 
-                  className="h-10 sm:h-12 w-auto object-contain" 
-                />
-              </div>
-              <div className="hidden sm:block">
-                <div className="flex items-center gap-2">
-                  <span className="font-black text-xl sm:text-2xl tracking-tight text-stone-900">
-                    Sankalp
-                  </span>
-                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-                    GPSC & UPSC
-                  </span>
-                </div>
-                <p className="text-xs text-stone-500 font-medium">
-                  {currentLanguage === 'gu' ? 'સંકલ્પ: સ્માર્ટ લર્નિંગ ઇકોસિસ્ટમ' : 'Smart Civil Services Ecosystem'}
-                </p>
-              </div>
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                onTabChange('home');
+                closeMobileMenu();
+              }}
+              className="flex min-w-0 items-center gap-3 text-left"
+              aria-label="Go to Sankalp home"
+            >
+              <Image
+                src="/sankalp-logo.png"
+                alt=""
+                width={72}
+                height={72}
+                className="h-[72px] w-[72px] shrink-0 rounded-xl object-contain"
+              />
+              <span className="min-w-0">
+                <span className="block truncate text-lg font-extrabold tracking-tight text-stone-900 sm:text-xl">
+                  Sankalp
+                </span>
+                <span className="hidden text-[11px] font-medium text-stone-500 sm:block">
+                  {currentLanguage === 'gu' ? 'સિવિલ સર્વિસિસ લર્નિંગ' : 'Civil Services Learning'}
+                </span>
+              </span>
             </button>
           </div>
 
-          {/* Center Navigation Links (Desktop) */}
-          <nav className="hidden xl:flex items-center gap-1">
-            <button
-              onClick={() => onTabChange('home')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'home'
-                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
-              }`}
-            >
-              <Home className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'હોમ' : 'Home'}</span>
-            </button>
+          <div className="hidden min-w-0 flex-1 justify-center 2xl:flex">
+            <Navigation
+              activeTab={activeTab}
+              currentLanguage={currentLanguage}
+              onTabChange={onTabChange}
+              layout="inline"
+              includeMore
+            />
+          </div>
 
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <button
-              onClick={() => onTabChange('syllabus')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'syllabus'
-                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
-              }`}
+              type="button"
+              onClick={() => {
+                closeMobileMenu();
+                onOpenOrientation();
+              }}
+              className="inline-flex h-10 items-center gap-2 rounded-xl bg-emerald-700 px-3.5 text-xs font-bold text-white shadow-sm transition hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 sm:px-4"
             >
-              <GraduationCap className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'સિલેબસ' : 'Syllabus'}</span>
-            </button>
-
-            <button
-              onClick={() => onTabChange('books')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'books'
-                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
-              }`}
-            >
-              <Library className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'ફ્રી પુસ્તકો' : 'Books'}</span>
-            </button>
-
-            <button
-              onClick={() => onTabChange('notes')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'notes'
-                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
-              }`}
-            >
-              <FileText className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'નોટ્સ' : 'Notes'}</span>
-            </button>
-
-            <button
-              onClick={() => onTabChange('practice')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'practice'
-                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
-              }`}
-            >
-              <Target className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'PYQ બેંક' : 'PYQ Bank'}</span>
-            </button>
-
-            <button
-              onClick={() => onTabChange('current_affairs')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'current_affairs'
-                  ? 'bg-emerald-50 text-emerald-800 shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
-              }`}
-            >
-              <Newspaper className="w-4 h-4 text-emerald-700" />
-              <span>{currentLanguage === 'gu' ? 'પ્રવાહો' : 'Current Affairs'}</span>
-            </button>
-
-            {/* Real-Time Live Exam Radar Tab */}
-            <button
-              onClick={() => onTabChange('live_radar')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'live_radar'
-                  ? 'bg-emerald-700 text-white shadow-xs'
-                  : 'text-emerald-800 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200'
-              }`}
-            >
-              <Radio className="w-4 h-4 text-emerald-500 animate-pulse" />
-              <span>{currentLanguage === 'gu' ? 'લાઇવ રડાર' : 'Live Radar'}</span>
-            </button>
-          </nav>
-
-          {/* Right Action Bar */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* Beginner Orientation Trigger */}
-            <button
-              onClick={onOpenOrientation}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-900 text-xs font-bold hover:bg-emerald-100 transition-colors shadow-2xs"
-            >
-              <Sparkles className="w-4 h-4 text-emerald-700" />
+              <Sparkles className="h-4 w-4" />
               <span className="hidden sm:inline">
-                {currentLanguage === 'gu' ? 'ક્યાંથી શરૂ કરવું?' : 'Where to Start?'}
+                {currentLanguage === 'gu' ? 'ક્યાંથી શરૂ કરવું?' : 'Where to start'}
               </span>
             </button>
 
-            {/* Streak Counter */}
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">
-              <Flame className="w-4 h-4 text-emerald-600 fill-emerald-600" />
-              <span>14d</span>
-            </div>
-
-            {/* Language Switcher Toggle */}
-            <div className="flex items-center p-1 bg-stone-100 rounded-xl border border-stone-200">
+            <div className="flex items-center rounded-xl border border-stone-200 bg-stone-50 p-1" aria-label="Choose language">
               <button
+                type="button"
                 onClick={() => onLanguageChange('en')}
-                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                aria-pressed={currentLanguage === 'en'}
+                className={`rounded-lg px-2.5 py-1.5 text-xs font-bold transition ${
                   currentLanguage === 'en'
-                    ? 'bg-white text-emerald-800 shadow-xs'
-                    : 'text-stone-500 hover:text-stone-800'
+                    ? 'bg-emerald-100 text-emerald-950 shadow-sm'
+                    : 'text-stone-600 hover:bg-white hover:text-emerald-900'
                 }`}
               >
                 EN
               </button>
               <button
+                type="button"
                 onClick={() => onLanguageChange('gu')}
-                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
+                aria-pressed={currentLanguage === 'gu'}
+                className={`rounded-lg px-2.5 py-1.5 text-xs font-bold transition ${
                   currentLanguage === 'gu'
-                    ? 'bg-white text-emerald-800 shadow-xs'
-                    : 'text-stone-500 hover:text-stone-800'
+                    ? 'bg-emerald-100 text-emerald-950 shadow-sm'
+                    : 'text-stone-600 hover:bg-white hover:text-emerald-900'
                 }`}
               >
-                ગુજરાતી
+                <span className="sm:hidden">GU</span>
+                <span className="hidden sm:inline">ગુજરાતી</span>
               </button>
             </div>
           </div>
-
         </div>
 
-        {/* Mobile Tab Scroller */}
-        <div className="flex xl:hidden items-center gap-2 overflow-x-auto py-2.5 border-t border-stone-100 scrollbar-none text-xs">
-          <button
-            onClick={() => onTabChange('home')}
-            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'home' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
-            }`}
-          >
-            {currentLanguage === 'gu' ? 'હોમ' : 'Home'}
-          </button>
-          <button
-            onClick={() => onTabChange('syllabus')}
-            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'syllabus' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
-            }`}
-          >
-            {currentLanguage === 'gu' ? 'સિલેબસ' : 'Syllabus'}
-          </button>
-          <button
-            onClick={() => onTabChange('books')}
-            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'books' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
-            }`}
-          >
-            {currentLanguage === 'gu' ? 'ફ્રી પુસ્તકો' : 'Books'}
-          </button>
-          <button
-            onClick={() => onTabChange('notes')}
-            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'notes' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
-            }`}
-          >
-            {currentLanguage === 'gu' ? 'નોટ્સ' : 'Notes'}
-          </button>
-          <button
-            onClick={() => onTabChange('practice')}
-            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'practice' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
-            }`}
-          >
-            {currentLanguage === 'gu' ? 'PYQ બેંક' : 'PYQ Bank'}
-          </button>
-          <button
-            onClick={() => onTabChange('current_affairs')}
-            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'current_affairs' ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
-            }`}
-          >
-            {currentLanguage === 'gu' ? 'પ્રવાહો' : 'Current Affairs'}
-          </button>
-          <button
-            onClick={() => onTabChange('live_radar')}
-            className={`px-3.5 py-1.5 rounded-full shrink-0 font-bold ${
-              activeTab === 'live_radar' ? 'bg-emerald-700 text-white' : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-            }`}
-          >
-            {currentLanguage === 'gu' ? 'લાઇવ રડાર' : 'Live Radar'}
-          </button>
+        <div className="hidden overflow-x-auto border-t border-stone-100 py-2 md:block 2xl:hidden">
+          <Navigation
+            activeTab={activeTab}
+            currentLanguage={currentLanguage}
+            onTabChange={onTabChange}
+            layout="inline"
+            includeMore={false}
+          />
         </div>
+
+        {isMobileMenuOpen && (
+          <div
+            id="mobile-navigation"
+            className="border-t border-stone-100 py-3 md:hidden"
+          >
+            <Navigation
+              activeTab={activeTab}
+              currentLanguage={currentLanguage}
+              onTabChange={onTabChange}
+              onSelect={closeMobileMenu}
+              layout="stacked"
+              includeMore={false}
+            />
+          </div>
+        )}
       </div>
     </header>
   );

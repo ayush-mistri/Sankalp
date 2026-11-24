@@ -14,6 +14,7 @@ import {
   Sparkles, 
   Tag 
 } from 'lucide-react';
+import { PersonalNotesView } from '@/components/PersonalNotesView';
 
 interface NotesViewProps {
   language: Language;
@@ -23,6 +24,7 @@ interface NotesViewProps {
 export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSubject, setSelectedSubject] = useState<string>('all');
+  const [viewMode, setViewMode] = useState<'revision' | 'personal'>('revision');
 
   // Extract unique subjects
   const subjects = [
@@ -50,7 +52,40 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
   });
 
   return (
-    <div className="w-full space-y-8 animate-in fade-in duration-300">
+    <div className="w-full space-y-6 animate-in fade-in duration-300">
+      <div role="tablist" aria-label={language === 'gu' ? 'નોંધના પ્રકાર' : 'Notes type'} className="inline-flex rounded-xl border border-stone-200 bg-white p-1 shadow-xs">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={viewMode === 'revision'}
+          onClick={() => setViewMode('revision')}
+          className={`rounded-lg px-4 py-2.5 text-sm font-bold transition ${
+            viewMode === 'revision'
+              ? 'bg-emerald-100 text-emerald-950 shadow-sm'
+              : 'text-stone-600 hover:bg-emerald-50 hover:text-emerald-900'
+          }`}
+        >
+          {language === 'gu' ? 'ઝડપી રિવિઝન' : 'Revision Summaries'}
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={viewMode === 'personal'}
+          onClick={() => setViewMode('personal')}
+          className={`rounded-lg px-4 py-2.5 text-sm font-bold transition ${
+            viewMode === 'personal'
+              ? 'bg-emerald-100 text-emerald-950 shadow-sm'
+              : 'text-stone-600 hover:bg-emerald-50 hover:text-emerald-900'
+          }`}
+        >
+          {language === 'gu' ? 'મારી નોંધો' : 'My Notes'}
+        </button>
+      </div>
+
+      {viewMode === 'personal' ? (
+        <PersonalNotesView language={language} />
+      ) : (
+      <div className="w-full space-y-8">
       
       {/* Top Banner - Clean White & Emerald */}
       <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-emerald-800 via-emerald-800 to-emerald-700 text-white shadow-lg space-y-3">
@@ -222,6 +257,8 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
         ))}
       </div>
 
+      </div>
+      )}
     </div>
   );
 };
