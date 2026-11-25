@@ -62,6 +62,7 @@ interface InteractiveBookReaderProps {
   resource: DigitalBookResource;
   language: Language;
   onClose: () => void;
+  initialChapterId?: string;
   onProgressUpdated?: () => void;
 }
 
@@ -92,9 +93,11 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
   resource,
   language,
   onClose,
+  initialChapterId,
   onProgressUpdated,
 }) => {
   const chapters = useMemo(() => getChaptersForBook(resource.id), [resource.id]);
+  const requestedChapterId = chapters.find((chapter) => chapter.id === initialChapterId)?.id;
   const volumeSpecs = useMemo(
     () =>
       resource.volumes && resource.volumes.length > 0
@@ -113,7 +116,9 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
   );
 
   const [mode, setMode] = useState<ReaderMode>(chapters.length > 0 ? 'interactive' : 'pdf');
-  const [activeChapterId, setActiveChapterId] = useState<string>(chapters[0]?.id || '');
+  const [activeChapterId, setActiveChapterId] = useState<string>(
+    () => requestedChapterId || chapters[0]?.id || '',
+  );
   const [theme, setTheme] = useState<ReaderTheme>('light');
   const [fontSize, setFontSize] = useState<number>(16);
   const [showChapterSidebar, setShowChapterSidebar] = useState<boolean>(true);
@@ -152,7 +157,9 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
       setNotes(state.notes);
       setProgress(state.progress);
       setStorageMode(state.storageMode);
-      if (state.progress?.lastChapterId && chapters.some((c) => c.id === state.progress?.lastChapterId)) {
+      if (requestedChapterId) {
+        setActiveChapterId(requestedChapterId);
+      } else if (state.progress?.lastChapterId && chapters.some((c) => c.id === state.progress?.lastChapterId)) {
         setActiveChapterId(state.progress.lastChapterId);
       } else if (chapters[0]) {
         setActiveChapterId(chapters[0].id);
@@ -166,7 +173,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
     return () => {
       mounted = false;
     };
-  }, [resource.id, chapters]);
+  }, [resource.id, chapters, requestedChapterId]);
 
   // Resolve blob URL for selected volume in IndexedDB cleanly (and revoke on cleanup)
   useEffect(() => {
@@ -361,7 +368,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
     const saved = await savePersonalBookNote({
       bookId: resource.id,
       bookTitle: language === 'gu' ? resource.titleGu : resource.titleEn,
-      subject: resource.subject,
+      subject: resource.subject ?? 'all',
       chapterId: activeChapter.id,
       chapterTitle: language === 'gu' ? activeChapter.titleGu : activeChapter.titleEn,
       title:
@@ -488,7 +495,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
               </span>
             </div>
             <div className="flex items-center gap-2 text-[10px] text-stone-400 mt-0.5">
-              <span>{resource.category.replace('_', ' ')}</span>
+              <span>{resource.category?.replace('_', ' ') ?? 'Study notes'}</span>
               <span>·</span>
               <span>
                 {completedIds.length}/{chapters.length}{' '}
@@ -996,7 +1003,10 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                 <div className="flex flex-wrap items-center gap-3 text-xs opacity-70">
                   <span>{activeChapter.readingTimeMinutes} min read</span>
                   <span>·</span>
-                  <span>{resource.licenseType}</span>
+                  <span>
+                    {language === 'gu' ? 'અચકાસાયેલ અધિકાર લેબલ: ' : 'Unverified rights label: '}
+                    {resource.licenseType || (language === 'gu' ? 'ઉપલબ્ધ નથી' : 'Not provided')}
+                  </span>
                   <span>·</span>
                   <span className="italic">
                     {language === 'gu'
@@ -1220,11 +1230,11 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
               {/* Source Attribution Footer */}
               <footer className="p-4 rounded-xl bg-stone-500/10 text-xs space-y-1.5 opacity-85">
                 <div className="font-bold">
-                  {language === 'gu' ? 'મૂળ સ્ત્રોત અને લાઇસન્સ:' : 'Original Source & Licensing:'}{' '}
-                  {resource.licenseType}
+                  {language === 'gu' ? 'અચકાસાયેલ અધિકાર લેબલ:' : 'Unverified rights label:'}{' '}
+                  {resource.licenseType || (language === 'gu' ? 'ઉપલબ્ધ નથી' : 'Not provided')}
                 </div>
                 <div>{activeChapter.sourceAttribution}</div>
-                <div className="flex items-center gap-4 pt-1">
+                {resource.sourceUrl && <div className="flex items-center gap-4 pt-1">
                   <a
                     href={resource.sourceUrl}
                     target="_blank"
@@ -1234,7 +1244,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                     <ExternalLink className="w-3 h-3" />
                     <span>{language === 'gu' ? 'સત્તાવાર સ્ત્રોત ખોલો' : 'Verify Official Portal'}</span>
                   </a>
-                </div>
+                </div>}
               </footer>
             </article>
           ) : null}

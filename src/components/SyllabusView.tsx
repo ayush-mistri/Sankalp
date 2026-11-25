@@ -13,12 +13,15 @@ import {
 import { 
   getAllRegisteredExams, 
   getExamById, 
-  getSubjectStats,
+  getSubjectStatsForSyllabus,
   getExamStageStats 
-} from '@/data/syllabusDatabase';
+} from '@/data/comprehensiveSyllabus';
+import { getSyllabusBookRecommendations } from '@/data/syllabusBookRecommendations';
+import { loadBookLibrary } from '@/lib/bookLibrary';
+import { InteractiveBookReader } from '@/components/InteractiveBookReader';
+import type { DigitalBookResource } from '@/types/books';
 import { 
   BookOpen, 
-  CheckCircle2, 
   Circle, 
   Clock, 
   Search, 
@@ -74,6 +77,13 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
   const [topicStatuses, setTopicStatuses] = useState<Record<string, TopicProgressStatus>>({});
   const [bookmarkedTopics, setBookmarkedTopics] = useState<string[]>([]);
   const [isLoadedFromStorage, setIsLoadedFromStorage] = useState(false);
+  const [readingTarget, setReadingTarget] = useState<{
+    resource: DigitalBookResource;
+    chapterId: string;
+  } | null>(null);
+  const [bookResources, setBookResources] = useState<DigitalBookResource[]>([]);
+  const [bookLibraryLoading, setBookLibraryLoading] = useState(true);
+  const [bookLibraryError, setBookLibraryError] = useState('');
 
   // 3. Search and Filtering States
   const [searchQuery, setSearchQuery] = useState('');
@@ -83,6 +93,28 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
   // 4. Accordion Expand/Collapse States
   const [expandedSubjects, setExpandedSubjects] = useState<Record<string, boolean>>({});
   const [expandedTopicDetails, setExpandedTopicDetails] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    let active = true;
+    void loadBookLibrary()
+      .then((resources) => {
+        if (active) setBookResources(resources);
+      })
+      .catch((error: unknown) => {
+        if (active) {
+          setBookLibraryError(
+            error instanceof Error ? error.message : 'Unable to load books from the database.',
+          );
+        }
+      })
+      .finally(() => {
+        if (active) setBookLibraryLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   // Load progress from localStorage on mount
   useEffect(() => {
@@ -189,9 +221,11 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
       const q = searchQuery.toLowerCase().trim();
       const matchEn = topic.titleEn.toLowerCase().includes(q) || 
                       topic.officialWordingEn.toLowerCase().includes(q) ||
-                      topic.code.toLowerCase().includes(q);
+                      topic.code.toLowerCase().includes(q) ||
+                      topic.keySubtopicsEn.some((item) => item.toLowerCase().includes(q));
       const matchGu = topic.titleGu.toLowerCase().includes(q) || 
-                      topic.officialWordingGu.toLowerCase().includes(q);
+                      topic.officialWordingGu.toLowerCase().includes(q) ||
+                      topic.keySubtopicsGu.some((item) => item.toLowerCase().includes(q));
       if (!matchEn && !matchGu) return false;
     }
 
@@ -294,6 +328,11 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
           <p className="text-emerald-100 text-xs sm:text-sm leading-relaxed">
             {language === 'gu' ? activeExam.scheme.patternSummaryGu : activeExam.scheme.patternSummaryEn}
           </p>
+          {activeExam.coverageNoteEn && activeExam.coverageNoteGu && (
+            <p className="max-w-3xl text-[11px] leading-relaxed text-emerald-100/80">
+              {language === 'gu' ? activeExam.coverageNoteGu : activeExam.coverageNoteEn}
+            </p>
+          )}
         </div>
 
         {/* Exam Structure Metric Cards */}
@@ -336,7 +375,7 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-emerald-300 shrink-0" />
             <span>
-              <strong>{language === 'gu' ? 'અધિકૃત સ્ત્રોત:' : 'Official Gazette Source:'}</strong>{' '}
+              <strong>{language === 'gu' ? 'અધિકૃત સ્ત્રોત:' : 'Official reference:'}</strong>{' '}
               {language === 'gu' ? activeExam.officialSource.titleGu : activeExam.officialSource.titleEn} ({activeExam.officialSource.documentRef})
             </span>
           </div>
@@ -656,7 +695,7 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
               <div className="space-y-4">
                 {visibleSubjects.map(subject => {
                   const isExpanded = expandedSubjects[subject.id] ?? false;
-                  const subjStats = getSubjectStats(subject, topicStatuses);
+                  const subjStats = getSubjectStatsForSyllabus(subject, topicStatuses);
 
                   return (
                     <div
@@ -728,6 +767,9 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
                                     const status = topicStatuses[topic.id] || 'not_started';
                                     const isBookmarked = bookmarkedTopics.includes(topic.id);
                                     const isDetailOpen = expandedTopicDetails[topic.id] ?? false;
+                                    const bookRecommendations = isDetailOpen
+                                      ? getSyllabusBookRecommendations(topic, bookResources)
+                                      : [];
 
                                     return (
                                       <div
@@ -825,7 +867,7 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
                                             <button
                                               onClick={() => handleToggleTopicDetails(topic.id)}
                                               className="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 transition"
-                                              title="Toggle syllabus wording & study notes"
+                                              title="Toggle syllabus scope and study notes"
                                             >
                                               {isDetailOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                                             </button>
@@ -835,24 +877,25 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
                                         </div>
 
                                         {/* =========================================================
-                                            DEEP DETAILS DRAWER (Verbatim Official vs Sankalp Focus)
+                                            SYLLABUS SCOPE AND STUDY NOTES
                                            ========================================================= */}
                                         {isDetailOpen && (
                                           <div className="p-4 sm:p-5 pt-0 border-t border-stone-100 space-y-4 bg-stone-50/60 rounded-b-2xl">
                                             
-                                            {/* 1. Official Commission Verbatim Text */}
+                                            {/* 1. Syllabus wording and source status */}
                                             <div className="p-4 rounded-xl bg-emerald-950 text-emerald-100 border border-emerald-900 space-y-2 mt-4 shadow-2xs">
                                               <div className="flex items-center justify-between text-[11px] font-mono font-bold text-emerald-300">
                                                 <div className="flex items-center gap-1.5">
                                                   <Landmark className="w-3.5 h-3.5 text-emerald-400" />
-                                                  <span>{language === 'gu' ? 'સત્તાવાર ગેઝેટ શબ્દાવલિ (Commission Verbatim)' : 'Official Commission Gazette Verbatim Text'}</span>
+                                                  <span>
+                                                    {topic.wordingSource === 'official'
+                                                      ? (language === 'gu' ? 'સત્તાવાર અભ્યાસક્રમનો અંશ' : 'Official syllabus excerpt')
+                                                      : (language === 'gu' ? 'સંકલ્પ અભ્યાસક્રમ સારાંશ' : 'Sankalp syllabus summary')}
+                                                  </span>
                                                 </div>
-                                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-900 border border-emerald-700">
-                                                  100% Unaltered
-                                                </span>
                                               </div>
-                                              <p className="text-xs sm:text-sm font-medium leading-relaxed italic text-white/95">
-                                                &ldquo;{language === 'gu' ? topic.officialWordingGu : topic.officialWordingEn}&rdquo;
+                                              <p className="text-xs sm:text-sm font-medium leading-relaxed text-white/95">
+                                                {language === 'gu' ? topic.officialWordingGu : topic.officialWordingEn}
                                               </p>
                                             </div>
 
@@ -866,7 +909,7 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
                                                 {language === 'gu' ? topic.sankalpExplanationGu : topic.sankalpExplanationEn}
                                               </p>
 
-                                              {/* Key Subtopics Bullet Grid */}
+                                              {((language === 'gu' ? topic.keySubtopicsGu : topic.keySubtopicsEn).length > 0) && (
                                               <div className="pt-2">
                                                 <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider mb-1.5">
                                                   {language === 'gu' ? 'મુખ્ય ફોકસ પોઈન્ટ્સ:' : 'High-Yield Subtopics to Cover:'}
@@ -880,12 +923,14 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
                                                   ))}
                                                 </div>
                                               </div>
+                                              )}
                                             </div>
 
                                             {/* 3. Action Links: Deep Read, Practice PYQs, Books */}
                                             <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
                                               
                                               {/* Recommended Official References */}
+                                              {topic.recommendedReadings.length > 0 && (
                                               <div className="flex items-center gap-2 flex-wrap">
                                                 <span className="text-[11px] font-bold text-stone-400">
                                                   {language === 'gu' ? 'સંદર્ભ પુસ્તક:' : 'Recommended:'}
@@ -902,6 +947,113 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
                                                     )}
                                                   </span>
                                                 ))}
+                                              </div>
+                                              )}
+
+                                              <div className="w-full rounded-xl border border-emerald-200 bg-white p-3 space-y-3">
+                                                <div className="flex flex-wrap items-center justify-between gap-2">
+                                                  <div>
+                                                    <h5 className="text-xs font-black text-emerald-950">
+                                                      {language === 'gu' ? 'પુસ્તક → પ્રકરણ → વાંચન' : 'Books → Chapters → Reading'}
+                                                    </h5>
+                                                    <p className="mt-1 text-[11px] text-stone-500">
+                                                      {language === 'gu'
+                                                        ? 'ઉપલબ્ધ પ્રકરણો સંકલ્પના અભ્યાસ-નોંધો છે; સંપૂર્ણ પુસ્તક માટે સત્તાવાર સ્ત્રોત ખોલો.'
+                                                        : 'In-app chapters are Sankalp study notes; open the official source for the complete book.'}
+                                                    </p>
+                                                  </div>
+                                                  {onGoToBooks && (
+                                                    <button
+                                                      onClick={onGoToBooks}
+                                                      className="text-[11px] font-bold text-emerald-800 hover:underline"
+                                                    >
+                                                      {language === 'gu' ? 'બધાં પુસ્તકો જુઓ' : 'Browse all books'}
+                                                    </button>
+                                                  )}
+                                                </div>
+
+                                                {bookRecommendations.length > 0 ? (
+                                                  <div className="space-y-2">
+                                                    {bookRecommendations.map(({ resource, chapters }) => (
+                                                      <details
+                                                        key={resource.id}
+                                                        className="rounded-lg border border-stone-200 bg-stone-50"
+                                                      >
+                                                        <summary className="cursor-pointer list-none p-3 flex flex-wrap items-center justify-between gap-2">
+                                                          <span className="text-xs font-bold text-stone-800">
+                                                            {language === 'gu' ? resource.titleGu : resource.titleEn}
+                                                          </span>
+                                                          <span className="text-[10px] text-stone-500">
+                                                            {chapters.length} {language === 'gu' ? 'પ્રકરણો' : 'chapters'}
+                                                          </span>
+                                                        </summary>
+                                                        <div className="px-3 pb-3 space-y-2">
+                                                          <div className="flex flex-wrap items-center justify-between gap-2">
+                                                            <span className="text-[10px] text-stone-500">
+                                                              {resource.licenseType
+                                                                ? `${language === 'gu' ? 'અચકાસાયેલ અધિકાર લેબલ: ' : 'Unverified rights label: '}${resource.licenseType}`
+                                                                : (language === 'gu' ? 'ચકાસણી બાકી' : 'Verification pending')}
+                                                            </span>
+                                                            <span className="text-[10px] font-semibold text-amber-800">
+                                                              {resource.sourceVerificationStatus === 'verified'
+                                                                ? (language === 'gu' ? 'ચકાસાયેલ' : 'Verified')
+                                                                : (language === 'gu' ? 'સમીક્ષા જરૂરી' : 'Needs review')}
+                                                            </span>
+                                                          </div>
+                                                          {resource.sourceUrl && (
+                                                            <a
+                                                              href={resource.sourceUrl}
+                                                              target="_blank"
+                                                              rel="noopener noreferrer"
+                                                              className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-800 hover:underline"
+                                                            >
+                                                              {language === 'gu' ? 'સત્તાવાર સંપૂર્ણ સ્ત્રોત' : 'Official full source'}
+                                                              <ExternalLink className="h-3 w-3" />
+                                                            </a>
+                                                          )}
+                                                          {chapters.length > 0 ? (
+                                                            <div className="grid gap-1 sm:grid-cols-2">
+                                                              {chapters.map((chapter) => (
+                                                                <button
+                                                                  key={chapter.id}
+                                                                  onClick={() => setReadingTarget({
+                                                                    resource,
+                                                                    chapterId: chapter.id,
+                                                                  })}
+                                                                  className="flex items-start gap-2 rounded-lg border border-stone-200 bg-white p-2 text-left text-[11px] font-medium text-stone-700 hover:border-emerald-500 hover:text-emerald-900"
+                                                                >
+                                                                  <BookOpen className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-700" />
+                                                                  <span className="flex-1">
+                                                                    {language === 'gu' ? chapter.titleGu : chapter.titleEn}
+                                                                  </span>
+                                                                  <ArrowRight className="mt-0.5 h-3 w-3 shrink-0" />
+                                                                </button>
+                                                              ))}
+                                                            </div>
+                                                          ) : (
+                                                            <p className="text-[11px] text-stone-600">
+                                                              {language === 'gu'
+                                                                ? 'આ પુસ્તક માટે સંકલ્પમાં અભ્યાસ-નોંધો ઉપલબ્ધ નથી; સંપૂર્ણ પુસ્તક માટે સત્તાવાર સ્ત્રોત જુઓ.'
+                                                                : 'Sankalp has no study-note chapters for this book yet. Use the official source for the complete work.'}
+                                                            </p>
+                                                          )}
+                                                        </div>
+                                                      </details>
+                                                    ))}
+                                                  </div>
+                                                ) : (
+                                                  <p className="rounded-lg bg-stone-50 p-3 text-[11px] text-stone-600">
+                                                    {bookLibraryLoading
+                                                      ? language === 'gu'
+                                                        ? 'પુસ્તક સૂચિ લોડ થઈ રહી છે...'
+                                                        : 'Loading the database-backed book catalog...'
+                                                      : bookLibraryError
+                                                        ? `${language === 'gu' ? 'પુસ્તક સૂચિ લોડ કરી શકાઈ નથી: ' : 'Book catalog could not be loaded: '}${bookLibraryError}`
+                                                        : language === 'gu'
+                                                          ? 'આ મુદ્દા માટે સંકલ્પમાં મેળ ખાતું વાંચી શકાય એવું પ્રકરણ હજી ઉપલબ્ધ નથી. પુસ્તક સૂચિમાં સત્તાવાર સંદર્ભો તપાસો.'
+                                                          : 'There is no matching in-app reading chapter for this topic yet. Check the Books catalog for official references.'}
+                                                  </p>
+                                                )}
                                               </div>
 
                                               {/* Action Buttons to App Views */}
@@ -980,8 +1132,16 @@ export const SyllabusView: React.FC<SyllabusViewProps> = ({
             </button>
           </div>
         )}
-      </div>
 
+      </div>
+      {readingTarget && (
+        <InteractiveBookReader
+          resource={readingTarget.resource}
+          language={language}
+          initialChapterId={readingTarget.chapterId}
+          onClose={() => setReadingTarget(null)}
+        />
+      )}
     </div>
   );
 };

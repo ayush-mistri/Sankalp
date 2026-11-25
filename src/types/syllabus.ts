@@ -41,9 +41,10 @@ export interface SyllabusTopic {
   paperId: string;
   examId: ExamId;
   stage: ExamStageId;
-  /** Exact verbatim text as published in the official gazette/notification */
+  /** Syllabus wording; only label as official when it is verified verbatim. */
   officialWordingEn: string;
   officialWordingGu: string;
+  wordingSource?: 'official' | 'summary';
   /** SANKALP pedagogical breakdown and strategic focus */
   sankalpExplanationEn: string;
   sankalpExplanationGu: string;
@@ -99,6 +100,8 @@ export interface ExamSyllabusRecord {
   conductingBodyEn: string;
   conductingBodyGu: string;
   officialSource: OfficialSourceInfo;
+  coverageNoteEn?: string;
+  coverageNoteGu?: string;
   scheme: ExamSchemeInfo;
   prelimsPapers: SyllabusPaper[];
   mainsPapers: SyllabusPaper[];
