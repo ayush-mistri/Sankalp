@@ -1018,7 +1018,7 @@ export const SANKALP_EXAM_DATABASE: Record<string, ExamSyllabusRecord> = {
       titleGu: 'UPSC સિવિલ સર્વિસીસ પરીક્ષા ગેઝેટ જાહેરનામું અને સત્તાવાર અભ્યાસક્રમ',
       documentRef: 'UPSC CSE Gazette Notification No. 05/2026-CSP',
       gazetteOrNotificationDate: 'Updated February 2026',
-      officialUrl: 'https://upsc.gov.in',
+      officialUrl: 'https://www.upsc.gov.in/',
       notesEn: 'Verified strictly against the official UPSC Civil Services Examination gazette notification. Prelims consists of two objective papers (GS-1 200 marks determines merit cutoff; GS-2 CSAT 200 marks requires 33% qualifying). Mains has 9 papers (2 qualifying languages of 300 marks; 7 merit papers of 250 marks each = 1,750 marks + 275 Personality Test = 2,025 final score).',
       notesGu: 'UPSC ના સત્તાવાર ગેઝેટ નોટિફિકેશન મુજબ સચોટ. પ્રિલિમ્સમાં બે હેતુલક્ષી પેપર્સ (GS-૧ ૨૦૦ ગુણ મેરિટ કટઓફ નક્કી કરે છે; CSAT પેપર-૨ માં ૩૩% ક્વોલિફાઇંગ જરૂરી છે). મુખ્ય પરીક્ષામાં ૯ પેપર્સ (૨ ભાષાના પેપર્સ ૩૦૦ ગુણ ક્વોલિફાઇંગ; ૭ મેરિટ પેપર્સ દરેકના ૨૫૦ ગુણ = ૧,૭૫૦ ગુણ + ૨૭૫ ઇન્ટરવ્યુ = ૨,૦૨૫ ગુણ).',
     },

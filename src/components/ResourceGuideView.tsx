@@ -592,7 +592,7 @@ export const ResourceGuideView: React.FC<ResourceGuideViewProps> = ({ language }
                       : 'NCERT Classes 6 to 12 Social Science, History, Geography, Polity (Free official PDF).'}
                   </p>
                   <a
-                    href="https://gujarat-education.gov.in/textbook/"
+                    href="https://www.gseb.org/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:underline pt-1"
@@ -632,7 +632,7 @@ export const ResourceGuideView: React.FC<ResourceGuideViewProps> = ({ language }
                     ગુજરાત સરકારનું બજેટ + સામાજિક-આર્થિક સમીક્ષા (Socio-Economic Review PDF) + ગુજરાત પાક્ષિક અંકો.
                   </p>
                   <a
-                    href="https://budget.gujarat.gov.in/"
+                    href="https://financedepartment.gujarat.gov.in/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:underline pt-1"

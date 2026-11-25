@@ -234,3 +234,6 @@ export interface ResourceItem {
   rationaleEn: string;
   rationaleGu: string;
 }
+
+export * from './books';
+

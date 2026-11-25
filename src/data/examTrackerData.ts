@@ -52,7 +52,7 @@ export const EXAM_COUNTDOWNS: ExamCountdown[] = [
     authority: 'UPSC',
     stage: 'Prelims',
     status: 'confirmed',
-    officialNoticeUrl: 'https://upsc.gov.in/',
+    officialNoticeUrl: 'https://www.upsc.gov.in/',
     seatsCount: 1056,
   },
   {
@@ -96,7 +96,7 @@ export const OFFICIAL_NOTIFICATIONS: OfficialNotification[] = [
     date: 'This Week / આ અઠવાડિયે',
     authority: 'UPSC',
     type: 'advertisement',
-    downloadUrl: 'https://upsc.gov.in/',
+    downloadUrl: 'https://www.upsc.gov.in/',
     isNew: false,
   },
 ];

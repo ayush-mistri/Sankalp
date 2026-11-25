@@ -28,7 +28,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'પ્રાથમિક કટ-ઓફ: જનરલ પુરુષ ~૧૩૯.૫ ગુણ (૪૦૦ માંથી)',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     sankalpPdfUrl: '/papers/gpsc-prelims-2024-gs1.pdf',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
@@ -77,7 +77,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'કુલ પ્રિલિમ્સ ગુણ = પેપર ૧ (૨૦૦) + પેપર ૨ (૨૦૦) = ૪૦૦ ગુણ',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     sankalpPdfUrl: '/papers/gpsc-prelims-2024-gs2.pdf',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
@@ -126,7 +126,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ પુરુષ - ૯૯.૪૨ ગુણ',
     difficultyRating: 'Moderate',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     sankalpPdfUrl: '/papers/gpsc-prelims-2023-dyso.pdf',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
@@ -178,7 +178,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ પુરુષ - ૧૮૪.૭૭ ગુણ (૪૦૦ માંથી)',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     sankalpPdfUrl: '/papers/gpsc-prelims-2023-class12-gs1.pdf',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
@@ -313,7 +313,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ પુરુષ - ૧૨૩.૦૦ ગુણ (૪૦૦ માંથી)',
     difficultyRating: 'Tough / Analytical',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
       { name: 'PYQSathi GPSC Archive', url: 'https://www.pyqsathi.com/exams/state/gpsc-civil-services/previous-year-papers/' },
@@ -361,7 +361,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ પુરુષ - ૧૧૫.૫૪ ગુણ (૪૦૦ માંથી)',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
       { name: 'PYQSathi GPSC Archive', url: 'https://www.pyqsathi.com/exams/state/gpsc-civil-services/previous-year-papers/' },
@@ -409,7 +409,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ પુરુષ - ૮૪.૧૪ ગુણ',
     difficultyRating: 'Moderate',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
       { name: 'PYQSathi GPSC Archive', url: 'https://www.pyqsathi.com/exams/state/gpsc-civil-services/previous-year-papers/' },
@@ -460,7 +460,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ પુરુષ - ૧૩૯.૧૪ ગુણ (૪૦૦ માંથી)',
     difficultyRating: 'Moderate',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
       { name: 'PYQSathi GPSC Archive', url: 'https://www.pyqsathi.com/exams/state/gpsc-civil-services/previous-year-papers/' },
@@ -506,7 +506,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ પુરુષ - ૧૧૮.૦૦ ગુણ (૪૦૦ માંથી)',
     difficultyRating: 'Moderate',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
       { name: 'PYQSathi GPSC Archive', url: 'https://www.pyqsathi.com/exams/state/gpsc-civil-services/previous-year-papers/' },
@@ -553,7 +553,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'નવા માળખાનું પ્રથમ પેપર: કટ-ઓફ ~૧૧૩.૨૮ ગુણ',
     difficultyRating: 'Moderate',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
       { name: 'PYQSathi GPSC Archive', url: 'https://www.pyqsathi.com/exams/state/gpsc-civil-services/previous-year-papers/' },
@@ -599,7 +599,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'ઐતિહાસિક માપદંડ પેપર (જાહેરાત ૧૦૬/૨૦૧૬-૧૭)',
     difficultyRating: 'Moderate',
     officialPaperPdfUrl: 'https://gpsc.gujarat.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/FinalKey',
+    officialAnswerKeyPdfUrl: 'https://gpsc.gujarat.gov.in/Result',
     alternativeSources: [
       { name: 'GPSC Official Portal', url: 'https://gpsc.gujarat.gov.in/' },
       { name: 'PYQSathi GPSC Archive', url: 'https://www.pyqsathi.com/exams/state/gpsc-civil-services/previous-year-papers/' },
@@ -649,7 +649,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'અપેક્ષિત જનરલ કટ-ઓફ: ~૮૮ - ૯૨ ગુણ',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://www.upsc.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://upsc.gov.in/examinations/answer-keys',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
     alternativeSources: [
       { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' },
       { name: 'PYQSathi UPSC Archive', url: 'https://www.pyqsathi.com/' },
@@ -700,7 +700,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'માત્ર ક્વોલિફાઈંગ: ૩૩% (૬૬.૬૬ ગુણ ફરજિયાત)',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://www.upsc.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://upsc.gov.in/examinations/answer-keys',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
     alternativeSources: [
       { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' }
     ],
@@ -828,7 +828,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ - ૭૫.૪૧ ગુણ (છેલ્લા દાયકામાં સૌથી ઓછું)',
     difficultyRating: 'Tough / Analytical',
     officialPaperPdfUrl: 'https://www.upsc.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://upsc.gov.in/examinations/answer-keys',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
     alternativeSources: [
       { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' },
       { name: 'PYQSathi UPSC Archive', url: 'https://www.pyqsathi.com/' },
@@ -874,7 +874,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ - ૮૮.૨૨ ગુણ',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://www.upsc.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://upsc.gov.in/examinations/answer-keys',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
     alternativeSources: [
       { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' }
     ],
@@ -920,7 +920,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ - ૮૭.૫૪ ગુણ',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://www.upsc.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://upsc.gov.in/examinations/answer-keys',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
     alternativeSources: [
       { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' }
     ],
@@ -966,7 +966,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ - ૯૨.૫૧ ગુણ',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://www.upsc.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://upsc.gov.in/examinations/answer-keys',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
     alternativeSources: [
       { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' }
     ],
@@ -1011,7 +1011,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ - ૯૮.૦૦ ગુણ',
     difficultyRating: 'Moderate',
     officialPaperPdfUrl: 'https://www.upsc.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://upsc.gov.in/examinations/answer-keys',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
     alternativeSources: [
       { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' }
     ],
@@ -1057,7 +1057,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ - ૯૮.૦૦ ગુણ',
     difficultyRating: 'Moderate to Tough',
     officialPaperPdfUrl: 'https://www.upsc.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://upsc.gov.in/examinations/answer-keys',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
     alternativeSources: [
       { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' }
     ],
@@ -1103,7 +1103,7 @@ export const PRELIMS_PAPERS_ARCHIVE: PrelimsPaperMeta[] = [
     cutoffTextGu: 'સત્તાવાર કટ-ઓફ: જનરલ - ૧૦૫.૩૪ ગુણ (ઉચ્ચ કટ-ઓફ વર્ષ)',
     difficultyRating: 'Direct / Conceptual',
     officialPaperPdfUrl: 'https://www.upsc.gov.in/',
-    officialAnswerKeyPdfUrl: 'https://upsc.gov.in/examinations/answer-keys',
+    officialAnswerKeyPdfUrl: 'https://www.upsc.gov.in/',
     alternativeSources: [
       { name: 'UPSC Official Portal', url: 'https://www.upsc.gov.in/' }
     ],
