@@ -30,11 +30,11 @@ export const ReadinessView: React.FC<ReadinessViewProps> = ({
         
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold mb-3 border border-emerald-500/30">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-medium mb-3 border border-emerald-500/30">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
               <span>{language === 'gu' ? 'પરીક્ષા સજ્જતા ઇન્ડેક્સ (SRI)' : 'Student Readiness Index'}</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2">
               {language === 'gu' ? 'તમારું પરીક્ષા સજ્જતા સ્તર: ૭૪%' : 'Your Exam Readiness Score: 74%'}
             </h1>
             <p className="text-xs sm:text-sm text-stone-300 max-w-xl leading-relaxed">
@@ -47,7 +47,7 @@ export const ReadinessView: React.FC<ReadinessViewProps> = ({
           {/* Large Readiness Circular Indicator */}
           <div className="w-28 h-28 rounded-full border-4 border-emerald-500/30 border-t-emerald-400 flex flex-col items-center justify-center shrink-0 bg-stone-800/80 shadow-inner">
             <span className="text-3xl font-black text-emerald-400">74%</span>
-            <span className="text-[10px] font-bold text-stone-300 uppercase tracking-wider">
+            <span className="text-[10px] font-medium text-stone-300 uppercase tracking-wider">
               {language === 'gu' ? 'સજ્જતા' : 'Readiness'}
             </span>
           </div>
@@ -56,60 +56,60 @@ export const ReadinessView: React.FC<ReadinessViewProps> = ({
 
       {/* 4 Core Readiness Pillars in Green & White */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-1">
-          <div className="flex items-center justify-between text-xs text-stone-500 font-bold">
+        <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-md space-y-1">
+          <div className="flex items-center justify-between text-xs text-stone-500 font-medium">
             <span>{language === 'gu' ? 'સિલેબસ કવરેજ' : 'Syllabus'}</span>
             <Layers className="w-4 h-4 text-emerald-700" />
           </div>
           <div className="text-2xl font-black text-stone-900">82%</div>
-          <div className="text-[11px] text-emerald-700 font-semibold">
+          <div className="text-[11px] text-emerald-700 font-medium">
             {language === 'gu' ? '૧૮/૨૨ ટોપિક્સ પૂર્ણ' : '18/22 Topics Done'}
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-1">
-          <div className="flex items-center justify-between text-xs text-stone-500 font-bold">
+        <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-md space-y-1">
+          <div className="flex items-center justify-between text-xs text-stone-500 font-medium">
             <span>{language === 'gu' ? 'સ્મૃતિ સાતત્ય' : 'Retention'}</span>
             <Zap className="w-4 h-4 text-emerald-700" />
           </div>
           <div className="text-2xl font-black text-stone-900">78%</div>
-          <div className="text-[11px] text-emerald-700 font-semibold">
+          <div className="text-[11px] text-emerald-700 font-medium">
             {language === 'gu' ? 'Spaced Recall સાઇકલ' : 'On-schedule'}
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-1">
-          <div className="flex items-center justify-between text-xs text-stone-500 font-bold">
+        <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-md space-y-1">
+          <div className="flex items-center justify-between text-xs text-stone-500 font-medium">
             <span>{language === 'gu' ? 'PYQ સચોટતા' : 'PYQ Accuracy'}</span>
             <Target className="w-4 h-4 text-emerald-700" />
           </div>
           <div className="text-2xl font-black text-stone-900">71%</div>
-          <div className="text-[11px] text-stone-500 font-semibold">
+          <div className="text-[11px] text-stone-500 font-medium">
             {language === 'gu' ? '૯૨ પ્રશ્નો ઉકેલ્યા' : '92 Solved'}
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-1">
-          <div className="flex items-center justify-between text-xs text-stone-500 font-bold">
+        <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-md space-y-1">
+          <div className="flex items-center justify-between text-xs text-stone-500 font-medium">
             <span>{language === 'gu' ? 'નેગેટિવ બચાવ' : 'Risk Control'}</span>
             <ShieldCheck className="w-4 h-4 text-emerald-700" />
           </div>
           <div className="text-2xl font-black text-stone-900">84%</div>
-          <div className="text-[11px] text-emerald-700 font-semibold">
+          <div className="text-[11px] text-emerald-700 font-medium">
             {language === 'gu' ? 'તુક્કા નિયંત્રણ સંતોષકારક' : 'Low Penalty Risk'}
           </div>
         </div>
       </div>
 
       {/* Weak-Area Diagnostic Radar */}
-      <div className="p-7 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-4">
+      <div className="p-7 rounded-2xl bg-white border border-stone-200 shadow-md space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-emerald-50 text-emerald-800 rounded-xl border border-emerald-200">
               <AlertCircle className="w-5 h-5 text-emerald-700" />
             </div>
             <div>
-              <h3 className="font-extrabold text-base text-stone-900">
+              <h3 className="font-semibold text-base text-stone-900">
                 {language === 'gu' ? 'તમારા નબળા ક્ષેત્રો (Weak Area Diagnostic)' : 'Identified Weak Areas Requiring Attention'}
               </h3>
               <p className="text-xs text-stone-500">
@@ -126,8 +126,8 @@ export const ReadinessView: React.FC<ReadinessViewProps> = ({
           <div className="p-5 rounded-xl bg-emerald-50/40 border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs font-bold text-emerald-900">POL-202 (Article 32 & 226 Writs)</span>
-                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800">
+                <span className="text-xs font-semibold text-emerald-900">POL-202 (Article 32 & 226 Writs)</span>
+                <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800">
                   Accuracy: 42%
                 </span>
               </div>
@@ -139,7 +139,7 @@ export const ReadinessView: React.FC<ReadinessViewProps> = ({
             </div>
             <button
               onClick={() => onFixWeakArea('topic-f1')}
-              className="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs inline-flex items-center gap-1.5 shrink-0 transition-colors shadow-xs"
+              className="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs inline-flex items-center gap-1.5 shrink-0 transition-colors shadow-md"
             >
               <span>{language === 'gu' ? 'આ નબળાઈ સુધારો' : 'Remediate Topic'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -149,8 +149,8 @@ export const ReadinessView: React.FC<ReadinessViewProps> = ({
           <div className="p-5 rounded-xl bg-emerald-50/40 border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs font-bold text-emerald-900">GUJ-202 (Solanki Era Architecture)</span>
-                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800">
+                <span className="text-xs font-semibold text-emerald-900">GUJ-202 (Solanki Era Architecture)</span>
+                <span className="text-[10px] font-medium px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800">
                   Accuracy: 48%
                 </span>
               </div>
@@ -162,7 +162,7 @@ export const ReadinessView: React.FC<ReadinessViewProps> = ({
             </div>
             <button
               onClick={() => onFixWeakArea('topic-gh1')}
-              className="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs inline-flex items-center gap-1.5 shrink-0 transition-colors shadow-xs"
+              className="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs inline-flex items-center gap-1.5 shrink-0 transition-colors shadow-md"
             >
               <span>{language === 'gu' ? 'રિવિઝન શરૂ કરો' : 'Start Revision'}</span>
               <ArrowRight className="w-3.5 h-3.5" />

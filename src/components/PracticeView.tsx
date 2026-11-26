@@ -329,7 +329,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
         </div>
 
         <div className="space-y-2">
-          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-4xl font-bold tracking-tight leading-tight">
             {language === 'gu' 
               ? 'વર્ષવાર GPSC અને UPSC પ્રિલિમ્સ પેપર્સ (૨૦૧૭ - ૨૦૨૪)' 
               : 'Year-Wise GPSC & UPSC Prelims Papers Archive (2017–2024)'}
@@ -345,9 +345,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
         <div className="flex flex-wrap gap-2 pt-2 border-t border-white/15">
           <button
             onClick={() => setActiveSubTab('archive')}
-            className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all ${
+            className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all ${
               activeSubTab === 'archive'
-                ? 'bg-white text-emerald-900 shadow-md font-extrabold'
+                ? 'bg-white text-emerald-900 shadow-md'
                 : 'bg-emerald-950/40 text-emerald-100 hover:bg-emerald-950/60 border border-white/10'
             }`}
           >
@@ -360,9 +360,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
           <button
             onClick={() => setActiveSubTab('solver')}
-            className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all ${
+            className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all ${
               activeSubTab === 'solver'
-                ? 'bg-white text-emerald-900 shadow-md font-extrabold'
+                ? 'bg-white text-emerald-900 shadow-md'
                 : 'bg-emerald-950/40 text-emerald-100 hover:bg-emerald-950/60 border border-white/10'
             }`}
           >
@@ -382,14 +382,14 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
         <div className="space-y-6">
           
           {/* Controls Bar: Exam Agency, Stage, Medium, Subject, Year, and Search */}
-          <div className="p-6 rounded-3xl bg-stone-50 border border-stone-200 shadow-xs space-y-4">
+          <div className="p-6 rounded-3xl bg-stone-50 border border-stone-200 shadow-md space-y-4">
             
             {/* Row 1: Exam Agency, Bookmarks & Search Input */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               
               {/* Agency Tabs */}
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs font-bold text-stone-600 mr-1">
+                <span className="text-xs font-medium text-stone-600 mr-1">
                   {language === 'gu' ? 'પરીક્ષા બોર્ડ:' : 'Exam Agency:'}
                 </span>
                 {[
@@ -400,9 +400,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   <button
                     key={agency.id}
                     onClick={() => setArchiveAgency(agency.id)}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
                       archiveAgency === agency.id
-                        ? 'bg-emerald-800 text-white shadow-xs'
+                        ? 'bg-emerald-800 text-white shadow-md'
                         : 'bg-white text-stone-700 border border-stone-200 hover:border-emerald-300'
                     }`}
                   >
@@ -413,9 +413,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 {/* Bookmark Filter Chip */}
                 <button
                   onClick={() => setOnlyBookmarked(!onlyBookmarked)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all flex items-center gap-1.5 ${
                     onlyBookmarked
-                      ? 'bg-amber-500 text-stone-950 shadow-xs font-black'
+                      ? 'bg-amber-500 text-stone-950 shadow-md font-semibold'
                       : 'bg-white text-stone-700 border border-stone-200 hover:border-amber-400'
                   }`}
                 >
@@ -451,7 +451,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
               
               {/* Exam Stage Filter */}
               <div className="flex flex-wrap items-center gap-2">
-                <span className="font-bold text-stone-600">
+                <span className="font-medium text-stone-600">
                   {language === 'gu' ? 'તબક્કો (Exam Stage):' : 'Exam Stage:'}
                 </span>
                 {[
@@ -462,9 +462,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   <button
                     key={st.id}
                     onClick={() => setArchiveStage(st.id)}
-                    className={`px-3 py-1.5 rounded-lg font-bold transition-all ${
+                    className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
                       archiveStage === st.id
-                        ? 'bg-emerald-800 text-white shadow-xs'
+                        ? 'bg-emerald-800 text-white shadow-md'
                         : 'bg-white text-stone-700 border border-stone-200 hover:border-emerald-300'
                     }`}
                   >
@@ -475,13 +475,13 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
               {/* Subject Filter Dropdown */}
               <div className="flex items-center gap-2">
-                <span className="font-bold text-stone-600">
+                <span className="font-medium text-stone-600">
                   {language === 'gu' ? 'વિષય મુજબ:' : 'Subject:'}
                 </span>
                 <select
                   value={archiveSubject}
                   onChange={(e) => setArchiveSubject(e.target.value)}
-                  className="py-1.5 px-3 rounded-lg border border-stone-200 bg-white font-semibold text-stone-800 text-xs focus:ring-1 focus:ring-emerald-600"
+                  className="py-1.5 px-3 rounded-lg border border-stone-200 bg-white font-medium text-stone-800 text-xs focus:ring-1 focus:ring-emerald-600"
                 >
                   <option value="all">{language === 'gu' ? 'તમામ વિષયો (All Subjects)' : 'All Subjects'}</option>
                   <option value="polity">{language === 'gu' ? 'બંધારણ અને રાજ્યવ્યવસ્થા' : 'Polity & Constitution'}</option>
@@ -496,7 +496,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
               {/* Medium Filter */}
               <div className="flex flex-wrap items-center gap-2">
-                <span className="font-bold text-stone-600">
+                <span className="font-medium text-stone-600">
                   {language === 'gu' ? 'માધ્યમ (Medium):' : 'Medium:'}
                 </span>
                 {[
@@ -508,9 +508,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   <button
                     key={med.id}
                     onClick={() => setArchiveMedium(med.id)}
-                    className={`px-3 py-1 rounded-lg font-bold transition-all ${
+                    className={`px-3 py-1 rounded-lg font-medium transition-all ${
                       archiveMedium === med.id
-                        ? 'bg-emerald-800 text-white shadow-xs'
+                        ? 'bg-emerald-800 text-white shadow-md'
                         : 'bg-white text-stone-700 border border-stone-200 hover:border-emerald-300'
                     }`}
                   >
@@ -523,16 +523,16 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
             {/* Row 3: Year Selector Pills (2016 - 2024) */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-3 border-t border-stone-200 text-xs">
-              <span className="text-xs font-bold text-stone-600 shrink-0 mr-2 flex items-center gap-1">
+              <span className="text-xs font-medium text-stone-600 shrink-0 mr-2 flex items-center gap-1">
                 <Calendar className="w-3.5 h-3.5 text-emerald-700" />
                 <span>{language === 'gu' ? 'પરીક્ષા વર્ષ:' : 'Exam Year:'}</span>
               </span>
 
               <button
                 onClick={() => setArchiveYear('all')}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all shrink-0 ${
+                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 ${
                   archiveYear === 'all'
-                    ? 'bg-emerald-800 text-white shadow-xs'
+                    ? 'bg-emerald-800 text-white shadow-md'
                     : 'bg-white text-stone-700 border border-stone-200 hover:border-emerald-300'
                 }`}
               >
@@ -543,9 +543,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 <button
                   key={yr}
                   onClick={() => setArchiveYear(yr)}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all shrink-0 ${
+                  className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 ${
                     archiveYear === yr
-                      ? 'bg-emerald-800 text-white shadow-xs'
+                      ? 'bg-emerald-800 text-white shadow-md'
                       : 'bg-white text-stone-700 border border-stone-200 hover:border-emerald-300'
                   }`}
                 >
@@ -573,7 +573,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                     setArchiveSearchQuery('');
                     setOnlyBookmarked(false);
                   }}
-                  className="text-xs font-bold text-rose-600 hover:text-rose-700 hover:underline flex items-center gap-1"
+                  className="text-xs font-medium text-rose-600 hover:text-rose-700 hover:underline flex items-center gap-1"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>{language === 'gu' ? 'તમામ ફિલ્ટર સાફ કરો' : 'Reset All Filters'}</span>
@@ -592,8 +592,8 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
           {/* RECENTLY VIEWED PAPERS QUICK ACCESS STRIP */}
           {/* ========================================================================= */}
           {recentPapersList.length > 0 && (
-            <div className="p-4 rounded-2xl bg-white border border-stone-200 shadow-2xs space-y-3">
-              <div className="flex items-center justify-between text-xs font-bold text-stone-700">
+            <div className="p-4 rounded-2xl bg-white border border-stone-200 shadow-sm space-y-3">
+              <div className="flex items-center justify-between text-xs font-medium text-stone-700">
                 <div className="flex items-center gap-2 text-emerald-900">
                   <History className="w-4 h-4 text-emerald-700" />
                   <span>{language === 'gu' ? 'તાજેતરમાં જોયેલા પ્રશ્નપત્રો' : 'Recently Viewed Question Papers'}</span>
@@ -618,13 +618,13 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   >
                     <div className="space-y-0.5">
                       <div className="flex items-center gap-1.5 text-[10px] font-mono">
-                        <span className="font-extrabold text-emerald-800">{rec.examAgency}</span>
+                        <span className="font-semibold text-emerald-800">{rec.examAgency}</span>
                         <span className="text-stone-400">·</span>
-                        <span className="font-bold text-stone-700">{rec.year}</span>
+                        <span className="font-medium text-stone-700">{rec.year}</span>
                         <span className="text-stone-400">·</span>
                         <span className="text-stone-500">{rec.stage || 'Prelims'}</span>
                       </div>
-                      <div className="text-xs font-bold text-stone-900 truncate max-w-[200px]" title={language === 'gu' ? rec.examNameGu : rec.examNameEn}>
+                      <div className="text-xs font-semibold text-stone-900 truncate max-w-[200px]" title={language === 'gu' ? rec.examNameGu : rec.examNameEn}>
                         {language === 'gu' ? rec.paperTypeGu : rec.paperTypeEn}
                       </div>
                     </div>
@@ -634,7 +634,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                         handleTrackPaperView(rec.id);
                         setActivePdfPaper(rec);
                       }}
-                      className="px-2.5 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-[11px] font-bold flex items-center gap-1 transition"
+                      className="px-2.5 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-[11px] font-semibold flex items-center gap-1 transition"
                     >
                       <FileText className="w-3 h-3" />
                       <span>{language === 'gu' ? 'જુઓ' : 'Open'}</span>
@@ -652,9 +652,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 <ShieldCheck className="w-4 h-4" />
               </div>
               <div className="space-y-0.5">
-                <div className="font-extrabold text-stone-900 text-sm flex items-center gap-2">
+                <div className="font-semibold text-stone-900 text-sm flex items-center gap-2">
                   <span>{language === 'gu' ? 'સત્તાવાર સ્રોતોમાંથી પ્રમાણિત ઓન-ડિમાન્ડ PDF પ્રણાલી' : 'Authorized Commission Source & On-Demand PDF Streaming'}</span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-200 text-emerald-900">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-200 text-emerald-900">
                     Bandwidth Optimized
                   </span>
                 </div>
@@ -671,7 +671,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 href="https://gpsc.gujarat.gov.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-xl bg-white border border-stone-200 hover:border-emerald-400 text-emerald-900 text-[11px] font-bold shadow-2xs flex items-center gap-1.5 transition"
+                className="px-3 py-1.5 rounded-xl bg-white border border-stone-200 hover:border-emerald-400 text-emerald-900 text-[11px] font-medium shadow-sm flex items-center gap-1.5 transition"
               >
                 <span>GPSC Portal</span>
                 <ExternalLink className="w-3 h-3 text-stone-400" />
@@ -680,7 +680,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 href="https://www.upsc.gov.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-xl bg-white border border-stone-200 hover:border-emerald-400 text-emerald-900 text-[11px] font-bold shadow-2xs flex items-center gap-1.5 transition"
+                className="px-3 py-1.5 rounded-xl bg-white border border-stone-200 hover:border-emerald-400 text-emerald-900 text-[11px] font-medium shadow-sm flex items-center gap-1.5 transition"
               >
                 <span>UPSC Portal</span>
                 <ExternalLink className="w-3 h-3 text-stone-400" />
@@ -699,25 +699,25 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   className={`p-6 sm:p-7 rounded-3xl bg-white border transition-all flex flex-col justify-between space-y-5 ${
                     isBookmarked 
                       ? 'border-amber-400 shadow-sm ring-1 ring-amber-300' 
-                      : 'border-stone-200 hover:border-emerald-300 shadow-xs hover:shadow-md'
+                      : 'border-stone-200 hover:border-emerald-300 shadow-md hover:shadow-md'
                   }`}
                 >
                   {/* Header: Badges, Year, Stage, Medium, Official Source & Bookmark */}
                   <div className="space-y-3">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex flex-wrap items-center gap-1.5">
-                        <span className={`px-2.5 py-0.5 rounded-lg text-[11px] font-extrabold uppercase tracking-wider ${
+                        <span className={`px-2.5 py-0.5 rounded-lg text-[11px] font-medium uppercase tracking-wider ${
                           paper.examAgency === 'UPSC' 
                             ? 'bg-blue-50 text-blue-800 border border-blue-200' 
                             : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                         }`}>
                           🏛️ {paper.examAgency}
                         </span>
-                        <span className="px-2.5 py-0.5 rounded-lg text-[11px] font-bold font-mono bg-stone-100 text-stone-800 border border-stone-200">
+                        <span className="px-2.5 py-0.5 rounded-lg text-[11px] font-medium font-mono bg-stone-100 text-stone-800 border border-stone-200">
                           {paper.year}
                         </span>
                         {paper.stage && (
-                          <span className={`px-2.5 py-0.5 rounded-lg text-[11px] font-bold border ${
+                          <span className={`px-2.5 py-0.5 rounded-lg text-[11px] font-medium border ${
                             paper.stage === 'Mains' 
                               ? 'bg-purple-50 text-purple-800 border-purple-200' 
                               : 'bg-amber-50 text-amber-800 border-amber-200'
@@ -725,7 +725,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                             {paper.stage}
                           </span>
                         )}
-                        <span className="px-2 py-0.5 rounded-lg text-[10px] font-semibold bg-stone-100 text-stone-600 border border-stone-200">
+                        <span className="px-2 py-0.5 rounded-lg text-[10px] font-medium bg-stone-100 text-stone-600 border border-stone-200">
                           {paper.medium || 'Bilingual'} {paper.fileSize ? `· ${paper.fileSize}` : ''}
                         </span>
                       </div>
@@ -736,7 +736,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                           href={paper.officialPaperPdfUrl || (paper.examAgency === 'GPSC' ? 'https://gpsc.gujarat.gov.in/' : 'https://www.upsc.gov.in/')}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-[11px] font-bold text-emerald-700 hover:text-emerald-900 bg-emerald-50 hover:bg-emerald-100 px-2.5 py-1 rounded-full border border-emerald-200 transition"
+                          className="flex items-center gap-1 text-[11px] font-medium text-emerald-700 hover:text-emerald-900 bg-emerald-50 hover:bg-emerald-100 px-2.5 py-1 rounded-full border border-emerald-200 transition"
                           title="Open official commission webpage in new tab"
                         >
                           <CheckCircle2 className="w-3 h-3 text-emerald-600" />
@@ -760,29 +760,29 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
                     {/* Title & Official Advt Subtext */}
                     <div>
-                      <h3 className="text-base sm:text-lg font-extrabold text-stone-900 leading-snug">
+                      <h3 className="text-base sm:text-lg font-semibold text-stone-900 leading-snug">
                         {language === 'gu' ? paper.examNameGu : paper.examNameEn}
                       </h3>
-                      <div className="text-xs sm:text-sm font-semibold text-emerald-800 mt-1 flex items-center gap-1.5">
+                      <div className="text-xs sm:text-sm font-medium text-emerald-800 mt-1 flex items-center gap-1.5">
                         <Layers className="w-3.5 h-3.5 text-emerald-600" />
                         <span>{language === 'gu' ? paper.paperTypeGu : paper.paperTypeEn}</span>
                       </div>
 
                       {/* Metadata Row: Advt No, Date, Code */}
                       {(paper.advertisementNo || paper.examDate || paper.paperCode) && (
-                        <div className="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-stone-500 font-medium bg-stone-50/70 p-2 rounded-xl border border-stone-100">
+                        <div className="flex flex-wrap items-center gap-3 mt-2 text-[11px] text-stone-500 bg-stone-50/70 p-2 rounded-xl border border-stone-100">
                           {paper.advertisementNo && (
                             <span>
-                              <strong className="text-stone-700">Advt:</strong> {paper.advertisementNo}
+                              <strong className="font-medium text-stone-700">Advt:</strong> {paper.advertisementNo}
                             </span>
                           )}
                           {paper.examDate && (
                             <span>
-                              <strong className="text-stone-700">Exam Date:</strong> {paper.examDate}
+                              <strong className="font-medium text-stone-700">Exam Date:</strong> {paper.examDate}
                             </span>
                           )}
                           {paper.paperCode && (
-                            <span className="px-1.5 py-0.5 bg-white border border-stone-200 rounded text-[10px] font-mono text-stone-700 font-bold">
+                            <span className="px-1.5 py-0.5 bg-white border border-stone-200 rounded text-[10px] font-mono text-stone-700 font-medium">
                               {paper.paperCode}
                             </span>
                           )}
@@ -794,22 +794,22 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   {/* Key Metrics Grid */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3.5 rounded-2xl bg-stone-50 border border-stone-200 text-center">
                     <div className="space-y-0.5">
-                      <span className="text-[10px] uppercase font-bold text-stone-400">{language === 'gu' ? 'પ્રશ્નો' : 'Questions'}</span>
+                      <span className="text-[10px] uppercase font-medium text-stone-400">{language === 'gu' ? 'પ્રશ્નો' : 'Questions'}</span>
                       <div className="text-xs sm:text-sm font-black font-mono text-stone-800">{paper.totalQuestions}</div>
                     </div>
                     <div className="space-y-0.5">
-                      <span className="text-[10px] uppercase font-bold text-stone-400">{language === 'gu' ? 'કુલ ગુણ' : 'Total Marks'}</span>
+                      <span className="text-[10px] uppercase font-medium text-stone-400">{language === 'gu' ? 'કુલ ગુણ' : 'Total Marks'}</span>
                       <div className="text-xs sm:text-sm font-black font-mono text-stone-800">{paper.totalMarks}</div>
                     </div>
                     <div className="space-y-0.5">
-                      <span className="text-[10px] uppercase font-bold text-stone-400">{language === 'gu' ? 'સમય' : 'Duration'}</span>
+                      <span className="text-[10px] uppercase font-medium text-stone-400">{language === 'gu' ? 'સમય' : 'Duration'}</span>
                       <div className="text-xs sm:text-sm font-black font-mono text-stone-800 flex items-center justify-center gap-1">
                         <Clock className="w-3 h-3 text-stone-400" />
                         <span>{paper.durationMinutes}m</span>
                       </div>
                     </div>
                     <div className="space-y-0.5">
-                      <span className="text-[10px] uppercase font-bold text-stone-400">{language === 'gu' ? 'ઋણ ગુણાંકન' : 'Negative'}</span>
+                      <span className="text-[10px] uppercase font-medium text-stone-400">{language === 'gu' ? 'ઋણ ગુણાંકન' : 'Negative'}</span>
                       <div className="text-xs sm:text-sm font-black text-rose-700 font-mono">
                         {paper.stage === 'Mains' ? 'None' : (paper.examAgency === 'UPSC' ? '-1/3rd' : '-0.30')}
                       </div>
@@ -820,7 +820,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   {paper.cutoffTextEn && (
                     <div className="p-3 rounded-2xl bg-amber-50/70 border border-amber-200 text-amber-900 text-xs flex items-center gap-2">
                       <Award className="w-4 h-4 text-amber-700 shrink-0" />
-                      <span className="font-semibold">
+                      <span className="font-medium">
                         {language === 'gu' ? paper.cutoffTextGu : paper.cutoffTextEn}
                       </span>
                     </div>
@@ -828,7 +828,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
                   {/* Subject Breakdown Distribution */}
                   <div className="space-y-2">
-                    <div className="text-xs font-bold text-stone-700 flex items-center justify-between">
+                    <div className="text-xs font-medium text-stone-700 flex items-center justify-between">
                       <span>{language === 'gu' ? 'વિષયવાર પ્રશ્ન વિતરણ (Weightage):' : 'Subject Question Breakdown:'}</span>
                       <span className="text-[11px] text-stone-400 font-mono">{paper.totalQuestions} Questions</span>
                     </div>
@@ -853,11 +853,11 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                       {paper.subjectBreakdown.map((s, idx) => (
                         <span 
                           key={idx}
-                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] font-medium bg-stone-100 text-stone-700 border border-stone-200"
+                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] bg-stone-100 text-stone-700 border border-stone-200"
                         >
                           <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: s.color }} />
                           <span>{language === 'gu' ? s.subjectGu : s.subjectEn}</span>
-                          <strong className="font-mono text-stone-900 font-bold ml-0.5">{s.questionCount}</strong>
+                          <strong className="font-mono text-stone-900 font-semibold ml-0.5">{s.questionCount}</strong>
                         </span>
                       ))}
                     </div>
@@ -865,13 +865,13 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
                   {/* Exam Key Trends & Takeaways */}
                   <div className="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-100 space-y-2">
-                    <div className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-900 flex items-center gap-1.5">
+                    <div className="text-[11px] font-medium uppercase tracking-wider text-emerald-900 flex items-center gap-1.5">
                       <TrendingUp className="w-3.5 h-3.5 text-emerald-700" />
                       <span>{language === 'gu' ? 'પરીક્ષા પેપરનું વિશ્લેષણ અને મુખ્ય વલણો:' : 'Key Paper Trends & Takeaways:'}</span>
                     </div>
                     <ul className="space-y-1 text-xs text-stone-700 list-disc list-inside leading-relaxed">
                       {(language === 'gu' ? paper.keyTakeawaysGu : paper.keyTakeawaysEn).slice(0, 2).map((trend, tidx) => (
-                        <li key={tidx} className="font-medium">{trend}</li>
+                        <li key={tidx}>{trend}</li>
                       ))}
                     </ul>
                   </div>
@@ -885,7 +885,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                           handleTrackPaperView(paper.id);
                           setActivePdfPaper(paper);
                         }}
-                        className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold transition-all shadow-2xs"
+                        className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold transition-all shadow-sm"
                         title={language === 'gu' ? 'સંકલ્પ પર આખું પેપર PDF જુઓ' : 'Read complete paper PDF on Sankalp'}
                       >
                         <FileText className="w-3.5 h-3.5" />
@@ -897,7 +897,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                         href={paper.sankalpPdfUrl || paper.officialPaperPdfUrl || `/papers/${paper.id}.pdf`}
                         download={`${paper.id}-sankalp.pdf`}
                         onClick={() => handleTrackPaperView(paper.id)}
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition-all border border-stone-200"
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold transition-all border border-stone-200"
                         title={language === 'gu' ? 'પેપર ડાઉનલોડ કરો' : 'Download official PDF'}
                       >
                         <Download className="w-3.5 h-3.5 text-stone-600" />
@@ -911,7 +911,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                             handleTrackPaperView(paper.id);
                             setActivePaperSimulator({ paper, initialMode: 'solutions' });
                           }}
-                          className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs font-bold transition-all border border-amber-200"
+                          className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs font-semibold transition-all border border-amber-200"
                           title={language === 'gu' ? 'સત્તાવાર આન્સર કી જુઓ' : 'View official answer key'}
                         >
                           <Award className="w-3.5 h-3.5 text-amber-700" />
@@ -927,7 +927,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                           handleTrackPaperView(paper.id);
                           setActivePaperSimulator({ paper, initialMode: 'exam' });
                         }}
-                        className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-stone-800 hover:bg-stone-900 text-white text-xs font-bold shadow-xs hover:shadow-md transition-all"
+                        className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-stone-800 hover:bg-stone-900 text-white text-xs font-semibold shadow-md hover:shadow-md transition-all"
                         title={language === 'gu' ? 'ટાઈમર સાથે ઓનલાઈન ટેસ્ટ આપો' : 'Practise with countdown timer'}
                       >
                         <Clock className="w-3.5 h-3.5" />
@@ -936,7 +936,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
                       <button
                         onClick={() => handleJumpToPracticeForPaper(paper)}
-                        className="inline-flex items-center justify-center gap-1 px-2.5 py-2 text-stone-500 hover:text-emerald-700 text-xs font-semibold transition-colors"
+                        className="inline-flex items-center justify-center gap-1 px-2.5 py-2 text-stone-500 hover:text-emerald-700 text-xs font-medium transition-colors"
                         title="Practice questions in single-question quiz mode"
                       >
                         <span>{language === 'gu' ? 'ક્વિઝ' : 'Quiz'}</span>
@@ -957,7 +957,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 <Search className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-stone-800">
+                <h3 className="text-base font-semibold text-stone-800">
                   {language === 'gu' ? 'કોઈ પ્રશ્નપત્ર મળ્યા નથી' : 'No question papers matched your filters'}
                 </h3>
                 <p className="text-xs text-stone-500 mt-1 max-w-md mx-auto">
@@ -976,7 +976,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   setArchiveSearchQuery('');
                   setOnlyBookmarked(false);
                 }}
-                className="px-4 py-2 rounded-xl bg-emerald-800 text-white text-xs font-bold hover:bg-emerald-900 transition"
+                className="px-4 py-2 rounded-xl bg-emerald-800 text-white text-xs font-semibold hover:bg-emerald-900 transition"
               >
                 {language === 'gu' ? 'બધા ફિલ્ટર્સ સાફ કરો' : 'Clear All Filters'}
               </button>
@@ -997,13 +997,13 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
           <aside className="lg:col-span-4 space-y-5 p-6 rounded-3xl bg-stone-50 border border-stone-200 sticky top-24">
             
             <div className="flex items-center justify-between pb-3 border-b border-stone-200">
-              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-emerald-900">
+              <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-emerald-900">
                 <Filter className="w-4 h-4 text-emerald-700" />
                 <span>{language === 'gu' ? 'પેપર & વર્ષ સાઇડબાર' : 'Paper & Year Filters'}</span>
               </div>
               <div className="flex items-center gap-2">
                 {Object.keys(userAnswers).length > 0 && (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                  <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
                     {Object.keys(userAnswers).length} {language === 'gu' ? 'પ્રયાસ' : 'attempted'}
                   </span>
                 )}
@@ -1015,7 +1015,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                     setSelectedSubject('all');
                     handleResetSession();
                   }}
-                  className="text-[11px] font-bold text-stone-500 hover:text-emerald-700 transition-colors flex items-center gap-1"
+                  className="text-[11px] font-medium text-stone-500 hover:text-emerald-700 transition-colors flex items-center gap-1"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>{language === 'gu' ? 'રીસેટ' : 'Reset'}</span>
@@ -1025,7 +1025,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
             {/* Exam Agency Switcher: All vs GPSC vs UPSC */}
             <div className="space-y-2">
-              <div className="text-xs font-bold text-stone-700">
+              <div className="text-xs font-medium text-stone-700">
                 {language === 'gu' ? 'પરીક્ષા બોર્ડ (Exam Agency):' : 'Exam Agency:'}
               </div>
               <div className="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-white border border-stone-200">
@@ -1042,9 +1042,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                       setHasEvaluated(false);
                       setSelectedOptionId(null);
                     }}
-                    className={`py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    className={`py-1.5 rounded-lg text-xs font-medium transition-all ${
                       selectedAgency === agency.id
-                        ? 'bg-emerald-700 text-white shadow-xs'
+                        ? 'bg-emerald-700 text-white shadow-md'
                         : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
@@ -1056,7 +1056,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
             {/* Mode Switcher: Prelims vs Mains */}
             <div className="space-y-2">
-              <div className="text-xs font-bold text-stone-700">
+              <div className="text-xs font-medium text-stone-700">
                 {language === 'gu' ? 'પરીક્ષા તબક્કો પસંદ કરો:' : 'Exam Stage:'}
               </div>
               <div className="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-white border border-stone-200">
@@ -1073,9 +1073,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                       setHasEvaluated(false);
                       setSelectedOptionId(null);
                     }}
-                    className={`py-1.5 rounded-lg text-xs font-bold transition-all ${
+                    className={`py-1.5 rounded-lg text-xs font-medium transition-all ${
                       selectedPaperMode === m.id
-                        ? 'bg-emerald-700 text-white shadow-xs'
+                        ? 'bg-emerald-700 text-white shadow-md'
                         : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
@@ -1087,7 +1087,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
             {/* Previous Papers by Year List */}
             <div className="space-y-2">
-              <div className="text-xs font-bold text-stone-700 flex items-center justify-between">
+              <div className="text-xs font-medium text-stone-700 flex items-center justify-between">
                 <span>{language === 'gu' ? 'પરીક્ષા વર્ષ (Exam Years):' : 'Exam Years:'}</span>
                 <span className="text-[10px] text-stone-400 font-mono">2017-2024</span>
               </div>
@@ -1100,9 +1100,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                     setHasEvaluated(false);
                     setSelectedOptionId(null);
                   }}
-                  className={`py-1.5 px-2 rounded-xl text-xs font-bold border transition-all text-center ${
+                  className={`py-1.5 px-2 rounded-xl text-xs font-medium border transition-all text-center ${
                     selectedYear === 'all'
-                      ? 'bg-emerald-700 text-white border-emerald-700 shadow-xs'
+                      ? 'bg-emerald-700 text-white border-emerald-700 shadow-md'
                       : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-300'
                   }`}
                 >
@@ -1118,9 +1118,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                       setHasEvaluated(false);
                       setSelectedOptionId(null);
                     }}
-                    className={`py-1.5 px-2 rounded-xl text-xs font-bold border transition-all text-center flex items-center justify-center gap-1 ${
+                    className={`py-1.5 px-2 rounded-xl text-xs font-medium border transition-all text-center flex items-center justify-center gap-1 ${
                       selectedYear === yr
-                        ? 'bg-emerald-700 text-white border-emerald-700 shadow-xs'
+                        ? 'bg-emerald-700 text-white border-emerald-700 shadow-md'
                         : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-300'
                     }`}
                   >
@@ -1133,7 +1133,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
 
             {/* Subject Filter */}
             <div className="space-y-2">
-              <div className="text-xs font-bold text-stone-700">
+              <div className="text-xs font-medium text-stone-700">
                 {language === 'gu' ? 'વિષય મુજબ ફિલ્ટર:' : 'Filter by Subject:'}
               </div>
               <div className="flex flex-col gap-1.5">
@@ -1151,9 +1151,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                       setHasEvaluated(false);
                       setSelectedOptionId(null);
                     }}
-                    className={`py-2 px-3 rounded-xl text-xs font-medium border text-left transition-all ${
+                    className={`py-2 px-3 rounded-xl text-xs border text-left transition-all ${
                       selectedSubject === s.id
-                        ? 'bg-emerald-50 text-emerald-900 border-emerald-300 font-bold'
+                        ? 'bg-emerald-50 text-emerald-900 border-emerald-300 font-semibold'
                         : 'bg-white text-stone-600 border-stone-200 hover:border-emerald-200'
                     }`}
                   >
@@ -1164,9 +1164,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
             </div>
 
             {/* Count Badge */}
-            <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-semibold flex items-center justify-between">
+            <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-medium flex items-center justify-between">
               <span>{language === 'gu' ? 'ઉપલબ્ધ પ્રશ્નો:' : 'Matched Questions:'}</span>
-              <span className="font-mono font-extrabold text-sm text-emerald-800">{filteredQuestions.length}</span>
+              <span className="font-mono font-black text-sm text-emerald-800">{filteredQuestions.length}</span>
             </div>
 
           </aside>
@@ -1179,7 +1179,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 <div className="w-12 h-12 rounded-2xl bg-stone-100 text-stone-400 flex items-center justify-center mx-auto">
                   <HelpCircle className="w-6 h-6" />
                 </div>
-                <h3 className="text-base font-bold text-stone-900">
+                <h3 className="text-base font-semibold text-stone-900">
                   {language === 'gu' ? 'કોઈ પ્રશ્નો મળ્યા નથી' : 'No Questions Found for this Filter'}
                 </h3>
                 <p className="text-xs text-stone-500 max-w-sm mx-auto">
@@ -1189,22 +1189,22 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 </p>
               </div>
             ) : (
-              <div className="p-7 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-xs space-y-6">
+              <div className="p-7 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-md space-y-6">
                 
                 {/* Question Header & Meta */}
                 <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-stone-100">
                   <div className="flex items-center gap-2">
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-extrabold ${
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${
                       activeQuestion.examAgency === 'UPSC'
                         ? 'bg-blue-50 text-blue-800 border border-blue-200'
                         : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                     }`}>
                       {activeQuestion.examAgency || 'GPSC'}
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-extrabold font-mono">
+                    <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-medium font-mono">
                       {activeQuestion.examYear}
                     </span>
-                    <span className="text-xs font-bold text-stone-700 bg-stone-100 px-3 py-1 rounded-full border border-stone-200">
+                    <span className="text-xs font-medium text-stone-700 bg-stone-100 px-3 py-1 rounded-full border border-stone-200">
                       {activeQuestion.paperType}
                     </span>
                   </div>
@@ -1215,7 +1215,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 </div>
 
                 {/* Exam Source Tag */}
-                <div className="text-xs font-bold text-emerald-800">
+                <div className="text-xs font-medium text-emerald-800">
                   🏛️ {activeQuestion.examName}
                 </div>
 
@@ -1227,11 +1227,11 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 {/* Mains Structured Framework View (For Mains Questions) */}
                 {activeQuestion.paperType.startsWith('Mains') && (
                   <div className="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200 space-y-3">
-                    <div className="text-xs font-extrabold uppercase tracking-wider text-emerald-900 flex items-center gap-1.5">
+                    <div className="text-xs font-medium uppercase tracking-wider text-emerald-900 flex items-center gap-1.5">
                       <PenTool className="w-4 h-4 text-emerald-700" />
                       <span>{language === 'gu' ? 'મેઈન્સ ઉત્તરલેખન માળખું (Model Outline):' : 'Mains Model Answer Structure:'}</span>
                     </div>
-                    <div className="text-xs sm:text-sm text-stone-800 font-medium leading-relaxed whitespace-pre-line">
+                    <div className="text-xs sm:text-sm text-stone-800 leading-relaxed whitespace-pre-line">
                       {language === 'gu' ? activeQuestion.explanationGu : activeQuestion.explanationEn}
                     </div>
                   </div>
@@ -1247,14 +1247,14 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                       let optionStyle = 'border-stone-200 bg-white hover:border-emerald-300 text-stone-800';
                       if (hasEvaluated) {
                         if (isCorrect) {
-                          optionStyle = 'border-emerald-500 bg-emerald-50/70 text-emerald-950 font-bold';
+                          optionStyle = 'border-emerald-500 bg-emerald-50/70 text-emerald-950 font-semibold';
                         } else if (isSelected) {
                           optionStyle = 'border-red-400 bg-red-50 text-red-950';
                         } else {
                           optionStyle = 'border-stone-200 bg-stone-50 opacity-60 text-stone-500';
                         }
                       } else if (isSelected) {
-                        optionStyle = 'border-emerald-700 bg-emerald-50/50 text-emerald-950 font-bold ring-1 ring-emerald-700';
+                        optionStyle = 'border-emerald-700 bg-emerald-50/50 text-emerald-950 font-semibold ring-1 ring-emerald-700';
                       }
 
                       return (
@@ -1264,7 +1264,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                           onClick={() => handleSelectOption(opt.id)}
                           className={`w-full p-4 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-start gap-3 ${optionStyle}`}
                         >
-                          <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
+                          <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-medium ${
                             isSelected ? 'border-emerald-700 bg-emerald-700 text-white' : 'border-stone-300'
                           }`}>
                             {opt.id.slice(-1).toUpperCase()}
@@ -1289,7 +1289,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   <button
                     disabled={!selectedOptionId}
                     onClick={handleEvaluate}
-                    className="w-full py-3.5 rounded-2xl bg-emerald-700 hover:bg-emerald-600 disabled:opacity-40 text-white font-bold text-xs sm:text-sm transition-all shadow-md shadow-emerald-700/20"
+                    className="w-full py-3.5 rounded-2xl bg-emerald-700 hover:bg-emerald-600 disabled:opacity-40 text-white font-semibold text-xs sm:text-sm transition-all shadow-md shadow-emerald-700/20"
                   >
                     {language === 'gu' ? 'જવાબ ચકાસો (Check Answer)' : 'Check Answer & View Elimination Reason'}
                   </button>
@@ -1298,11 +1298,11 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 {/* Post-Evaluation Explanation Box */}
                 {hasEvaluated && !activeQuestion.paperType.startsWith('Mains') && (
                   <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200 space-y-3 animate-in fade-in duration-200">
-                    <div className="flex items-center gap-2 text-xs font-bold text-emerald-900">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-emerald-900">
                       <Sparkles className="w-4 h-4 text-emerald-700" />
                       <span>{language === 'gu' ? 'વિગતવાર સમજૂતી અને વિશ્લેષણ:' : 'Detailed Official Explanation:'}</span>
                     </div>
-                    <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
+                    <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
                       {language === 'gu' ? activeQuestion.explanationGu : activeQuestion.explanationEn}
                     </p>
 
@@ -1310,7 +1310,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                       <span>{language === 'gu' ? 'સ્ત્રોત:' : 'Syllabus Anchor:'} {language === 'gu' ? activeQuestion.sourceConceptGu : activeQuestion.sourceConceptEn}</span>
                       <button
                         onClick={() => onReadConcept(activeQuestion.topicId)}
-                        className="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1"
+                        className="text-emerald-700 font-semibold hover:underline inline-flex items-center gap-1"
                       >
                         <span>{language === 'gu' ? 'ટોપિક વાંચો' : 'Read Topic'}</span>
                         <ChevronRight className="w-3.5 h-3.5" />
@@ -1324,7 +1324,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   <button
                     disabled={safeIndex === 0}
                     onClick={handlePrevQuestion}
-                    className="px-4 py-2 rounded-xl border border-stone-200 text-xs font-bold text-stone-600 disabled:opacity-30 hover:bg-stone-50 transition-colors"
+                    className="px-4 py-2 rounded-xl border border-stone-200 text-xs font-medium text-stone-600 disabled:opacity-30 hover:bg-stone-50 transition-colors"
                   >
                     {language === 'gu' ? '← પાછલો પ્રશ્ન' : '← Previous'}
                   </button>
@@ -1336,7 +1336,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   <button
                     disabled={safeIndex >= filteredQuestions.length - 1}
                     onClick={handleNextQuestion}
-                    className="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold disabled:opacity-30 transition-all flex items-center gap-1 shadow-xs"
+                    className="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold disabled:opacity-30 transition-all flex items-center gap-1 shadow-md"
                   >
                     <span>{language === 'gu' ? 'આગળનો પ્રશ્ન →' : 'Next Question →'}</span>
                   </button>

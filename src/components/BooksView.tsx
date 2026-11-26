@@ -1,13 +1,79 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Bookmark, BookmarkCheck, BookOpen, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { Bookmark, BookmarkCheck, BookOpen, ChevronLeft, ChevronRight, NotebookPen, Search, Trash2 } from 'lucide-react';
 import { addBookToMyBooks, loadBookCatalog, loadBookFavorites, setBookFavorite } from '@/lib/bookLibrary';
 import { getSupabaseClient, isSupabaseConfigured } from '@/lib/supabaseClient';
 import type { BookCatalogItem, BookDifficulty, ResourceLanguage } from '@/types/books';
 import type { Language } from '@/types';
+import { SankalpPolityReader } from '@/components/SankalpPolityReader';
+import { SANKALP_INDIAN_POLITY_BOOK, type SankalpBookDefinition } from '@/data/sankalpIndianPolityBook';
+import { SANKALP_HISTORY_HERITAGE_BOOK } from '@/data/sankalpHistoryHeritageBook';
+
+const SANKALP_ORIGINAL_BOOKS: Array<{
+  book: SankalpBookDefinition;
+  coverSrc: string;
+  coverAlt: string;
+  theme: {
+    cardBg: string;
+    badgeBg: string;
+    subBadgeBg: string;
+    titleColor: string;
+    readBtn: string;
+    notesBtnActive: string;
+    notesBtnInactive: string;
+    notesTitle: string;
+    chapterLink: string;
+    chapterCountBadge: string;
+  };
+}> = [
+  {
+    book: SANKALP_INDIAN_POLITY_BOOK,
+    coverSrc: '/images/books/sankalp-indian-polity-cover.jpg',
+    coverAlt: 'Sankalp Indian Polity Cover',
+    theme: {
+      cardBg: 'border-slate-300 bg-gradient-to-br from-slate-50 via-white to-blue-50/40',
+      badgeBg: 'bg-slate-900 text-white',
+      subBadgeBg: 'bg-blue-100 text-blue-900',
+      titleColor: 'text-slate-950',
+      readBtn: 'bg-slate-900 hover:bg-black text-white',
+      notesBtnActive: 'border-slate-800 bg-slate-100 text-slate-950',
+      notesBtnInactive: 'border-slate-300 bg-white text-slate-800 hover:bg-slate-50',
+      notesTitle: 'text-slate-900',
+      chapterLink: 'text-slate-900 hover:underline',
+      chapterCountBadge: 'bg-slate-100 text-slate-800',
+    },
+  },
+  {
+    book: SANKALP_HISTORY_HERITAGE_BOOK,
+    coverSrc: '/images/books/sankalp-history-heritage-cover.jpg',
+    coverAlt: 'Sankalp Modern Indian History & Gujarat Heritage Cover',
+    theme: {
+      cardBg: 'border-amber-300 bg-gradient-to-br from-amber-50 via-white to-orange-50/40',
+      badgeBg: 'bg-amber-900 text-white',
+      subBadgeBg: 'bg-orange-100 text-orange-950',
+      titleColor: 'text-amber-950',
+      readBtn: 'bg-amber-800 hover:bg-amber-900 text-white',
+      notesBtnActive: 'border-amber-800 bg-amber-100 text-amber-950',
+      notesBtnInactive: 'border-amber-300 bg-white text-amber-900 hover:bg-amber-50',
+      notesTitle: 'text-amber-950',
+      chapterLink: 'text-amber-900 hover:underline',
+      chapterCountBadge: 'bg-amber-100 text-amber-800',
+    },
+  },
+];
+
+interface SavedBookNote {
+  id: string;
+  chapterId: string;
+  chapterTitleEn: string;
+  chapterTitleGu: string;
+  note: string;
+  updatedAt: string;
+}
 
 interface BooksViewProps {
   language: Language;
@@ -36,6 +102,35 @@ export const BooksView = ({ language }: BooksViewProps) => {
   const [notice, setNotice] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const [activeReaderBook, setActiveReaderBook] = useState<SankalpBookDefinition | null>(null);
+  const [readerInitialChapterId, setReaderInitialChapterId] = useState<string | undefined>(undefined);
+  const [openNotesBookId, setOpenNotesBookId] = useState<string | null>(null);
+  const [notesByBookId, setNotesByBookId] = useState<Record<string, SavedBookNote[]>>({});
+
+  useEffect(() => {
+    if (activeReaderBook) return;
+    try {
+      const next: Record<string, SavedBookNote[]> = {};
+      for (const { book } of SANKALP_ORIGINAL_BOOKS) {
+        const saved = localStorage.getItem(`sankalp_book_notes_v1_${book.id}`);
+        next[book.id] = saved ? JSON.parse(saved) : [];
+      }
+      setNotesByBookId(next);
+    } catch {
+      // Ignore storage errors
+    }
+  }, [activeReaderBook]);
+
+  const deleteBookNote = (bookId: string, noteId: string) => {
+    const current = notesByBookId[bookId] ?? [];
+    const nextList = current.filter((n) => n.id !== noteId);
+    setNotesByBookId((prev) => ({ ...prev, [bookId]: nextList }));
+    try {
+      localStorage.setItem(`sankalp_book_notes_v1_${bookId}`, JSON.stringify(nextList));
+    } catch {
+      // Ignore storage errors
+    }
+  };
 
   const loadPage = useCallback(async () => {
     setLoading(true);
@@ -151,23 +246,153 @@ export const BooksView = ({ language }: BooksViewProps) => {
   const pageCount = Math.max(1, Math.ceil(total / pageSize));
 
   return (
-    <section className="space-y-6">
-      <header className="rounded-3xl bg-gradient-to-r from-emerald-900 to-emerald-700 p-6 text-white sm:p-9">
+    <section className="space-y-4">
+      <header className="rounded-2xl bg-gradient-to-r from-emerald-900 to-emerald-700 p-5 text-white shadow-lg sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-sm font-bold text-emerald-100">{text ? 'GPSC અને UPSC અભ્યાસ' : 'GPSC & UPSC preparation'}</p>
-            <h1 className="mt-1 text-3xl font-black sm:text-4xl">{text ? 'સંકલ્પ પુસ્તકાલય' : 'SANKALP Study Library'}</h1>
+            <p className="text-xs font-medium text-emerald-100">{text ? 'GPSC અને UPSC અભ્યાસ' : 'GPSC & UPSC preparation'}</p>
+            <h1 className="mt-0.5 text-2xl font-bold sm:text-3xl">{text ? 'સંકલ્પ પુસ્તકાલય' : 'SANKALP Study Library'}</h1>
           </div>
-          <Link href="/my-books" className="rounded-xl bg-white px-4 py-2 text-sm font-bold text-emerald-900 hover:bg-emerald-50">
+          <Link href="/my-books" className="rounded-xl bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-emerald-900 shadow-sm hover:bg-emerald-50">
             {text ? 'મારી લાઇબ્રેરી' : 'My Books'}
           </Link>
         </div>
-        <p className="mt-4 max-w-3xl text-sm leading-6 text-emerald-50">
+        <p className="mt-2.5 max-w-2xl text-xs sm:text-sm leading-relaxed text-emerald-50">
           {text
             ? 'અભ્યાસક્રમ સાથે જોડાયેલા પુસ્તક રેકોર્ડ, ભલામણ, પ્રકાશક અને કાનૂની સ્ત્રોત જુઓ. અચકાસેલી માહિતી સ્પષ્ટ રીતે ચિહ્નિત છે.'
             : 'Browse syllabus-linked book records, recommendations, publisher details, and legitimate sources. Unverified information is clearly labelled.'}
         </p>
       </header>
+
+      {/* Featured Sankalp Original Textbooks */}
+      <div className="space-y-4">
+        {SANKALP_ORIGINAL_BOOKS.map(({ book: sankalpBook, coverSrc, coverAlt, theme }) => {
+          const bookNotes = notesByBookId[sankalpBook.id] ?? [];
+          const isNotesOpen = openNotesBookId === sankalpBook.id;
+          return (
+            <div
+              key={sankalpBook.id}
+              className={`rounded-2xl border p-4 shadow-md ${theme.cardBg}`}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-start gap-4 max-w-2xl">
+                  <Image
+                    src={coverSrc}
+                    alt={coverAlt}
+                    width={96}
+                    height={128}
+                    className="h-32 w-24 shrink-0 rounded-xl border border-stone-900/15 object-cover shadow-sm"
+                  />
+                  <div className="space-y-1.5">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider ${theme.badgeBg}`}>
+                        {text ? 'સંકલ્પ મૂળ પુસ્તક' : 'Sankalp Original Book'}
+                      </span>
+                      <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium ${theme.subBadgeBg}`}>
+                        {text ? 'અંગ્રેજી + ગુજરાતી' : 'English + Gujarati'}
+                      </span>
+                      <span className="text-xs font-medium text-stone-500">
+                        {text
+                          ? `તમામ ${sankalpBook.chapters.length} પ્રકરણો લાઈવ`
+                          : `All ${sankalpBook.chapters.length} Chapters Live`}
+                      </span>
+                    </div>
+                    <h2 className={`text-xl font-semibold ${theme.titleColor}`}>
+                      {text ? sankalpBook.titleGu : sankalpBook.titleEn}
+                    </h2>
+                    <p className="text-sm leading-relaxed text-stone-600">
+                      {text ? sankalpBook.subtitleGu : sankalpBook.subtitleEn}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setReaderInitialChapterId(undefined);
+                      setActiveReaderBook(sankalpBook);
+                    }}
+                    className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-sm transition ${theme.readBtn}`}
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    <span>{text ? 'ઓનલાઇન વાંચો' : 'Read Book Online'}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setOpenNotesBookId(isNotesOpen ? null : sankalpBook.id)}
+                    className={`inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-2 text-xs font-semibold transition ${
+                      isNotesOpen ? theme.notesBtnActive : theme.notesBtnInactive
+                    }`}
+                  >
+                    <NotebookPen className="h-3.5 w-3.5" />
+                    <span>{text ? `મારી નોંધો (${bookNotes.length})` : `My Notes (${bookNotes.length})`}</span>
+                  </button>
+                </div>
+              </div>
+
+              {isNotesOpen && (
+                <div className="mt-4 border-t border-stone-200/80 pt-4">
+                  <h3 className={`text-xs font-medium uppercase tracking-wider ${theme.notesTitle}`}>
+                    {text
+                      ? `${sankalpBook.titleGu} — પ્રકરણ મુજબ નોંધો`
+                      : `${sankalpBook.titleEn} — Saved Notes by Chapter`}
+                  </h3>
+                  {bookNotes.length > 0 ? (
+                    <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                      {sankalpBook.chapters
+                        .map((ch) => ({
+                          chapter: ch,
+                          chapterNotes: bookNotes.filter((n) => n.chapterId === ch.id),
+                        }))
+                        .filter((group) => group.chapterNotes.length > 0)
+                        .map(({ chapter, chapterNotes }) => (
+                          <div key={chapter.id} className="space-y-2 rounded-xl border border-stone-200 bg-white p-3.5 shadow-sm">
+                            <div className="flex items-center justify-between gap-2 border-b border-stone-100 pb-2">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setReaderInitialChapterId(chapter.id);
+                                  setActiveReaderBook(sankalpBook);
+                                }}
+                                className={`text-left text-xs font-semibold ${theme.chapterLink}`}
+                              >
+                                {text ? chapter.titleGu : chapter.titleEn}
+                              </button>
+                              <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium ${theme.chapterCountBadge}`}>
+                                {chapterNotes.length}
+                              </span>
+                            </div>
+                            <div className="space-y-2">
+                              {chapterNotes.map((n) => (
+                                <div key={n.id} className="flex items-start justify-between gap-2 rounded-lg bg-stone-50 p-2.5 text-xs">
+                                  <p className="flex-1 whitespace-pre-wrap leading-relaxed text-stone-800">{n.note}</p>
+                                  <button
+                                    type="button"
+                                    onClick={() => deleteBookNote(sankalpBook.id, n.id)}
+                                    aria-label="Delete note"
+                                    className="shrink-0 text-stone-400 hover:text-rose-600"
+                                  >
+                                    <Trash2 className="h-3.5 w-3.5" />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  ) : (
+                    <p className="mt-2 text-xs text-stone-500">
+                      {text
+                        ? 'આ પુસ્તક માટે હજી કોઈ નોંધ સાચવેલ નથી. "ઓનલાઇન વાંચો" ખોલીને કોઈપણ પ્રકરણમાં નોંધ લખો.'
+                        : 'No notes saved for this book yet. Open "Read Book Online" to write notes inside any chapter.'}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
 
       <div className="grid gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
         <label className="relative sm:col-span-2">
@@ -263,7 +488,7 @@ export const BooksView = ({ language }: BooksViewProps) => {
                 {book.recommendationCategory && <Badge>{book.recommendationCategory}</Badge>}
                 {book.difficulty && <Badge>{book.difficulty}</Badge>}
               </div>
-              <h2 className="text-lg font-bold leading-snug text-stone-900">
+              <h2 className="text-lg font-semibold leading-snug text-stone-900">
                 {text && book.titleGu ? book.titleGu : book.titleEn}
               </h2>
               <p className="text-sm text-stone-600">
@@ -287,14 +512,14 @@ export const BooksView = ({ language }: BooksViewProps) => {
                 {book.edition ? ` · ${book.edition}` : ''}
               </p>
               <div className="flex flex-wrap gap-2">
-                <Link href={`/books/${encodeURIComponent(book.slug)}`} className="flex-1 rounded-lg bg-emerald-800 px-3 py-2 text-center text-sm font-bold text-white hover:bg-emerald-900">
+                <Link href={`/books/${encodeURIComponent(book.slug)}`} className="flex-1 rounded-lg bg-stone-900 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-black transition-colors">
                   {text ? 'વિગતો જુઓ' : 'View details'}
                 </Link>
                 <button
                   type="button"
                   disabled={busyBook === book.recordId}
                   onClick={() => void addToMyBooks(book)}
-                  className="rounded-lg border border-emerald-800 px-3 py-2 text-sm font-bold text-emerald-900 disabled:opacity-50"
+                  className="rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-stone-800 hover:bg-stone-50 disabled:opacity-50 transition-colors"
                 >
                   {text ? 'ઉમેરો' : 'Add to My Books'}
                 </button>
@@ -304,9 +529,13 @@ export const BooksView = ({ language }: BooksViewProps) => {
                   onClick={() => void toggleFavorite(book)}
                   aria-label={favorites.includes(book.recordId) ? 'Remove bookmark' : 'Bookmark book'}
                   aria-pressed={favorites.includes(book.recordId)}
-                  className="rounded-lg border border-stone-300 p-2 text-stone-700 disabled:opacity-50"
+                  className={`rounded-lg border p-2 transition-colors disabled:opacity-50 ${
+                    favorites.includes(book.recordId)
+                      ? 'border-amber-300 bg-amber-50 text-amber-600'
+                      : 'border-stone-300 text-stone-600 hover:bg-stone-50'
+                  }`}
                 >
-                  {favorites.includes(book.recordId) ? <BookmarkCheck className="h-4 w-4" /> : <Bookmark className="h-4 w-4" />}
+                  {favorites.includes(book.recordId) ? <BookmarkCheck className="h-4 w-4 fill-amber-500" /> : <Bookmark className="h-4 w-4" />}
                 </button>
               </div>
             </div>
@@ -327,6 +556,17 @@ export const BooksView = ({ language }: BooksViewProps) => {
             </button>
           </div>
         </nav>
+      )}
+      {activeReaderBook && (
+        <SankalpPolityReader
+          language={language}
+          book={activeReaderBook}
+          initialChapterId={readerInitialChapterId}
+          onClose={() => {
+            setActiveReaderBook(null);
+            setReaderInitialChapterId(undefined);
+          }}
+        />
       )}
     </section>
   );

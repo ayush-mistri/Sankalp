@@ -237,9 +237,9 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
           <div className="flex items-center p-1 rounded-2xl bg-stone-800 border border-stone-700">
             <button
               onClick={() => setActiveMode('full_paper')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
                 activeMode === 'full_paper'
-                  ? 'bg-emerald-600 text-white shadow-xs'
+                  ? 'bg-emerald-600 text-white shadow-md'
                   : 'text-stone-400 hover:text-white'
               }`}
             >
@@ -249,9 +249,9 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
             <button
               onClick={() => setActiveMode('exam')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
                 activeMode === 'exam'
-                  ? 'bg-emerald-600 text-white shadow-xs'
+                  ? 'bg-emerald-600 text-white shadow-md'
                   : 'text-stone-400 hover:text-white'
               }`}
             >
@@ -261,9 +261,9 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
             <button
               onClick={() => setActiveMode('solutions')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
                 activeMode === 'solutions'
-                  ? 'bg-emerald-600 text-white shadow-xs'
+                  ? 'bg-emerald-600 text-white shadow-md'
                   : 'text-stone-400 hover:text-white'
               }`}
             >
@@ -274,7 +274,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
             {onOpenPdf && (
               <button
                 onClick={onOpenPdf}
-                className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs ml-1 border border-emerald-400/40"
+                className="px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white shadow-md ml-1 border border-emerald-400/40"
                 title="View full official 200-question PDF document"
               >
                 <FileText className="w-3.5 h-3.5 text-amber-300" />
@@ -285,7 +285,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
           {/* Timer Display for Exam Mode */}
           {activeMode === 'exam' && !isSubmitted && (
-            <div className={`px-3.5 py-1.5 rounded-xl border font-mono font-bold text-xs flex items-center gap-1.5 ${
+            <div className={`px-3.5 py-1.5 rounded-xl border font-mono font-semibold text-xs flex items-center gap-1.5 ${
               timeRemainingSeconds < 300
                 ? 'bg-rose-950/80 border-rose-500 text-rose-300 animate-pulse'
                 : 'bg-stone-800 border-stone-700 text-emerald-400'
@@ -303,16 +303,16 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
       {/* ========================================================================= */}
       {availableSubjects.length > 0 && (
         <div className="flex items-center gap-2 overflow-x-auto p-2 rounded-2xl bg-stone-100 border border-stone-200">
-          <span className="text-xs font-bold text-stone-700 px-2 flex items-center gap-1 shrink-0">
+          <span className="text-xs font-medium text-stone-700 px-2 flex items-center gap-1 shrink-0">
             <Layers className="w-3.5 h-3.5 text-emerald-700" />
             <span>{language === 'gu' ? 'વિષયવાર ફિલ્ટર:' : 'Filter by Subject:'}</span>
           </span>
 
           <button
             onClick={() => { setSelectedSubject('all'); setCurrentIndex(0); }}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all shrink-0 ${
               selectedSubject === 'all'
-                ? 'bg-emerald-700 text-white shadow-xs'
+                ? 'bg-emerald-700 text-white shadow-md'
                 : 'bg-white text-stone-700 border border-stone-200 hover:border-emerald-300'
             }`}
           >
@@ -333,16 +333,16 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
               <button
                 key={subj}
                 onClick={() => { setSelectedSubject(subj); setCurrentIndex(0); }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 ${
                   selectedSubject === subj
-                    ? 'bg-emerald-700 text-white shadow-xs'
+                    ? 'bg-emerald-700 text-white shadow-md'
                     : 'bg-white text-stone-700 border border-stone-200 hover:border-emerald-300'
                 }`}
               >
                 <span>{meta?.icon || '📚'}</span>
                 <span>{language === 'gu' ? meta?.gu : meta?.en}</span>
                 <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
-                  selectedSubject === subj ? 'bg-white/20' : 'bg-stone-100 text-stone-700 font-mono font-bold'
+                  selectedSubject === subj ? 'bg-white/20' : 'bg-stone-100 text-stone-700 font-mono font-medium'
                 }`}>
                   {countLabel}
                 </span>
@@ -360,38 +360,38 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <Award className="w-6 h-6 text-emerald-400" />
-              <h3 className="text-xl sm:text-2xl font-black">
+              <h3 className="text-xl sm:text-2xl font-bold">
                 {language === 'gu' ? 'પરીક્ષા પરિણામ અને સ્કોરકાર્ડ' : 'Full Paper Test Result & Scorecard'}
               </h3>
             </div>
-            <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+            <span className="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
               {paper.cutoffTextEn || 'Official Cutoff Evaluated'}
             </span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
             <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-              <span className="text-[10px] uppercase font-bold text-stone-400">{language === 'gu' ? 'અંતિમ સ્કોર' : 'Final Score'}</span>
+              <span className="text-[10px] uppercase font-medium text-stone-400">{language === 'gu' ? 'અંતિમ સ્કોર' : 'Final Score'}</span>
               <div className="text-xl sm:text-2xl font-black text-emerald-400 font-mono">{results.finalScore}</div>
               <span className="text-[10px] text-stone-400">/{results.maxMarks}</span>
             </div>
             <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-              <span className="text-[10px] uppercase font-bold text-stone-400">{language === 'gu' ? 'સાચા જવાબો' : 'Correct'}</span>
+              <span className="text-[10px] uppercase font-medium text-stone-400">{language === 'gu' ? 'સાચા જવાબો' : 'Correct'}</span>
               <div className="text-xl sm:text-2xl font-black text-emerald-400 font-mono">+{results.correctCount}</div>
               <span className="text-[10px] text-emerald-300/70">{(results.correctCount * (paper.examAgency === 'UPSC' ? 2 : 1)).toFixed(1)} Marks</span>
             </div>
             <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-              <span className="text-[10px] uppercase font-bold text-stone-400">{language === 'gu' ? 'ખોટા જવાબો' : 'Incorrect'}</span>
+              <span className="text-[10px] uppercase font-medium text-stone-400">{language === 'gu' ? 'ખોટા જવાબો' : 'Incorrect'}</span>
               <div className="text-xl sm:text-2xl font-black text-rose-400 font-mono">-{results.incorrectCount}</div>
               <span className="text-[10px] text-rose-300/70">-{results.negativeMarks} Negative</span>
             </div>
             <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-              <span className="text-[10px] uppercase font-bold text-stone-400">{language === 'gu' ? 'બાકી રાખેલ' : 'Unattempted'}</span>
+              <span className="text-[10px] uppercase font-medium text-stone-400">{language === 'gu' ? 'બાકી રાખેલ' : 'Unattempted'}</span>
               <div className="text-xl sm:text-2xl font-black text-stone-300 font-mono">{results.unattemptedCount}</div>
               <span className="text-[10px] text-stone-400">0 Marks</span>
             </div>
             <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1 col-span-2 sm:col-span-1">
-              <span className="text-[10px] uppercase font-bold text-stone-400">{language === 'gu' ? 'ચોકસાઈ (Accuracy)' : 'Accuracy'}</span>
+              <span className="text-[10px] uppercase font-medium text-stone-400">{language === 'gu' ? 'ચોકસાઈ (Accuracy)' : 'Accuracy'}</span>
               <div className="text-xl sm:text-2xl font-black text-amber-300 font-mono">{results.accuracy}%</div>
               <span className="text-[10px] text-stone-400">{results.totalAttempted} Attempted</span>
             </div>
@@ -403,7 +403,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
             </div>
             <button
               onClick={() => setActiveMode('solutions')}
-              className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-stone-950 font-extrabold text-xs transition-all flex items-center gap-1.5 shadow-sm"
+              className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-stone-950 font-semibold text-xs transition-all flex items-center gap-1.5 shadow-sm"
             >
               <Eye className="w-3.5 h-3.5" />
               <span>{language === 'gu' ? 'સમગ્ર સોલ્યુશન જુઓ' : 'Review Full Paper Solutions'}</span>
@@ -420,16 +420,16 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
         <div className="space-y-6">
           
           {/* Paper Control Panel: Show Answers Toggle, Language Selector, Print Button */}
-          <div className="p-5 rounded-3xl bg-stone-50 border border-stone-200 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          <div className="p-5 rounded-3xl bg-stone-50 border border-stone-200 shadow-md flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
             
             {/* Left: Language Selection & Show Key Toggle */}
             <div className="flex flex-wrap items-center gap-3">
               {/* Show Key Toggle */}
               <button
                 onClick={() => setShowAnswerKeys(!showAnswerKeys)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 ${
                   showAnswerKeys
-                    ? 'bg-emerald-700 text-white shadow-xs'
+                    ? 'bg-emerald-700 text-white shadow-md'
                     : 'bg-white text-stone-700 border border-stone-300 hover:border-emerald-400'
                 }`}
               >
@@ -443,7 +443,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
               {/* Bilingual View Selector */}
               <div className="flex items-center gap-1 p-1 bg-white border border-stone-200 rounded-xl text-xs">
-                <span className="text-[11px] font-bold text-stone-400 px-2">{language === 'gu' ? 'ભાષા:' : 'Lang:'}</span>
+                <span className="text-[11px] font-medium text-stone-400 px-2">{language === 'gu' ? 'ભાષા:' : 'Lang:'}</span>
                 {[
                   { id: 'bilingual' as const, label: language === 'gu' ? 'દ્વિભાષી (બંને)' : 'Bilingual (Both)' },
                   { id: 'gu' as const, label: 'ગુજરાતી' },
@@ -452,9 +452,9 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                   <button
                     key={l.id}
                     onClick={() => setPaperLanguageMode(l.id)}
-                    className={`px-2.5 py-1 rounded-lg font-bold text-xs transition-all ${
+                    className={`px-2.5 py-1 rounded-lg font-medium text-xs transition-all ${
                       paperLanguageMode === l.id
-                        ? 'bg-stone-900 text-white shadow-xs'
+                        ? 'bg-stone-900 text-white shadow-md'
                         : 'text-stone-600 hover:text-stone-900'
                     }`}
                   >
@@ -468,7 +468,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => window.print()}
-                className="px-4 py-2 rounded-xl bg-white hover:bg-stone-100 text-stone-800 border border-stone-200 text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+                className="px-4 py-2 rounded-xl bg-white hover:bg-stone-100 text-stone-800 border border-stone-200 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-md"
                 title="Print clean paper or save as PDF"
               >
                 <Printer className="w-4 h-4 text-stone-600" />
@@ -482,7 +482,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                   setTimeRemainingSeconds(paper.durationMinutes * 60);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+                className="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center gap-1.5 transition-all shadow-md"
               >
                 <Clock className="w-4 h-4" />
                 <span>{language === 'gu' ? 'સમયબદ્ધ ટેસ્ટ આપો' : 'Start Timed Test'}</span>
@@ -494,13 +494,13 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
           {/* Printable Official Paper Header Banner */}
           <div className="p-8 rounded-3xl bg-stone-900 text-white space-y-4 border border-stone-800 shadow-md">
             <div className="text-center space-y-1">
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-emerald-400">
+              <span className="text-[11px] font-medium uppercase tracking-widest text-emerald-400">
                 {paper.examAgency === 'UPSC' ? 'UNION PUBLIC SERVICE COMMISSION' : 'GUJARAT PUBLIC SERVICE COMMISSION'}
               </span>
-              <h2 className="text-xl sm:text-2xl font-black tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
                 {language === 'gu' ? paper.examNameGu : paper.examNameEn}
               </h2>
-              <div className="text-sm font-semibold text-stone-300">
+              <div className="text-sm font-medium text-stone-300">
                 {language === 'gu' ? paper.paperTypeGu : paper.paperTypeEn}
               </div>
               {paper.advertisementNo && (
@@ -512,27 +512,27 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-white/10 text-center text-xs">
               <div className="p-2.5 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-stone-400 text-[10px] block uppercase font-bold">{language === 'gu' ? 'કુલ પ્રશ્નો (સમગ્ર પેપર)' : 'Total Paper Questions'}</span>
-                <strong className="text-emerald-400 text-sm font-mono">{paper.totalQuestions} Questions</strong>
+                <span className="text-stone-400 text-[10px] block uppercase font-medium">{language === 'gu' ? 'કુલ પ્રશ્નો (સમગ્ર પેપર)' : 'Total Paper Questions'}</span>
+                <strong className="text-emerald-400 text-sm font-mono font-semibold">{paper.totalQuestions} Questions</strong>
               </div>
               <div className="p-2.5 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-stone-400 text-[10px] block uppercase font-bold">{language === 'gu' ? 'કુલ ગુણ' : 'Max Marks'}</span>
-                <strong className="text-stone-100 text-sm font-mono">{paper.totalMarks} Marks</strong>
+                <span className="text-stone-400 text-[10px] block uppercase font-medium">{language === 'gu' ? 'કુલ ગુણ' : 'Max Marks'}</span>
+                <strong className="text-stone-100 text-sm font-mono font-semibold">{paper.totalMarks} Marks</strong>
               </div>
               <div className="p-2.5 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-stone-400 text-[10px] block uppercase font-bold">{language === 'gu' ? 'સમય અવધિ' : 'Duration'}</span>
-                <strong className="text-stone-100 text-sm font-mono">{paper.durationMinutes} Minutes (3h)</strong>
+                <span className="text-stone-400 text-[10px] block uppercase font-medium">{language === 'gu' ? 'સમય અવધિ' : 'Duration'}</span>
+                <strong className="text-stone-100 text-sm font-mono font-semibold">{paper.durationMinutes} Minutes (3h)</strong>
               </div>
               <div className="p-2.5 rounded-xl bg-white/5 border border-white/10">
-                <span className="text-stone-400 text-[10px] block uppercase font-bold">{language === 'gu' ? 'ઋણ ગુણાંકન' : 'Negative Marking'}</span>
-                <strong className="text-rose-400 text-sm font-mono">{paper.examAgency === 'UPSC' ? '-0.66 (1/3)' : '-0.30'}</strong>
+                <span className="text-stone-400 text-[10px] block uppercase font-medium">{language === 'gu' ? 'ઋણ ગુણાંકન' : 'Negative Marking'}</span>
+                <strong className="text-rose-400 text-sm font-mono font-semibold">{paper.examAgency === 'UPSC' ? '-0.66 (1/3)' : '-0.30'}</strong>
               </div>
             </div>
 
             {/* Official GPSC / UPSC Section Breakdown Indicator */}
             {paper.subjectBreakdown && paper.subjectBreakdown.length > 0 && (
               <div className="pt-3 border-t border-white/10">
-                <div className="text-[11px] font-bold text-stone-300 mb-2 flex items-center justify-between">
+                <div className="text-[11px] font-medium text-stone-300 mb-2 flex items-center justify-between">
                   <span>{language === 'gu' ? 'સત્તાવાર વિભાગવાર વિભાજન (Syllabus Structure):' : 'Official Section Structure & Question Distribution:'}</span>
                   <span className="text-stone-400 font-mono text-[10px]">
                     {language === 'gu' ? `દર્શાવાતા પ્રશ્નો: ${subjectFilteredQuestions.length}` : `Loaded Qs: ${subjectFilteredQuestions.length}`}
@@ -542,10 +542,10 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                   {paper.subjectBreakdown.map((sec, sidx) => (
                     <div key={sidx} className="p-2 rounded-xl bg-white/5 border border-white/10 text-stone-300 flex items-center justify-between">
                       <div className="truncate pr-1">
-                        <span className="font-bold text-white block">Sec {sidx + 1}: {language === 'gu' ? sec.subjectGu : sec.subjectEn}</span>
+                        <span className="font-medium text-white block">Sec {sidx + 1}: {language === 'gu' ? sec.subjectGu : sec.subjectEn}</span>
                         <span className="text-[10px] text-stone-400">Q.{sidx * 50 + 1} to Q.{(sidx + 1) * 50}</span>
                       </div>
-                      <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono font-bold shrink-0">
+                      <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono font-medium shrink-0">
                         {sec.questionCount} Qs
                       </span>
                     </div>
@@ -563,20 +563,20 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
               return (
                 <div
                   key={q.id}
-                  className="p-7 sm:p-8 rounded-3xl bg-white border border-stone-200 hover:border-emerald-300 shadow-xs transition-all space-y-4"
+                  className="p-7 sm:p-8 rounded-3xl bg-white border border-stone-200 hover:border-emerald-300 shadow-md transition-all space-y-4"
                 >
                   {/* Question Header & Badges */}
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-stone-100">
                     <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 rounded-full bg-emerald-800 text-white text-xs font-black font-mono shadow-xs">
+                      <span className="px-3 py-1 rounded-full bg-emerald-800 text-white text-xs font-bold font-mono shadow-md">
                         Q.{idx + 1}
                       </span>
                       {q.subject && SUBJECT_LABELS[q.subject] && (
-                        <span className="px-2.5 py-1 rounded-full bg-stone-100 text-stone-700 text-xs font-semibold border border-stone-200">
+                        <span className="px-2.5 py-1 rounded-full bg-stone-100 text-stone-700 text-xs font-medium border border-stone-200">
                           {SUBJECT_LABELS[q.subject].icon} {language === 'gu' ? SUBJECT_LABELS[q.subject].gu : SUBJECT_LABELS[q.subject].en}
                         </span>
                       )}
-                      <span className="text-[11px] font-bold text-stone-500 bg-stone-50 px-2.5 py-0.5 rounded-md border border-stone-200">
+                      <span className="text-[11px] font-medium text-stone-500 bg-stone-50 px-2.5 py-0.5 rounded-md border border-stone-200">
                         {q.cognitiveType}
                       </span>
                     </div>
@@ -590,7 +590,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                   <div className="space-y-3">
                     {/* Gujarati Text */}
                     {(paperLanguageMode === 'bilingual' || paperLanguageMode === 'gu') && (
-                      <div className="text-base sm:text-lg font-bold text-stone-900 leading-relaxed whitespace-pre-line font-serif sm:font-sans">
+                      <div className="text-base sm:text-lg font-semibold text-stone-900 leading-relaxed whitespace-pre-line font-serif sm:font-sans">
                         {q.questionGu}
                       </div>
                     )}
@@ -612,7 +612,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
                       let optClass = 'border-stone-200 bg-stone-50/60 text-stone-800';
                       if (showAnswerKeys && isCorrect) {
-                        optClass = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-bold ring-1 ring-emerald-500';
+                        optClass = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-semibold ring-1 ring-emerald-500';
                       }
 
                       return (
@@ -620,7 +620,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                           key={opt.id}
                           className={`p-3.5 rounded-2xl border text-xs sm:text-sm flex items-start gap-3 transition-all ${optClass}`}
                         >
-                          <div className={`w-6 h-6 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
+                          <div className={`w-6 h-6 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-medium ${
                             showAnswerKeys && isCorrect
                               ? 'border-emerald-600 bg-emerald-600 text-white'
                               : 'border-stone-300 bg-white text-stone-700'
@@ -630,19 +630,19 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
                           <div className="flex-1 space-y-1">
                             {(paperLanguageMode === 'bilingual' || paperLanguageMode === 'gu') && (
-                              <div className="font-semibold text-stone-900 leading-relaxed">
+                              <div className="font-medium text-stone-900 leading-relaxed">
                                 {opt.textGu}
                               </div>
                             )}
                             {(paperLanguageMode === 'bilingual' || paperLanguageMode === 'en') && (
-                              <div className={paperLanguageMode === 'bilingual' ? 'text-xs text-stone-600 leading-relaxed' : 'font-medium text-stone-800 leading-relaxed'}>
+                              <div className={paperLanguageMode === 'bilingual' ? 'text-xs text-stone-600 leading-relaxed' : 'text-stone-800 leading-relaxed'}>
                                 {opt.textEn}
                               </div>
                             )}
                           </div>
 
                           {showAnswerKeys && isCorrect && (
-                            <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-emerald-600 text-white shrink-0">
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-emerald-600 text-white shrink-0">
                               ✓ {language === 'gu' ? 'સાચો ઉત્તર' : 'Key'}
                             </span>
                           )}
@@ -655,14 +655,14 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                   {showAnswerKeys && (
                     <div className="p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-3 mt-3 animate-in fade-in duration-200">
                       <div className="flex items-center justify-between pb-2 border-b border-emerald-200">
-                        <div className="flex items-center gap-1.5 text-xs font-black text-emerald-900">
+                        <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-900">
                           <Check className="w-4 h-4 text-emerald-700" />
                           <span>{language === 'gu' ? 'અધિકૃત ઉત્તર & વિસ્તૃત સમજૂતી:' : 'Official Answer & Pedagogical Explanation:'}</span>
                         </div>
                         {onReadConcept && (
                           <button
                             onClick={() => onReadConcept(q.topicId)}
-                            className="text-[11px] font-bold text-emerald-800 hover:text-emerald-950 underline flex items-center gap-1"
+                            className="text-[11px] font-semibold text-emerald-800 hover:text-emerald-950 underline flex items-center gap-1"
                           >
                             <span>{language === 'gu' ? 'આ કોન્સેપ્ટ વિગતવાર વાંચો' : 'Read Topic in Notes'}</span>
                             <ChevronRight className="w-3 h-3" />
@@ -671,18 +671,18 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                       </div>
 
                       <div className="space-y-2 text-xs leading-relaxed text-stone-800">
-                        <p className="font-medium">
-                          <strong>{language === 'gu' ? 'સમજૂતી (ગુજરાતી): ' : 'Gujarati Explanation: '}</strong>
+                        <p>
+                          <strong className="font-semibold">{language === 'gu' ? 'સમજૂતી (ગુજરાતી): ' : 'Gujarati Explanation: '}</strong>
                           {q.explanationGu}
                         </p>
                         <p className="text-stone-600">
-                          <strong>English Analysis: </strong>
+                          <strong className="font-semibold">English Analysis: </strong>
                           {q.explanationEn}
                         </p>
                       </div>
 
                       {/* Source Concept Path */}
-                      <div className="pt-2 border-t border-emerald-200/60 flex items-center gap-1 text-[11px] font-semibold text-emerald-900">
+                      <div className="pt-2 border-t border-emerald-200/60 flex items-center gap-1 text-[11px] font-medium text-emerald-900">
                         <span>🏷️ {language === 'gu' ? q.sourceConceptGu : q.sourceConceptEn}</span>
                       </div>
                     </div>
@@ -704,12 +704,12 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
           
           {/* Main Question Display (8 Cols) */}
           <main className="lg:col-span-8 space-y-6">
-            <div className="p-7 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-xs space-y-6">
+            <div className="p-7 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-md space-y-6">
               
               {/* Question Header & Action Row */}
               <div className="flex items-center justify-between pb-4 border-b border-stone-100">
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold font-mono">
+                  <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-medium font-mono">
                     {language === 'gu' ? 'પ્રશ્ન' : 'Question'} {currentIndex + 1} / {subjectFilteredQuestions.length}
                   </span>
                   {activeQuestion.subject && SUBJECT_LABELS[activeQuestion.subject] && (
@@ -717,7 +717,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                       {SUBJECT_LABELS[activeQuestion.subject].icon} {language === 'gu' ? SUBJECT_LABELS[activeQuestion.subject].gu : SUBJECT_LABELS[activeQuestion.subject].en}
                     </span>
                   )}
-                  <span className="text-xs text-stone-500 font-medium">
+                  <span className="text-xs text-stone-500">
                     {paper.examAgency === 'UPSC' ? '+2.0 / -0.66' : '+1.0 / -0.30'} Marks
                   </span>
                 </div>
@@ -725,7 +725,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleToggleReview(activeQuestion.id)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                    className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all flex items-center gap-1.5 ${
                       markedForReview[activeQuestion.id]
                         ? 'bg-purple-100 text-purple-900 border border-purple-300'
                         : 'bg-stone-100 hover:bg-stone-200 text-stone-700'
@@ -754,11 +754,11 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                       onClick={() => handleSelectOption(activeQuestion.id, opt.id)}
                       className={`w-full p-4 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-start gap-3 ${
                         isSelected
-                          ? 'border-emerald-700 bg-emerald-50/70 text-emerald-950 font-bold ring-2 ring-emerald-700'
+                          ? 'border-emerald-700 bg-emerald-50/70 text-emerald-950 font-semibold ring-2 ring-emerald-700'
                           : 'border-stone-200 bg-white hover:border-emerald-300 text-stone-800'
                       }`}
                     >
-                      <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
+                      <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-medium ${
                         isSelected ? 'border-emerald-700 bg-emerald-700 text-white' : 'border-stone-300'
                       }`}>
                         {opt.id.slice(-1).toUpperCase()}
@@ -777,7 +777,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                   <button
                     disabled={currentIndex === 0}
                     onClick={() => setCurrentIndex((prev) => Math.max(0, prev - 1))}
-                    className="px-4 py-2 rounded-xl border border-stone-200 text-xs font-bold text-stone-600 disabled:opacity-30 hover:bg-stone-50 transition-colors flex items-center gap-1"
+                    className="px-4 py-2 rounded-xl border border-stone-200 text-xs font-medium text-stone-600 disabled:opacity-30 hover:bg-stone-50 transition-colors flex items-center gap-1"
                   >
                     <ChevronLeft className="w-3.5 h-3.5" />
                     <span>{language === 'gu' ? 'પાછલો' : 'Previous'}</span>
@@ -796,14 +796,14 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                   {currentIndex < subjectFilteredQuestions.length - 1 ? (
                     <button
                       onClick={() => setCurrentIndex((prev) => Math.min(subjectFilteredQuestions.length - 1, prev + 1))}
-                      className="px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold shadow-xs hover:shadow-md transition-all flex items-center gap-1"
+                      className="px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold shadow-md hover:shadow-md transition-all flex items-center gap-1"
                     >
                       <span>{language === 'gu' ? 'સેવ & આગળ વધો →' : 'Save & Next →'}</span>
                     </button>
                   ) : (
                     <button
                       onClick={() => setShowSubmitModal(true)}
-                      className="px-6 py-2.5 rounded-xl bg-rose-700 hover:bg-rose-600 text-white text-xs font-extrabold shadow-sm transition-all"
+                      className="px-6 py-2.5 rounded-xl bg-rose-700 hover:bg-rose-600 text-white text-xs font-semibold shadow-sm transition-all"
                     >
                       {language === 'gu' ? 'પેપર સબમિટ કરો' : 'Submit Paper'}
                     </button>
@@ -818,10 +818,10 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
           <aside className="lg:col-span-4 space-y-5 p-6 rounded-3xl bg-stone-50 border border-stone-200 sticky top-24">
             
             <div className="flex items-center justify-between pb-3 border-b border-stone-200">
-              <h4 className="text-xs font-extrabold uppercase tracking-wider text-stone-800">
+              <h4 className="text-xs font-medium uppercase tracking-wider text-stone-800">
                 {language === 'gu' ? 'પ્રશ્ન પેલેટ (Question Palette)' : 'Question Palette'}
               </h4>
-              <span className="text-xs font-mono font-bold text-emerald-800">
+              <span className="text-xs font-mono font-semibold text-emerald-800">
                 {subjectFilteredQuestions.filter(q => !!userAnswers[q.id]).length} / {subjectFilteredQuestions.length}
               </span>
             </div>
@@ -855,11 +855,11 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
                 let btnStyle = 'bg-white text-stone-700 border-stone-200 hover:border-emerald-300';
                 if (isAnswered && isReview) {
-                  btnStyle = 'bg-purple-600 text-white border-purple-600 font-bold';
+                  btnStyle = 'bg-purple-600 text-white border-purple-600 font-semibold';
                 } else if (isAnswered) {
-                  btnStyle = 'bg-emerald-600 text-white border-emerald-600 font-bold';
+                  btnStyle = 'bg-emerald-600 text-white border-emerald-600 font-semibold';
                 } else if (isReview) {
-                  btnStyle = 'bg-purple-100 text-purple-900 border-purple-300 font-bold';
+                  btnStyle = 'bg-purple-100 text-purple-900 border-purple-300 font-semibold';
                 }
 
                 if (isCurrent) {
@@ -882,7 +882,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
             <div className="pt-3 border-t border-stone-200">
               <button
                 onClick={() => setShowSubmitModal(true)}
-                className="w-full py-3 rounded-2xl bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition-all shadow-md shadow-emerald-900/20"
+                className="w-full py-3 rounded-2xl bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-semibold transition-all shadow-md shadow-emerald-900/20"
               >
                 {language === 'gu' ? 'સંપૂર્ણ પેપર સબમિટ કરો' : 'Submit Whole Paper'}
               </button>
@@ -902,7 +902,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
           {/* Solution Filters Bar */}
           <div className="p-5 rounded-3xl bg-stone-50 border border-stone-200 flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-stone-600">
+              <span className="text-xs font-medium text-stone-600">
                 {language === 'gu' ? 'સ્થિતિ ફિલ્ટર:' : 'Filter Solutions:'}
               </span>
               {[
@@ -914,9 +914,9 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                 <button
                   key={f.id}
                   onClick={() => setSolutionFilter(f.id)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all flex items-center gap-1.5 ${
                     solutionFilter === f.id
-                      ? 'bg-emerald-700 text-white shadow-xs'
+                      ? 'bg-emerald-700 text-white shadow-md'
                       : 'bg-white text-stone-700 border border-stone-200 hover:border-emerald-300'
                   }`}
                 >
@@ -943,12 +943,12 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
               return (
                 <div
                   key={q.id}
-                  className="p-7 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-xs space-y-5"
+                  className="p-7 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-md space-y-5"
                 >
                   {/* Question Meta */}
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-stone-100">
                     <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold font-mono">
+                      <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-medium font-mono">
                         Q{questions.findIndex((item) => item.id === q.id) + 1}
                       </span>
                       {q.subject && SUBJECT_LABELS[q.subject] && (
@@ -956,13 +956,13 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                           {SUBJECT_LABELS[q.subject].icon} {language === 'gu' ? SUBJECT_LABELS[q.subject].gu : SUBJECT_LABELS[q.subject].en}
                         </span>
                       )}
-                      <span className="text-xs font-bold text-stone-600 bg-stone-50 px-3 py-1 rounded-full border border-stone-200">
+                      <span className="text-xs font-medium text-stone-600 bg-stone-50 px-3 py-1 rounded-full border border-stone-200">
                         {q.sourceConceptEn}
                       </span>
                     </div>
 
                     {selectedOptionId && (
-                      <span className={`px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1 ${
+                      <span className={`px-2.5 py-1 rounded-full text-[11px] font-medium flex items-center gap-1 ${
                         isUserCorrect
                           ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                           : 'bg-rose-50 text-rose-800 border border-rose-200'
@@ -995,7 +995,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
                       let optClass = 'border-stone-200 bg-stone-50/50 text-stone-700';
                       if (isCorrect) {
-                        optClass = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-bold';
+                        optClass = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-semibold';
                       } else if (isSelected && !isCorrect) {
                         optClass = 'border-rose-400 bg-rose-50 text-rose-950';
                       }
@@ -1005,7 +1005,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                           key={opt.id}
                           className={`p-3.5 rounded-2xl border text-xs sm:text-sm flex items-start gap-3 ${optClass}`}
                         >
-                          <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold ${
+                          <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-medium ${
                             isCorrect 
                               ? 'border-emerald-600 bg-emerald-600 text-white' 
                               : isSelected
@@ -1018,12 +1018,12 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                             {language === 'gu' ? opt.textGu : opt.textEn}
                           </span>
                           {isCorrect && (
-                            <span className="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-emerald-600 text-white shrink-0">
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-emerald-600 text-white shrink-0">
                               {language === 'gu' ? 'અધિકૃત ઉત્તર' : 'Official Key'}
                             </span>
                           )}
                           {isSelected && !isCorrect && (
-                            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-rose-200 text-rose-900 shrink-0">
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-rose-200 text-rose-900 shrink-0">
                               {language === 'gu' ? 'તમારો વિકલ્પ' : 'Your Answer'}
                             </span>
                           )}
@@ -1034,11 +1034,11 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
 
                   {/* Detailed Official Explanation Box */}
                   <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200 space-y-2.5">
-                    <div className="flex items-center gap-2 text-xs font-bold text-emerald-900">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-emerald-900">
                       <Sparkles className="w-4 h-4 text-emerald-700" />
                       <span>{language === 'gu' ? 'અધિકૃત વિશ્લેષણ અને સમજૂતી:' : 'Official Analysis & In-Depth Explanation:'}</span>
                     </div>
-                    <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
+                    <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
                       {language === 'gu' ? q.explanationGu : q.explanationEn}
                     </p>
 
@@ -1048,7 +1048,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                         <ul className="list-disc list-inside space-y-0.5 pl-1">
                           {q.options.filter((o) => o.whyWrongEn).map((o) => (
                             <li key={o.id}>
-                              <strong>Option {o.id.slice(-1).toUpperCase()}: </strong>
+                              <strong className="font-semibold">Option {o.id.slice(-1).toUpperCase()}: </strong>
                               {language === 'gu' ? o.whyWrongGu : o.whyWrongEn}
                             </li>
                           ))}
@@ -1060,7 +1060,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                       <div className="pt-2 border-t border-stone-200 flex justify-end">
                         <button
                           onClick={() => onReadConcept(q.topicId)}
-                          className="text-emerald-700 font-bold hover:underline inline-flex items-center gap-1 text-xs"
+                          className="text-emerald-700 font-semibold hover:underline inline-flex items-center gap-1 text-xs"
                         >
                           <span>{language === 'gu' ? 'આ વિષયનો સિલેબસ નોટ્સ વાંચો →' : 'Read Topic Notes →'}</span>
                         </button>
@@ -1081,7 +1081,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="p-7 rounded-3xl bg-white max-w-md w-full space-y-5 shadow-2xl animate-in zoom-in-95 duration-200">
             <div className="space-y-2">
-              <h3 className="text-lg font-extrabold text-stone-900">
+              <h3 className="text-lg font-semibold text-stone-900">
                 {language === 'gu' ? 'શું તમે ખરેખર પેપર સબમિટ કરવા માંગો છો?' : 'Submit Whole Paper Test?'}
               </h3>
               <p className="text-xs text-stone-500 leading-relaxed">
@@ -1094,7 +1094,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
             <div className="flex items-center justify-end gap-3 pt-2">
               <button
                 onClick={() => setShowSubmitModal(false)}
-                className="px-4 py-2 rounded-xl border border-stone-200 text-xs font-bold text-stone-600 hover:bg-stone-50"
+                className="px-4 py-2 rounded-xl border border-stone-200 text-xs font-medium text-stone-600 hover:bg-stone-50"
               >
                 {language === 'gu' ? 'પરીક્ષા ચાલુ રાખો' : 'Resume Test'}
               </button>
@@ -1104,7 +1104,7 @@ export const FullPaperSimulator: React.FC<FullPaperSimulatorProps> = ({
                   setIsSubmitted(true);
                   setActiveMode('solutions');
                 }}
-                className="px-5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold shadow-sm"
+                className="px-5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold shadow-sm"
               >
                 {language === 'gu' ? 'હા, સબમિટ કરો' : 'Confirm & Submit'}
               </button>

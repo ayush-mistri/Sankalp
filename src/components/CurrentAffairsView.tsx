@@ -28,15 +28,15 @@ export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language
   });
 
   return (
-    <div className="w-full space-y-6 animate-in fade-in duration-300">
+    <div className="w-full space-y-4 animate-in fade-in duration-300">
       
       {/* Header Banner in Emerald & White */}
-      <div className="p-7 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-800 via-emerald-800 to-emerald-700 text-white shadow-lg space-y-2.5">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold">
+      <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-emerald-800 via-emerald-800 to-emerald-700 text-white shadow-lg space-y-2">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-medium">
           <Newspaper className="w-3.5 h-3.5 text-emerald-200" />
           <span>{language === 'gu' ? 'દૈનિક વર્તમાન પ્રવાહો - સિલેબસ લિંક્ડ' : 'Syllabus-Anchored Current Affairs'}</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
           {language === 'gu'
             ? 'અસંબંધિત સમાચારો છોડો, માત્ર સિલેબસ-સંબંધિત ઘટનાઓ વાંચો'
             : 'No Random News. Only Events Mapped to GPSC GS Papers.'}
@@ -61,7 +61,7 @@ export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language
             onClick={() => setSelectedPaper(tab.id)}
             className={`px-4 py-2.5 rounded-xl transition-all whitespace-nowrap border ${
               selectedPaper === tab.id
-                ? 'bg-emerald-700 text-white border-emerald-700 shadow-xs'
+                ? 'bg-emerald-700 text-white border-emerald-700 shadow-md'
                 : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-300'
             }`}
           >
@@ -75,20 +75,20 @@ export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language
         {filteredItems.map((item) => (
           <div
             key={item.id}
-            className="p-6 sm:p-7 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-4 hover:border-emerald-400 transition-all"
+            className="p-6 sm:p-7 rounded-2xl bg-white border border-stone-200 shadow-md space-y-4 hover:border-emerald-400 transition-all"
           >
             {/* Top Bar: Paper Badge + Syllabus Anchor */}
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
               <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 font-extrabold">
+                <span className="px-3 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium">
                   {item.gsPaper}
                 </span>
-                <span className="flex items-center gap-1 font-mono text-emerald-800 font-medium">
-                  <Tag className="w-3.5 h-3.5 text-emerald-600" />
+                <span className="flex items-center gap-1 font-mono text-emerald-700 text-[11px]">
+                  <Tag className="w-3.5 h-3.5 text-emerald-500" />
                   {language === 'gu' ? item.topicTagGu : item.topicTagEn}
                 </span>
               </div>
-              <span className="text-stone-400 font-medium">{item.date}</span>
+              <span className="text-stone-400 text-[11px]">{item.date}</span>
             </div>
 
             {/* Visual Thematic Image */}
@@ -105,7 +105,7 @@ export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900/75 via-transparent to-transparent flex items-end justify-between p-3.5">
-                  <span className="text-[11px] text-white/95 font-semibold drop-shadow-xs">
+                  <span className="text-[11px] text-white/95 font-semibold drop-shadow-md">
                     {language === 'gu' ? 'વિઝ્યુઅલ કેસ સ્ટડી • ' + item.topicTagGu : 'Visual Reference • ' + item.topicTagEn}
                   </span>
                   <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-stone-900/80 backdrop-blur-xs text-[10px] font-bold text-white group-hover:bg-emerald-700 transition-colors">
@@ -117,12 +117,12 @@ export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language
             )}
 
             {/* Headline */}
-            <h2 className="text-lg font-bold text-stone-900 leading-snug">
+            <h2 className="text-base font-semibold text-stone-900 leading-snug">
               {language === 'gu' ? item.headlineGu : item.headlineEn}
             </h2>
 
             {/* Summary */}
-            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-500 leading-relaxed">
               {language === 'gu' ? item.summaryGu : item.summaryEn}
             </p>
 
@@ -130,22 +130,22 @@ export const CurrentAffairsView: React.FC<CurrentAffairsViewProps> = ({ language
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
               {/* Prelims Box */}
               <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200 text-xs space-y-1">
-                <div className="flex items-center gap-1.5 font-bold text-emerald-950">
-                  <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+                <div className="flex items-center gap-1.5 font-semibold text-emerald-900">
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
                   <span>{language === 'gu' ? 'પ્રિલિમ્સ મહત્વ (Prelims Angle):' : 'Prelims Focus:'}</span>
                 </div>
-                <p className="text-stone-700 leading-relaxed text-[11px]">
+                <p className="text-stone-600 leading-relaxed text-[11px]">
                   {language === 'gu' ? item.prelimsAngleGu : item.prelimsAngleEn}
                 </p>
               </div>
 
               {/* Mains Box */}
               <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200 text-xs space-y-1">
-                <div className="flex items-center gap-1.5 font-bold text-emerald-950">
-                  <PenTool className="w-3.5 h-3.5 text-emerald-700" />
+                <div className="flex items-center gap-1.5 font-semibold text-emerald-900">
+                  <PenTool className="w-3.5 h-3.5 text-emerald-600" />
                   <span>{language === 'gu' ? 'મેઈન્સ ઉત્તરલેખન પ્રશ્ન (Mains Angle):' : 'Mains Thought Prompt:'}</span>
                 </div>
-                <p className="text-stone-700 leading-relaxed italic text-[11px]">
+                <p className="text-stone-600 leading-relaxed italic text-[11px]">
                   {language === 'gu' ? item.mainsAngleGu : item.mainsAngleEn}
                 </p>
               </div>

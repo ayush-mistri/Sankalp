@@ -159,14 +159,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-stone-200/80 bg-white/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-stone-200/80 bg-white/95 backdrop-blur-xl shadow-sm">
       <div className="mx-auto w-[90%] max-w-[1680px]">
-        <div className="flex h-[88px] items-center justify-between gap-4">
+        <div className="flex h-[80px] items-center justify-between gap-4">
           <div className="flex min-w-0 items-center gap-3">
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen((open) => !open)}
-              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-stone-200 text-stone-600 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-800 md:hidden"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-stone-200 text-stone-600 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-800 lg:hidden"
               aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-navigation"
@@ -186,9 +186,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Image
                 src="/sankalp-logo.png"
                 alt=""
-                width={72}
-                height={72}
-                className="h-[72px] w-[72px] shrink-0 rounded-xl object-contain"
+                width={64}
+                height={64}
+                className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-xl object-contain"
               />
               <span className="min-w-0">
                 <span className="block truncate text-lg font-extrabold tracking-tight text-stone-900 sm:text-xl">
@@ -201,16 +201,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          <div className="hidden min-w-0 flex-1 justify-center 2xl:flex">
-            <Navigation
-              activeTab={activeTab}
-              currentLanguage={currentLanguage}
-              onTabChange={onTabChange}
-              layout="inline"
-              includeMore
-            />
-          </div>
-
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
@@ -218,7 +208,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 closeMobileMenu();
                 onOpenOrientation();
               }}
-              className="inline-flex h-10 items-center gap-2 rounded-xl bg-emerald-700 px-3.5 text-xs font-bold text-white shadow-sm transition hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 sm:px-4"
+              className="inline-flex h-10 items-center gap-2 rounded-xl bg-emerald-700 px-3.5 text-xs font-bold text-white shadow-md transition hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 sm:px-4"
             >
               <Sparkles className="h-4 w-4" />
               <span className="hidden sm:inline">
@@ -256,20 +246,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        <div className="hidden overflow-x-auto border-t border-stone-100 py-2 md:block 2xl:hidden">
-          <Navigation
-            activeTab={activeTab}
-            currentLanguage={currentLanguage}
-            onTabChange={onTabChange}
-            layout="inline"
-            includeMore={false}
-          />
-        </div>
-
         {isMobileMenuOpen && (
           <div
             id="mobile-navigation"
-            className="border-t border-stone-100 py-3 md:hidden"
+            className="border-t border-stone-100 py-3 lg:hidden"
           >
             <Navigation
               activeTab={activeTab}

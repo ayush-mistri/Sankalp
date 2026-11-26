@@ -75,14 +75,14 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-600 text-white uppercase tracking-wider">
+                <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-emerald-600 text-white uppercase tracking-wider">
                   SANKALP OFFICIAL PDF
                 </span>
                 <span className="text-xs text-stone-300 font-mono">
                   {paper.examAgency} {paper.year} · {paper.paperCode || 'CSP-1'}
                 </span>
               </div>
-              <h1 className="text-sm sm:text-base font-extrabold text-white truncate max-w-lg sm:max-w-xl">
+              <h1 className="text-sm sm:text-base font-bold text-white truncate max-w-lg sm:max-w-xl">
                 {language === 'gu' ? paper.examNameGu : paper.examNameEn}
               </h1>
             </div>
@@ -95,9 +95,9 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
           {/* Official 200 Questions Answer Key Toggle */}
           <button
             onClick={() => setShowAnswerKeySheet(!showAnswerKeySheet)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
               showAnswerKeySheet
-                ? 'bg-amber-500 text-stone-950 shadow-xs'
+                ? 'bg-amber-500 text-stone-950 shadow-md'
                 : 'bg-stone-800 hover:bg-stone-700 text-stone-300'
             }`}
           >
@@ -115,7 +115,7 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
           />
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="px-3 py-1.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-bold transition-all flex items-center gap-1.5"
+            className="px-3 py-1.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-semibold transition-all flex items-center gap-1.5"
             title="Upload authentic government PDF for this paper"
           >
             <Upload className="w-3.5 h-3.5 text-emerald-400" />
@@ -125,7 +125,7 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
           {/* Print PDF */}
           <button
             onClick={() => window.print()}
-            className="px-3 py-1.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-bold transition-all flex items-center gap-1.5"
+            className="px-3 py-1.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-semibold transition-all flex items-center gap-1.5"
             title="Print paper"
           >
             <Printer className="w-3.5 h-3.5 text-stone-300" />
@@ -136,7 +136,7 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
           <a
             href={pdfSource}
             download={`${paper.id}-sankalp.pdf`}
-            className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm"
+            className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-all flex items-center gap-1.5 shadow-sm"
           >
             <Download className="w-3.5 h-3.5" />
             <span>{language === 'gu' ? 'PDF ડાઉનલોડ' : 'Download PDF'}</span>
@@ -146,7 +146,7 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
           {onStartExam && (
             <button
               onClick={onStartExam}
-              className="px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-white text-stone-900 text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm"
+              className="px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-white text-stone-900 text-xs font-semibold transition-all flex items-center gap-1.5 shadow-sm"
             >
               <Clock className="w-3.5 h-3.5 text-emerald-700" />
               <span>{language === 'gu' ? 'ઓનલાઈન ટેસ્ટ' : 'CBT Test'}</span>
@@ -176,12 +176,12 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
             >
               <div className="flex flex-col items-center justify-center h-full p-8 text-center text-white space-y-4">
                 <FileText className="w-16 h-16 text-emerald-400" />
-                <p className="text-base font-bold">PDF Reader loaded successfully.</p>
+                <p className="text-base font-semibold">PDF Reader loaded successfully.</p>
                 <a
                   href={pdfSource}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs"
+                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs"
                 >
                   Click here to view PDF in full window
                 </a>
@@ -192,7 +192,7 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
           {/* Interactive Fallback Overlay & Official Document Sheet (if PDF file is loading or previewed) */}
           <div className="absolute inset-x-0 bottom-0 pointer-events-none p-4 flex justify-center">
             <div className="pointer-events-auto bg-stone-900/90 backdrop-blur-md border border-stone-700 p-3 rounded-2xl shadow-2xl flex items-center gap-4 text-xs text-stone-200">
-              <span className="font-bold flex items-center gap-1.5 text-emerald-400">
+              <span className="font-semibold flex items-center gap-1.5 text-emerald-400">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span>{language === 'gu' ? 'સંપૂર્ણ ૨૦૦ પ્રશ્નોનું અધિકૃત પ્રશ્નપત્ર' : 'Complete 200 Questions Official Paper'}</span>
               </span>
@@ -201,7 +201,7 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
               <span className="text-stone-400">|</span>
               <button
                 onClick={() => setShowAnswerKeySheet(true)}
-                className="text-amber-400 font-bold hover:underline flex items-center gap-1"
+                className="text-amber-400 font-semibold hover:underline flex items-center gap-1"
               >
                 <span>{language === 'gu' ? 'આન્સર કી જુઓ' : 'View Answer Key'}</span>
                 <ChevronRight className="w-3 h-3" />
@@ -217,7 +217,7 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
             
             {/* Drawer Header */}
             <div className="p-4 border-b border-stone-800 flex items-center justify-between">
-              <div className="flex items-center gap-2 text-xs font-bold text-amber-400">
+              <div className="flex items-center gap-2 text-xs font-semibold text-amber-400">
                 <Award className="w-4 h-4" />
                 <span>{language === 'gu' ? 'સત્તાવાર ફાઇનલ આન્સર કી (1 થી 200)' : 'Official Final Answer Key (Q.1 to Q.200)'}</span>
               </div>
@@ -238,7 +238,7 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
               </div>
 
               {/* 4 Sections Quick Jump Tabs */}
-              <div className="grid grid-cols-2 gap-2 text-[10px] font-bold">
+              <div className="grid grid-cols-2 gap-2 text-[10px] font-medium">
                 <div className="p-2 rounded-lg bg-stone-800 text-stone-300">
                   <span className="block text-emerald-400">Sec 1: History</span>
                   <span>Q.1 to Q.50</span>
@@ -284,7 +284,7 @@ export const SankalpPdfViewer: React.FC<SankalpPdfViewerProps> = ({
             <div className="p-3 border-t border-stone-800 bg-stone-900 text-center text-xs">
               <button
                 onClick={() => window.print()}
-                className="w-full py-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-bold transition-all flex items-center justify-center gap-1.5"
+                className="w-full py-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold transition-all flex items-center justify-center gap-1.5"
               >
                 <Printer className="w-3.5 h-3.5" />
                 <span>{language === 'gu' ? 'આન્સર કી પ્રિન્ટ કરો' : 'Print Answer Key Sheet'}</span>

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { ActiveTab, Language } from '@/types';
 import { Navbar } from '@/components/Navbar';
+import { Sidebar } from '@/components/Sidebar';
 import { HomeView } from '@/components/HomeView';
 import { SyllabusView } from '@/components/SyllabusView';
 import { BooksView } from '@/components/BooksView';
@@ -76,103 +77,122 @@ export default function Home() {
         onOpenOrientation={() => setIsOrientationOpen(true)}
       />
 
-      <main className="mx-auto w-[90%] max-w-[1680px] space-y-7 py-6 sm:py-8 lg:py-10">
-        {(activeTab === 'practice' || activeTab === 'reader' || activeTab === 'notes') && (
-          <LiveStudyTimer language={language} />
-        )}
+      {/* Sidebar + Main content layout */}
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 py-4 sm:py-5">
+        <div className="flex gap-3 items-start">
 
-        {activeTab === 'home' && (
-          <HomeView
-            language={language}
-            onNavigateTab={(tab) => {
+          {/* Left Sidebar — hidden on mobile, sticky on desktop */}
+          <Sidebar
+            currentLanguage={language}
+            activeTab={activeTab}
+            onTabChange={(tab) => {
               setActiveTab(tab);
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            onOpenOrientation={() => setIsOrientationOpen(true)}
           />
-        )}
 
-        {activeTab === 'syllabus' && (
-          <SyllabusView
-            language={language}
-            onExploreTopic={handleOpenTopic}
-            onGoToPractice={(tag) => {
-              setActiveTab('practice');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            onGoToBooks={() => {
-              setActiveTab('books');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-          />
-        )}
+          {/* Main content area */}
+          <main className="min-w-0 flex-1 space-y-4">
+            {(activeTab === 'practice' || activeTab === 'reader' || activeTab === 'notes') && (
+              <LiveStudyTimer language={language} />
+            )}
 
-        {(activeTab === 'books' || activeTab === 'resources') && (
-          <BooksView language={language} />
-        )}
+            {activeTab === 'home' && (
+              <HomeView
+                language={language}
+                onNavigateTab={(tab) => {
+                  setActiveTab(tab);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenOrientation={() => setIsOrientationOpen(true)}
+                onOpenPaper={handleOpenPaperFromRadar}
+              />
+            )}
 
-        {activeTab === 'notes' && (
-          <NotesView
-            language={language}
-            onReadFullModule={handleOpenTopic}
-          />
-        )}
+            {activeTab === 'syllabus' && (
+              <SyllabusView
+                language={language}
+                onExploreTopic={handleOpenTopic}
+                onGoToPractice={() => {
+                  setActiveTab('practice');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onGoToBooks={() => {
+                  setActiveTab('books');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              />
+            )}
 
-        {activeTab === 'roadmap' && (
-          <RoadmapView
-            language={language}
-            onOpenTopic={handleOpenTopic}
-            onPracticeTopic={handlePracticeTopic}
-          />
-        )}
+            {(activeTab === 'books' || activeTab === 'resources') && (
+              <BooksView language={language} />
+            )}
 
-        {activeTab === 'live_radar' && (
-          <LiveExamTracker 
-            language={language} 
-            onOpenPaper={handleOpenPaperFromRadar}
-          />
-        )}
+            {activeTab === 'notes' && (
+              <NotesView
+                language={language}
+                onReadFullModule={handleOpenTopic}
+              />
+            )}
 
-        {activeTab === 'reader' && (
-          <ReaderView
-            language={language}
-            selectedTopicId={selectedTopicId}
-            onSelectTopic={(tId) => setSelectedTopicId(tId)}
-            onBackToRoadmap={() => setActiveTab('home')}
-            onGoToPractice={(tId) => {
-              setSelectedTopicId(tId);
-              setActiveTab('practice');
-            }}
-          />
-        )}
+            {activeTab === 'roadmap' && (
+              <RoadmapView
+                language={language}
+                onOpenTopic={handleOpenTopic}
+                onPracticeTopic={handlePracticeTopic}
+              />
+            )}
 
-        {activeTab === 'practice' && (
-          <PracticeView
-            language={language}
-            onBackToRoadmap={() => setActiveTab('home')}
-            onReadConcept={(tId) => {
-              setSelectedTopicId(tId);
-              setActiveTab('reader');
-            }}
-            initialPaperId={requestedPaperId}
-            onClearInitialPaper={() => setRequestedPaperId(null)}
-          />
-        )}
+            {activeTab === 'live_radar' && (
+              <LiveExamTracker
+                language={language}
+                onOpenPaper={handleOpenPaperFromRadar}
+              />
+            )}
 
-        {activeTab === 'current_affairs' && (
-          <CurrentAffairsView language={language} />
-        )}
+            {activeTab === 'reader' && (
+              <ReaderView
+                language={language}
+                selectedTopicId={selectedTopicId}
+                onSelectTopic={(tId) => setSelectedTopicId(tId)}
+                onBackToRoadmap={() => setActiveTab('home')}
+                onGoToPractice={(tId) => {
+                  setSelectedTopicId(tId);
+                  setActiveTab('practice');
+                }}
+              />
+            )}
 
-        {activeTab === 'readiness' && (
-          <ReadinessView
-            language={language}
-            onFixWeakArea={(tId) => {
-              setSelectedTopicId(tId);
-              setActiveTab('reader');
-            }}
-          />
-        )}
-      </main>
+            {activeTab === 'practice' && (
+              <PracticeView
+                language={language}
+                onBackToRoadmap={() => setActiveTab('home')}
+                onReadConcept={(tId) => {
+                  setSelectedTopicId(tId);
+                  setActiveTab('reader');
+                }}
+                initialPaperId={requestedPaperId}
+                onClearInitialPaper={() => setRequestedPaperId(null)}
+              />
+            )}
+
+            {activeTab === 'current_affairs' && (
+              <CurrentAffairsView language={language} />
+            )}
+
+            {activeTab === 'readiness' && (
+              <ReadinessView
+                language={language}
+                onFixWeakArea={(tId) => {
+                  setSelectedTopicId(tId);
+                  setActiveTab('reader');
+                }}
+              />
+            )}
+          </main>
+
+        </div>
+      </div>
 
       {/* Orientation Diagnostic Modal */}
       <BeginnerOrientationModal

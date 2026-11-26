@@ -479,10 +479,10 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
 
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <h2 className="text-xs sm:text-sm font-bold truncate max-w-[260px] sm:max-w-md">
+              <h2 className="text-xs sm:text-sm font-semibold truncate max-w-[260px] sm:max-w-md">
                 {language === 'gu' ? resource.titleGu : resource.titleEn}
               </h2>
-              <span className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-900/70 border border-emerald-700/60 text-[10px] font-bold text-emerald-300 shrink-0">
+              <span className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-900/70 border border-emerald-700/60 text-[10px] font-medium text-emerald-300 shrink-0">
                 {storageMode === 'cloud' ? (
                   <>
                     <Cloud className="w-3 h-3" /> PostgreSQL Sync
@@ -509,9 +509,9 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
         <div className="flex items-center bg-stone-800 p-1 rounded-xl border border-stone-700">
           <button
             onClick={() => setMode('interactive')}
-            className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
               mode === 'interactive'
-                ? 'bg-emerald-600 text-white shadow-xs'
+                ? 'bg-emerald-600 text-white shadow-md'
                 : 'text-stone-300 hover:text-white'
             }`}
           >
@@ -520,9 +520,9 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
           </button>
           <button
             onClick={() => setMode('pdf')}
-            className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
               mode === 'pdf'
-                ? 'bg-emerald-600 text-white shadow-xs'
+                ? 'bg-emerald-600 text-white shadow-md'
                 : 'text-stone-300 hover:text-white'
             }`}
           >
@@ -588,7 +588,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
           {/* Bookmark Toggle (available in both Interactive & PDF modes) */}
           <button
             onClick={handleToggleBookmark}
-            className={`px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors border ${
+            className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors border ${
               isChapterBookmarked
                 ? 'bg-amber-500/20 border-amber-400/50 text-amber-300'
                 : 'bg-stone-800 border-stone-700 text-stone-300 hover:text-white'
@@ -614,7 +614,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
           {/* Toggle Study Drawer (available in both modes) */}
           <button
             onClick={() => setShowStudyDrawer((v) => !v)}
-            className={`px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors border ${
+            className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors border ${
               showStudyDrawer
                 ? 'bg-emerald-700 border-emerald-600 text-white'
                 : 'bg-stone-800 border-stone-700 text-stone-300 hover:text-white'
@@ -637,7 +637,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                 href={activeLocalBlobUrl || resource.hostedPdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-2.5 py-1.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-xs font-bold text-white flex items-center gap-1.5 border border-stone-700"
+                className="px-2.5 py-1.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-xs font-semibold text-white flex items-center gap-1.5 border border-stone-700"
               >
                 <Maximize2 className="w-3.5 h-3.5 text-emerald-400" />
                 <span className="hidden sm:inline">{language === 'gu' ? 'નવી ટેબ' : 'Full Tab'}</span>
@@ -681,14 +681,14 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
             {mode === 'interactive' ? (
               <>
                 <div className="p-4 border-b border-stone-800 space-y-2">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                  <div className="text-[10px] font-medium uppercase tracking-wider text-emerald-400">
                     {language === 'gu' ? 'પ્રકરણ પસંદગી' : 'Chapter Selection'}
                   </div>
                   <div className="flex items-center justify-between text-xs text-stone-400">
                     <span>
                       {language === 'gu' ? 'વાંચન પ્રગતિ' : 'Reading Progress'}
                     </span>
-                    <span className="font-bold text-white">{progressPercent}%</span>
+                    <span className="font-semibold text-white">{progressPercent}%</span>
                   </div>
                   <div className="h-1.5 bg-stone-800 rounded-full overflow-hidden">
                     <div
@@ -701,7 +701,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                 <div className="p-3 space-y-5 flex-1">
                   {groupedChapters.map((group) => (
                     <div key={group.partLabel} className="space-y-1.5">
-                      <div className="px-2 text-[10px] font-extrabold uppercase tracking-wider text-stone-400">
+                      <div className="px-2 text-[10px] font-medium uppercase tracking-wider text-stone-400">
                         {group.partLabel}
                       </div>
                       <div className="space-y-1">
@@ -723,13 +723,13 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                                 {isDone ? (
                                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                                 ) : (
-                                  <span className="w-4 h-4 rounded-full border border-stone-600 inline-flex items-center justify-center text-[9px] font-bold">
+                                  <span className="w-4 h-4 rounded-full border border-stone-600 inline-flex items-center justify-center text-[9px] font-medium">
                                     {ch.chapterNumber}
                                   </span>
                                 )}
                               </div>
                               <div className="min-w-0 flex-1">
-                                <div className="text-xs font-bold leading-snug line-clamp-2">
+                                <div className="text-xs font-medium leading-snug line-clamp-2">
                                   {language === 'gu' ? ch.titleGu : ch.titleEn}
                                 </div>
                                 <div className="flex items-center gap-2 text-[10px] text-stone-400 mt-1">
@@ -749,7 +749,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
               /* PDF LOCKER VOLUMES SIDEBAR */
               <div className="p-4 space-y-4">
                 <div className="space-y-1">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                  <div className="text-[10px] font-medium uppercase tracking-wider text-emerald-400">
                     {language === 'gu'
                       ? 'પ્રાઇવેટ બ્રાઉઝર PDF લોકર'
                       : 'Private Browser PDF Locker'}
@@ -789,7 +789,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                           }}
                           className="w-full text-left space-y-1"
                         >
-                          <div className="text-xs font-bold text-white leading-snug">
+                          <div className="text-xs font-semibold text-white leading-snug">
                             {volLabel}
                           </div>
                           <div className="text-[10px] text-stone-400 flex items-center gap-2">
@@ -824,7 +824,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                               href={vol.officialUrl || resource.sourceUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="w-full py-1.5 px-2.5 rounded-lg bg-stone-900 hover:bg-stone-950 border border-stone-700 text-[11px] font-semibold text-stone-200 flex items-center justify-center gap-1.5"
+                              className="w-full py-1.5 px-2.5 rounded-lg bg-stone-900 hover:bg-stone-950 border border-stone-700 text-[11px] font-medium text-stone-200 flex items-center justify-center gap-1.5"
                             >
                               <ExternalLink className="w-3 h-3 text-emerald-400" />
                               <span>
@@ -832,7 +832,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                               </span>
                             </a>
 
-                            <label className="w-full py-1.5 px-2.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-[11px] font-bold text-white flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
+                            <label className="w-full py-1.5 px-2.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-[11px] font-semibold text-white flex items-center justify-center gap-1.5 cursor-pointer transition-colors">
                               <Upload className="w-3 h-3" />
                               <span>
                                 {language === 'gu'
@@ -859,7 +859,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
 
                 {localPdfs.some((p) => p.volumeKey.startsWith('chapter::')) && (
                   <div className="space-y-2 pt-2 border-t border-stone-800">
-                    <div className="text-[10px] font-bold uppercase tracking-wider text-stone-400">
+                    <div className="text-[10px] font-medium uppercase tracking-wider text-stone-400">
                       {language === 'gu' ? 'લોડ કરેલા પ્રકરણ PDF' : 'Loaded Chapter PDFs'}
                     </div>
                     <div className="space-y-1.5">
@@ -881,7 +881,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                                   setSelectedVolumeKey(item.volumeKey);
                                   setPreferDigestPdf(false);
                                 }}
-                                className="text-left truncate flex-1 font-semibold hover:text-emerald-300"
+                                className="text-left truncate flex-1 font-medium hover:text-emerald-300"
                               >
                                 {item.volumeLabel}
                               </button>
@@ -902,7 +902,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                 {resource.hostedPdfUrl && (
                   <button
                     onClick={() => setPreferDigestPdf(true)}
-                    className={`w-full py-2 px-3 rounded-xl text-xs font-bold border transition-colors flex items-center justify-center gap-1.5 ${
+                    className={`w-full py-2 px-3 rounded-xl text-xs font-semibold border transition-colors flex items-center justify-center gap-1.5 ${
                       preferDigestPdf || !activeLocalBlobUrl
                         ? 'bg-stone-800 border-emerald-600/50 text-emerald-300'
                         : 'bg-stone-900 border-stone-800 text-stone-400 hover:text-white'
@@ -935,7 +935,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                         : 'Viewing Sankalp Study Digest PDF. Load your official downloaded PDF on the left to read all 100% pages inside Sankalp.'}
                     </span>
                   </div>
-                  <label className="px-3 py-1 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-[11px] font-bold flex items-center gap-1.5 cursor-pointer shrink-0">
+                  <label className="px-3 py-1 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-[11px] font-semibold flex items-center gap-1.5 cursor-pointer shrink-0">
                     <Upload className="w-3.5 h-3.5" />
                     <span>{language === 'gu' ? 'PDF લોડ કરો' : 'Load PDF Now'}</span>
                     <input
@@ -973,7 +973,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
               ) : (
                 <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-stone-400 space-y-4">
                   <FileText className="w-12 h-12 text-emerald-500/50" />
-                  <p className="text-sm font-bold text-white">
+                  <p className="text-sm font-semibold text-white">
                     {language === 'gu'
                       ? 'ડાબી બાજુથી સત્તાવાર PDF લોડ કરો'
                       : 'Select a volume on the left to load your official PDF'}
@@ -986,7 +986,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
               {/* Chapter Header */}
               <header className="space-y-3 pb-6 border-b border-stone-200/60">
                 {(activeChapter.partLabelEn || activeChapter.partLabelGu) && (
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600/10 text-emerald-700 text-xs font-extrabold">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600/10 text-emerald-700 text-xs font-medium">
                     <Sparkles className="w-3.5 h-3.5" />
                     <span>
                       {language === 'gu'
@@ -996,7 +996,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                   </div>
                 )}
 
-                <h1 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight">
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
                   {language === 'gu' ? activeChapter.titleGu : activeChapter.titleEn}
                 </h1>
 
@@ -1022,7 +1022,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                       href={activeChapter.officialChapterPdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-xs transition-colors"
+                      className="px-3 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 shadow-md transition-colors"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>
@@ -1039,7 +1039,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                           setPreferDigestPdf(false);
                           setMode('pdf');
                         }}
-                        className="px-3 py-1.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-emerald-300 text-xs font-bold inline-flex items-center gap-1.5 border border-emerald-600/40"
+                        className="px-3 py-1.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-emerald-300 text-xs font-semibold inline-flex items-center gap-1.5 border border-emerald-600/40"
                       >
                         <FileText className="w-3.5 h-3.5" />
                         <span>
@@ -1049,7 +1049,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                         </span>
                       </button>
                     ) : (
-                      <label className="px-3 py-1.5 rounded-xl bg-stone-500/15 hover:bg-stone-500/25 text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer border border-stone-400/30 transition-colors">
+                      <label className="px-3 py-1.5 rounded-xl bg-stone-500/15 hover:bg-stone-500/25 text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer border border-stone-400/30 transition-colors">
                         <Upload className="w-3.5 h-3.5 text-emerald-600" />
                         <span>
                           {language === 'gu'
@@ -1095,7 +1095,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                     ))}
                     <button
                       onClick={() => handleApplyHighlight('yellow', true)}
-                      className="px-3 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1"
+                      className="px-3 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-1"
                     >
                       <NotebookPen className="w-3.5 h-3.5" />
                       <span>{language === 'gu' ? 'હાઇલાઇટ + નોટ' : 'Highlight & Note'}</span>
@@ -1121,7 +1121,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                       onTouchEnd={() => handleSectionMouseUp(section.id)}
                       className="space-y-3 group"
                     >
-                      <h2 className="text-lg sm:text-xl font-extrabold text-emerald-700">
+                      <h2 className="text-lg sm:text-xl font-semibold text-emerald-700">
                         {language === 'gu' ? section.headingGu : section.headingEn}
                       </h2>
 
@@ -1137,7 +1137,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                           {section.keyTerms.map((term) => (
                             <span
                               key={term}
-                              className="px-2.5 py-0.5 rounded-lg bg-emerald-600/10 text-emerald-700 text-[11px] font-bold"
+                              className="px-2.5 py-0.5 rounded-lg bg-emerald-600/10 text-emerald-700 text-[11px] font-medium"
                             >
                               #{term}
                             </span>
@@ -1157,7 +1157,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                     : 'bg-emerald-50/70 border-emerald-200'
                 }`}
               >
-                <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-emerald-700">
+                <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-emerald-700">
                   <CheckCircle2 className="w-4 h-4" />
                   <span>
                     {language === 'gu'
@@ -1171,7 +1171,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                     : activeChapter.summaryPointsEn
                   ).map((pt, i) => (
                     <li key={i} className="flex items-start gap-2 leading-relaxed">
-                      <span className="text-emerald-600 font-bold">•</span>
+                      <span className="text-emerald-600">•</span>
                       <span>{pt}</span>
                     </li>
                   ))}
@@ -1187,7 +1187,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                     }
                   }}
                   disabled={activeChapterIndex <= 0}
-                  className="px-4 py-2 rounded-xl border border-stone-300 text-xs font-bold flex items-center gap-1.5 disabled:opacity-40 hover:bg-stone-100 hover:text-stone-900 transition-colors"
+                  className="px-4 py-2 rounded-xl border border-stone-300 text-xs font-semibold flex items-center gap-1.5 disabled:opacity-40 hover:bg-stone-100 hover:text-stone-900 transition-colors"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   <span>{language === 'gu' ? 'અગાઉનું પ્રકરણ' : 'Previous'}</span>
@@ -1195,7 +1195,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
 
                 <button
                   onClick={handleToggleChapterComplete}
-                  className={`px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-xs ${
+                  className={`px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${
                     isCurrentCompleted
                       ? 'bg-emerald-700 text-white'
                       : 'bg-stone-900 text-white hover:bg-emerald-700'
@@ -1220,7 +1220,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                     }
                   }}
                   disabled={activeChapterIndex >= chapters.length - 1}
-                  className="px-4 py-2 rounded-xl border border-stone-300 text-xs font-bold flex items-center gap-1.5 disabled:opacity-40 hover:bg-stone-100 hover:text-stone-900 transition-colors"
+                  className="px-4 py-2 rounded-xl border border-stone-300 text-xs font-semibold flex items-center gap-1.5 disabled:opacity-40 hover:bg-stone-100 hover:text-stone-900 transition-colors"
                 >
                   <span>{language === 'gu' ? 'આગળનું પ્રકરણ' : 'Next'}</span>
                   <ChevronRight className="w-4 h-4" />
@@ -1229,7 +1229,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
 
               {/* Source Attribution Footer */}
               <footer className="p-4 rounded-xl bg-stone-500/10 text-xs space-y-1.5 opacity-85">
-                <div className="font-bold">
+                <div className="font-semibold">
                   {language === 'gu' ? 'અચકાસાયેલ અધિકાર લેબલ:' : 'Unverified rights label:'}{' '}
                   {resource.licenseType || (language === 'gu' ? 'ઉપલબ્ધ નથી' : 'Not provided')}
                 </div>
@@ -1239,7 +1239,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                     href={resource.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-bold text-emerald-600 hover:underline"
+                    className="inline-flex items-center gap-1 font-medium text-emerald-600 hover:underline"
                   >
                     <ExternalLink className="w-3 h-3" />
                     <span>{language === 'gu' ? 'સત્તાવાર સ્ત્રોત ખોલો' : 'Verify Official Portal'}</span>
@@ -1257,7 +1257,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
             <div className="grid grid-cols-3 border-b border-stone-800 p-1.5 gap-1 bg-stone-950">
               <button
                 onClick={() => setDrawerTab('notes')}
-                className={`py-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition-colors ${
+                className={`py-2 rounded-lg text-[11px] font-semibold flex items-center justify-center gap-1 transition-colors ${
                   drawerTab === 'notes'
                     ? 'bg-emerald-700 text-white'
                     : 'text-stone-400 hover:text-white'
@@ -1270,7 +1270,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
               </button>
               <button
                 onClick={() => setDrawerTab('highlights')}
-                className={`py-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition-colors ${
+                className={`py-2 rounded-lg text-[11px] font-semibold flex items-center justify-center gap-1 transition-colors ${
                   drawerTab === 'highlights'
                     ? 'bg-emerald-700 text-white'
                     : 'text-stone-400 hover:text-white'
@@ -1283,7 +1283,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
               </button>
               <button
                 onClick={() => setDrawerTab('bookmarks')}
-                className={`py-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition-colors ${
+                className={`py-2 rounded-lg text-[11px] font-semibold flex items-center justify-center gap-1 transition-colors ${
                   drawerTab === 'bookmarks'
                     ? 'bg-emerald-700 text-white'
                     : 'text-stone-400 hover:text-white'
@@ -1301,7 +1301,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
               {drawerTab === 'notes' && (
                 <>
                   <form onSubmit={handleSavePersonalNote} className="space-y-2.5 p-3 rounded-2xl bg-stone-800/70 border border-stone-700">
-                    <div className="text-xs font-bold text-emerald-400 flex items-center justify-between">
+                    <div className="text-xs font-medium text-emerald-400 flex items-center justify-between">
                       <span>{language === 'gu' ? 'નવી વ્યક્તિગત નોંધ' : 'Add Personal Study Note'}</span>
                       <span className="text-[10px] text-stone-400">
                         Ch {activeChapter?.chapterNumber || 1}
@@ -1328,12 +1328,12 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                     <button
                       type="submit"
                       disabled={!noteContent.trim()}
-                      className="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 text-white text-xs font-bold transition-colors"
+                      className="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 text-white text-xs font-semibold transition-colors"
                     >
                       {language === 'gu' ? 'નોંધ સાચવો' : 'Save Personal Note'}
                     </button>
                     {noteFeedback && (
-                      <div className="text-[11px] text-emerald-300 font-semibold text-center">
+                      <div className="text-[11px] text-emerald-300 font-medium text-center">
                         {noteFeedback}
                       </div>
                     )}
@@ -1353,7 +1353,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                           className="p-3 rounded-2xl bg-stone-800/50 border border-stone-800 space-y-1.5"
                         >
                           <div className="flex items-start justify-between gap-2">
-                            <h4 className="text-xs font-bold text-white leading-snug">{n.title}</h4>
+                            <h4 className="text-xs font-semibold text-white leading-snug">{n.title}</h4>
                             <button
                               onClick={() => handleDeleteNote(n.id)}
                               className="text-stone-500 hover:text-rose-400 shrink-0"
@@ -1394,7 +1394,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                         <div className="flex items-center justify-between gap-2">
                           <button
                             onClick={() => handleSelectChapter(hl.chapterId)}
-                            className="text-[10px] font-bold text-emerald-400 hover:underline"
+                            className="text-[10px] font-medium text-emerald-400 hover:underline"
                           >
                             {chapters.find((c) => c.id === hl.chapterId)?.titleEn.slice(0, 34) ||
                               'Jump to chapter'}
@@ -1409,7 +1409,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                         </div>
 
                         <blockquote
-                          className={`text-xs p-2 rounded-lg text-stone-950 font-medium ${
+                          className={`text-xs p-2 rounded-lg text-stone-950 ${
                             hl.color === 'yellow'
                               ? 'bg-amber-200'
                               : hl.color === 'emerald'
@@ -1434,7 +1434,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                             <div className="flex gap-1.5">
                               <button
                                 onClick={() => handleSaveHighlightNote(hl.id)}
-                                className="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-[11px] font-bold"
+                                className="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-[11px] font-semibold"
                               >
                                 Save
                               </button>
@@ -1489,7 +1489,7 @@ export const InteractiveBookReader: React.FC<InteractiveBookReaderProps> = ({
                           className="text-left flex items-center gap-2 min-w-0 flex-1 hover:text-emerald-400 transition-colors"
                         >
                           <BookmarkCheck className="w-4 h-4 text-amber-400 shrink-0" />
-                          <span className="text-xs font-bold truncate">{bm.label}</span>
+                          <span className="text-xs font-medium truncate">{bm.label}</span>
                         </button>
                         <button
                           onClick={async () => {

@@ -66,18 +66,18 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
         <div className="flex items-center justify-between">
           <button
             onClick={onBackToRoadmap}
-            className="inline-flex items-center gap-2 text-xs font-bold text-stone-600 hover:text-emerald-700 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-medium text-stone-600 hover:text-emerald-700 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 text-emerald-700" />
             <span>{language === 'gu' ? 'પાછા રોડમેપ પર જાઓ' : 'Back to Syllabus Roadmap'}</span>
           </button>
-          <span className="text-[11px] font-bold text-stone-400">
+          <span className="text-[11px] font-medium text-stone-400">
             {Object.keys(LEARNING_MODULES).length} {language === 'gu' ? 'મોડ્યુલ્સ ઉપલબ્ધ' : 'Modules Available'}
           </span>
         </div>
 
         {/* Dynamic Module Scrollable Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-semibold scrollbar-thin">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-medium scrollbar-thin">
           {Object.values(LEARNING_MODULES).map((mod) => {
             const isCurrent = currentModule.topicId === mod.topicId;
             return (
@@ -89,7 +89,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
                 }}
                 className={`px-3 py-1.5 rounded-xl border whitespace-nowrap transition-all shrink-0 ${
                   isCurrent
-                    ? 'bg-emerald-700 border-emerald-700 text-white font-bold shadow-xs'
+                    ? 'bg-emerald-700 border-emerald-700 text-white font-semibold shadow-md'
                     : 'bg-white border-stone-200 text-stone-600 hover:border-emerald-400'
                 }`}
               >
@@ -102,13 +102,13 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
 
       {/* Module Title & Metadata */}
       <div className="space-y-3">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-medium">
           <BookOpen className="w-3.5 h-3.5 text-emerald-700" />
           <span>{currentModule.readTimeMins} {language === 'gu' ? 'મિનિટ વાંચન' : 'mins reading'}</span>
           <span>•</span>
           <span>{language === 'gu' ? 'પ્રિલિમ્સ + મેઈન્સ કન્સેપ્ટ' : 'Prelims + Mains High-Yield'}</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight leading-tight">
+        <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight leading-tight">
           {language === 'gu' ? currentModule.titleGu : currentModule.titleEn}
         </h1>
 
@@ -117,7 +117,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
           <div className="space-y-3 mt-4">
             <div 
               onClick={() => setIsImageModalOpen(true)}
-              className="rounded-2xl overflow-hidden border border-stone-200 bg-stone-100 shadow-xs group relative cursor-pointer hover:border-emerald-500 transition-all"
+              className="rounded-2xl overflow-hidden border border-stone-200 bg-stone-100 shadow-md group relative cursor-pointer hover:border-emerald-500 transition-all"
               title={language === 'gu' ? 'ઇન્ટરેક્ટિવ દ્રશ્ય વિશ્લેષણ અને ઝૂમ માટે ક્લિક કરો' : 'Click to open interactive visual deep-dive & zoom'}
             >
               <div className="relative h-64 sm:h-84 w-full overflow-hidden">
@@ -130,20 +130,20 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/25 to-transparent" />
                 
                 {/* Floating Interactive Badge */}
-                <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-stone-900/80 backdrop-blur-md border border-stone-700 text-white text-xs font-bold shadow-lg group-hover:bg-emerald-700 group-hover:border-emerald-600 transition-all">
+                <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-stone-900/80 backdrop-blur-md border border-stone-700 text-white text-xs font-medium shadow-lg group-hover:bg-emerald-700 group-hover:border-emerald-600 transition-all">
                   <Maximize2 className="w-3.5 h-3.5 text-emerald-300" />
                   <span>{language === 'gu' ? 'ઇન્ટરેક્ટિવ ઝૂમ & વિશ્લેષણ' : 'Interactive Zoom & Clues'}</span>
                 </div>
 
                 {/* Caption & Archaeological Evidence metadata */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 text-white space-y-1.5">
-                  <p className="text-xs sm:text-sm font-bold text-white drop-shadow-sm leading-snug">
+                  <p className="text-xs sm:text-sm font-medium text-white drop-shadow-sm leading-snug">
                     {language === 'gu' ? currentModule.heroImage.captionGu : currentModule.heroImage.captionEn}
                   </p>
                   <div className="flex flex-wrap items-center gap-2 text-[11px] text-stone-300">
                     <span>{language === 'gu' ? 'સ્ત્રોત:' : 'Source:'} {currentModule.heroImage.source}</span>
                     <span>•</span>
-                    <span className="text-emerald-300 font-semibold">{language === 'gu' ? 'ઐતિહાસિક પુરાતત્વીય પ્રમાણ' : 'Archaeological Evidence'}</span>
+                    <span className="text-emerald-300 font-medium">{language === 'gu' ? 'ઐતિહાસિક પુરાતત્વીય પ્રમાણ' : 'Archaeological Evidence'}</span>
                     <span>•</span>
                     <span className="text-stone-300 underline underline-offset-2 flex items-center gap-1">
                       <Eye className="w-3 h-3 text-emerald-400" />
@@ -157,7 +157,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
             {/* Quick Interactive Visual Clue Pills under image */}
             {currentModule.heroImage.annotations && currentModule.heroImage.annotations.length > 0 && (
               <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-800 flex items-center gap-1">
+                <span className="text-[11px] font-medium uppercase tracking-wider text-emerald-800 flex items-center gap-1">
                   <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
                   <span>{language === 'gu' ? 'દ્રશ્ય સંકેતો:' : 'Visual Clues:'}</span>
                 </span>
@@ -165,7 +165,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
                   <button
                     key={i}
                     onClick={() => setIsImageModalOpen(true)}
-                    className="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200/80 text-xs font-semibold transition-colors flex items-center gap-1"
+                    className="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200/80 text-xs font-medium transition-colors flex items-center gap-1"
                   >
                     <span>{language === 'gu' ? ann.tagGu : ann.tagEn}</span>
                   </button>
@@ -179,11 +179,11 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
       {/* Interactive Key Terms & Exam Glossary in Clean Emerald */}
       <div className="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-200/80 space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-900">
+          <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-emerald-900">
             <Sparkles className="w-4 h-4 text-emerald-700" />
             <span>{language === 'gu' ? 'મુખ્ય પારિભાષિક શબ્દો (ટૅપ કરીને પરીક્ષા મહત્વ જુઓ)' : 'Core Vocabulary & Exam Significance'}</span>
           </div>
-          <span className="text-[11px] text-emerald-700 font-semibold">
+          <span className="text-[11px] text-emerald-700 font-medium">
             {language === 'gu' ? 'દ્વિભાષી વ્યાખ્યા' : 'Bilingual Definition'}
           </span>
         </div>
@@ -201,15 +201,15 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
                     : 'bg-white border-emerald-200/70 hover:border-emerald-400'
                 }`}
               >
-                <div className="font-bold text-xs text-emerald-950 mb-1">
+                <div className="font-semibold text-xs text-emerald-950 mb-1">
                   {language === 'gu' ? term.termGu : term.termEn}
                 </div>
                 <div className="text-[11px] text-stone-600 line-clamp-2">
                   {language === 'gu' ? term.definitionGu : term.definitionEn}
                 </div>
                 {isActive && (
-                  <div className="mt-2.5 pt-2 border-t border-emerald-200 text-[11px] text-emerald-900 font-medium">
-                    <strong>{language === 'gu' ? 'પરીક્ષા માટે:' : 'Exam Tip:'}</strong>{' '}
+                  <div className="mt-2.5 pt-2 border-t border-emerald-200 text-[11px] text-emerald-900">
+                    <strong className="font-semibold">{language === 'gu' ? 'પરીક્ષા માટે:' : 'Exam Tip:'}</strong>{' '}
                     {language === 'gu' ? term.examSignificanceGu : term.examSignificanceEn}
                   </div>
                 )}
@@ -222,8 +222,8 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
       {/* Main Lesson Content Blocks */}
       <article className="space-y-6 text-stone-800 leading-relaxed text-sm sm:text-base">
         {currentModule.contentBlocks.map((block, idx) => (
-          <div key={idx} className="space-y-3 p-6 rounded-2xl bg-white border border-stone-200 shadow-xs">
-            <h2 className="text-lg font-bold text-stone-900 tracking-tight">
+          <div key={idx} className="space-y-3 p-6 rounded-2xl bg-white border border-stone-200 shadow-md">
+            <h2 className="text-lg font-semibold text-stone-900 tracking-tight">
               {language === 'gu' ? block.headingGu : block.headingEn}
             </h2>
             <div className="whitespace-pre-line text-stone-700 text-sm leading-relaxed">
@@ -233,8 +233,8 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
             {block.examNoteEn && (
               <div className="mt-4 p-4 rounded-xl bg-emerald-50/80 border border-emerald-200 flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
-                <div className="text-xs text-emerald-900 font-medium">
-                  <strong>{language === 'gu' ? 'પરીક્ષા ચેતવણી (Exam Trap):' : 'Exam Alert:'}</strong>{' '}
+                <div className="text-xs text-emerald-900">
+                  <strong className="font-semibold">{language === 'gu' ? 'પરીક્ષા ચેતવણી (Exam Trap):' : 'Exam Alert:'}</strong>{' '}
                   {language === 'gu' ? block.examNoteGu : block.examNoteEn}
                 </div>
               </div>
@@ -246,7 +246,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
       {/* Embedded Active Recall Checkpoint */}
       <div className="p-7 rounded-2xl bg-stone-900 text-white border border-emerald-900/40 shadow-xl space-y-5">
         <div className="flex items-center justify-between">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-medium border border-emerald-500/30">
             <Zap className="w-3.5 h-3.5 text-emerald-400" />
             <span>{language === 'gu' ? 'સ્વ-મૂલ્યાંકન ચેકપોઇન્ટ (Active Recall)' : 'Active Recall Checkpoint'}</span>
           </div>
@@ -268,12 +268,12 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
             let optionStyle = 'bg-stone-800/80 border-stone-700 hover:bg-stone-800 text-stone-200';
             if (hasSubmitted) {
               if (isCorrect) {
-                optionStyle = 'bg-emerald-950/70 border-emerald-500 text-emerald-200 font-bold';
+                optionStyle = 'bg-emerald-950/70 border-emerald-500 text-emerald-200 font-semibold';
               } else if (isSelected) {
                 optionStyle = 'bg-stone-800 border-stone-600 text-stone-400 line-through';
               }
             } else if (isSelected) {
-              optionStyle = 'bg-emerald-700/30 border-emerald-500 text-white font-bold ring-2 ring-emerald-500/30';
+              optionStyle = 'bg-emerald-700/30 border-emerald-500 text-white font-semibold ring-2 ring-emerald-500/30';
             }
 
             return (
@@ -296,7 +296,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
           <button
             disabled={selectedOption === null}
             onClick={handleSubmitQuiz}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 disabled:opacity-50 text-white font-bold text-xs tracking-wide shadow-md shadow-emerald-700/30 transition-all"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 disabled:opacity-50 text-white font-semibold text-xs tracking-wide shadow-md shadow-emerald-700/30 transition-all"
           >
             {language === 'gu' ? 'જવાબ સબમિટ કરો' : 'Submit Answer'}
           </button>
@@ -307,7 +307,7 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
                 ? 'bg-emerald-950/40 border-emerald-500/40 text-emerald-300'
                 : 'bg-stone-800/60 border-stone-700 text-stone-300'
             }`}>
-              <div className="font-bold mb-1">
+              <div className="font-semibold mb-1">
                 {selectedOption === currentModule.checkpoint.correctIndex
                   ? (language === 'gu' ? '🎉 ઉત્તમ! તમારો જવાબ સાચો છે.' : '🎉 Excellent! Correct deduction.')
                   : (language === 'gu' ? '❌ ભૂલ થઈ! સાચો તર્ક નીચે મુજબ છે:' : '❌ Incorrect. Review the explanation below:')}
@@ -320,14 +320,14 @@ export const ReaderView: React.FC<ReaderViewProps> = ({
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={handleResetQuiz}
-                className="px-4 py-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-semibold"
+                className="px-4 py-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-medium"
               >
                 {language === 'gu' ? 'ફરીથી પ્રયાસ કરો' : 'Try Again'}
               </button>
 
               <button
                 onClick={() => onGoToPractice(currentModule.topicId)}
-                className="px-5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-md shadow-emerald-700/30"
+                className="px-5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold inline-flex items-center gap-1.5 shadow-md shadow-emerald-700/30"
               >
                 <span>{language === 'gu' ? 'પાછલા વર્ષોના પ્રશ્નો (PYQ) ઉકેલો' : 'Practice Past Exam PYQs'}</span>
                 <ChevronRight className="w-3.5 h-3.5" />

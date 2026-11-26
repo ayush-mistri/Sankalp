@@ -622,7 +622,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
         <div className="flex items-start gap-4">
           <AlertCircle className="mt-1 h-6 w-6 shrink-0 text-amber-700" />
           <div className="space-y-2">
-            <h2 className="text-xl font-extrabold">{text.setupTitle}</h2>
+            <h2 className="text-xl font-bold">{text.setupTitle}</h2>
             <p className="max-w-3xl text-sm leading-relaxed">{text.setupBody}</p>
             <code className="block text-xs text-stone-700">
               NEXT_PUBLIC_SUPABASE_URL<br />NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -635,7 +635,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
 
   if (authLoading || !supabase) {
     return (
-      <div className="flex min-h-64 items-center justify-center gap-3 text-sm font-semibold text-stone-600">
+      <div className="flex min-h-64 items-center justify-center gap-3 text-sm font-medium text-stone-600">
         <LoaderCircle className="h-5 w-5 animate-spin text-emerald-700" />
         {isGujarati ? 'તમારું ખાતું તપાસી રહ્યા છીએ…' : 'Checking your account…'}
       </div>
@@ -650,7 +650,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
             <ShieldCheck className="h-6 w-6" />
           </div>
           <div>
-            <h2 className="text-2xl font-black tracking-tight text-stone-900">{text.title}</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-stone-900">{text.title}</h2>
             <p className="mt-1 text-sm text-stone-600">{text.secureAccess}</p>
           </div>
         </div>
@@ -665,7 +665,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                 setAuthError('');
                 setAuthMessage('');
               }}
-              className={`rounded-lg px-3 py-2.5 text-sm font-bold transition ${
+              className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition ${
                 authMode === mode
                   ? 'bg-white text-emerald-950 shadow-sm'
                   : 'text-stone-600 hover:bg-white/70 hover:text-stone-900'
@@ -677,7 +677,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
         </div>
 
         <form onSubmit={handleAuthSubmit} className="space-y-4">
-          <label className="block space-y-1.5 text-sm font-bold text-stone-800">
+          <label className="block space-y-1.5 text-sm font-medium text-stone-800">
             <span>{text.email}</span>
             <span className="flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-3.5 focus-within:border-emerald-600 focus-within:ring-2 focus-within:ring-emerald-100">
               <Mail className="h-4 w-4 text-stone-500" />
@@ -687,12 +687,12 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                 autoComplete="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="min-w-0 flex-1 py-3 text-sm font-medium outline-none"
+                className="min-w-0 flex-1 py-3 text-sm outline-none"
               />
             </span>
           </label>
 
-          <label className="block space-y-1.5 text-sm font-bold text-stone-800">
+          <label className="block space-y-1.5 text-sm font-medium text-stone-800">
             <span>{text.password}</span>
             <span className="flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-3.5 focus-within:border-emerald-600 focus-within:ring-2 focus-within:ring-emerald-100">
               <BookOpen className="h-4 w-4 text-stone-500" />
@@ -703,7 +703,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                 autoComplete={authMode === 'signIn' ? 'current-password' : 'new-password'}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="min-w-0 flex-1 py-3 text-sm font-medium outline-none"
+                className="min-w-0 flex-1 py-3 text-sm outline-none"
               />
             </span>
           </label>
@@ -722,7 +722,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
           <button
             type="submit"
             disabled={authBusy}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-800 px-5 py-3.5 text-sm font-extrabold text-white shadow-sm transition hover:bg-emerald-950 disabled:cursor-wait disabled:opacity-70"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-800 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-950 disabled:cursor-wait disabled:opacity-70"
           >
             {authBusy ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <LogIn className="h-4 w-4" />}
             {authMode === 'signIn' ? text.signInButton : text.signUpButton}
@@ -738,7 +738,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
               setAuthError('');
               setAuthMessage('');
             }}
-            className="font-bold text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950"
+            className="font-semibold text-emerald-800 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-950"
           >
             {authMode === 'signIn' ? text.signUp : text.signIn}
           </button>
@@ -751,18 +751,18 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
     <section className="space-y-6">
       <header className="flex flex-col justify-between gap-4 rounded-3xl bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-700 p-6 text-white shadow-lg sm:flex-row sm:items-center sm:p-8">
         <div>
-          <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-emerald-50">
+          <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-emerald-50">
             <FileText className="h-4 w-4" />
             {text.subtitle}
           </div>
-          <h2 className="text-2xl font-black tracking-tight sm:text-3xl">{text.title}</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{text.title}</h2>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <button
             type="button"
             onClick={() => void createNote()}
             disabled={creatingNote}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-extrabold text-emerald-950 shadow-sm transition hover:bg-emerald-100 disabled:opacity-70"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-emerald-950 shadow-sm transition hover:bg-emerald-100 disabled:opacity-70"
           >
             {creatingNote
               ? <LoaderCircle className="h-4 w-4 animate-spin" />
@@ -772,7 +772,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
           <button
             type="button"
             onClick={() => void signOut()}
-            className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-emerald-950/30 px-4 py-3 text-sm font-bold text-white transition hover:bg-emerald-950/60"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-emerald-950/30 px-4 py-3 text-sm font-semibold text-white transition hover:bg-emerald-950/60"
           >
             <LogOut className="h-4 w-4" />
             {text.signOut}
@@ -788,7 +788,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
             type="button"
             onClick={() => setWorkspaceError('')}
             aria-label={isGujarati ? 'બંધ કરો' : 'Dismiss'}
-            className="ml-auto font-bold text-rose-900"
+            className="ml-auto font-semibold text-rose-900"
           >
             ×
           </button>
@@ -815,7 +815,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                 id="notes-subject-filter"
                 value={selectedSubject}
                 onChange={(event) => setSelectedSubject(event.target.value)}
-                className="min-w-0 rounded-lg border border-stone-300 bg-white px-2.5 py-2 text-xs font-semibold text-stone-800 focus:border-emerald-600 focus:outline-none"
+                className="min-w-0 rounded-lg border border-stone-300 bg-white px-2.5 py-2 text-xs font-medium text-stone-800 focus:border-emerald-600 focus:outline-none"
               >
                 <option value="all">{text.allSubjects}</option>
                 {subjects.map((subject) => <option key={subject} value={subject}>{subject}</option>)}
@@ -825,7 +825,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                 id="notes-sort"
                 value={sortBy}
                 onChange={(event) => setSortBy(event.target.value as 'updated_at' | 'created_at')}
-                className="min-w-0 rounded-lg border border-stone-300 bg-white px-2.5 py-2 text-xs font-semibold text-stone-800 focus:border-emerald-600 focus:outline-none"
+                className="min-w-0 rounded-lg border border-stone-300 bg-white px-2.5 py-2 text-xs font-medium text-stone-800 focus:border-emerald-600 focus:outline-none"
               >
                 <option value="updated_at">{text.sortUpdated}</option>
                 <option value="created_at">{text.sortCreated}</option>
@@ -834,22 +834,22 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
           </div>
 
           <div className="flex items-center justify-between px-4 pb-2 pt-4">
-            <h3 className="text-sm font-extrabold text-stone-900">{text.recentNotes}</h3>
-            <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-950">
+            <h3 className="text-sm font-semibold text-stone-900">{text.recentNotes}</h3>
+            <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-medium text-emerald-950">
               {filteredNotes.length}
             </span>
           </div>
 
           <div className="max-h-[36rem] space-y-1 overflow-y-auto p-2">
             {loadingNotes ? (
-              <div className="flex items-center justify-center gap-2 p-8 text-sm font-semibold text-stone-600">
+              <div className="flex items-center justify-center gap-2 p-8 text-sm font-medium text-stone-600">
                 <LoaderCircle className="h-4 w-4 animate-spin text-emerald-700" />
                 {isGujarati ? 'લોડ થઈ રહ્યું છે…' : 'Loading notes…'}
               </div>
             ) : workspaceError && notes.length === 0 ? (
               <div className="p-4 text-sm text-rose-800">
                 {text.loadError}{' '}
-                <button type="button" onClick={() => setNotesReloadKey((current) => current + 1)} className="font-bold underline">
+                <button type="button" onClick={() => setNotesReloadKey((current) => current + 1)} className="font-semibold underline">
                   {text.retry}
                 </button>
               </div>
@@ -873,15 +873,15 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                   className="min-w-0 flex-1 text-left"
                 >
                   <span className="flex items-center gap-2">
-                    <span className="truncate text-sm font-bold text-stone-900">
+                    <span className="truncate text-sm font-semibold text-stone-900">
                       {note.title.trim() || text.titlePlaceholder}
                     </span>
                     {note.is_favorite && <Star className="h-3.5 w-3.5 shrink-0 fill-amber-400 text-amber-600" />}
                   </span>
-                  <span className="mt-1 block truncate text-xs font-medium text-stone-700">
+                  <span className="mt-1 block truncate text-xs text-stone-600">
                     {[note.exam, note.subject, note.topic].filter(Boolean).join(' · ')}
                   </span>
-                  <span className="mt-1.5 block text-[11px] text-stone-600">
+                  <span className="mt-1.5 block text-[11px] text-stone-500">
                     {formatDate(sortBy === 'updated_at' ? note.updated_at : note.created_at)}
                   </span>
                 </button>
@@ -903,7 +903,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
           {selectedNote ? (
             <>
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stone-200 bg-stone-50 px-4 py-3 sm:px-6">
-                <div className="flex min-h-7 items-center gap-2 text-xs font-semibold">
+                <div className="flex min-h-7 items-center gap-2 text-xs font-medium">
                   {saveState === 'saving' ? (
                     <>
                       <LoaderCircle className="h-4 w-4 animate-spin text-emerald-700" />
@@ -918,7 +918,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                     <>
                       <AlertCircle className="h-4 w-4 text-rose-700" />
                       <span className="text-rose-800">{text.saveError}</span>
-                      <button type="button" onClick={retrySave} className="inline-flex items-center gap-1 font-extrabold text-rose-900 underline">
+                      <button type="button" onClick={retrySave} className="inline-flex items-center gap-1 font-semibold text-rose-900 underline">
                         <RotateCcw className="h-3.5 w-3.5" />{text.retry}
                       </button>
                     </>
@@ -932,7 +932,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                 <button
                   type="button"
                   onClick={() => void deleteNote(selectedNote)}
-                  className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-bold text-stone-600 transition hover:bg-rose-100 hover:text-rose-800"
+                  className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-stone-600 transition hover:bg-rose-100 hover:text-rose-800"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                   {text.delete}
@@ -946,7 +946,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                     ['subject', text.subject, text.generalSubject],
                     ['topic', text.topic, isGujarati ? 'ટોપિકનું નામ' : 'Topic name'],
                   ] as const).map(([field, label, placeholder]) => (
-                    <label key={field} className="space-y-1.5 text-xs font-bold text-stone-700">
+                    <label key={field} className="space-y-1.5 text-xs font-medium text-stone-700">
                       <span>{label}</span>
                       <input
                         type="text"
@@ -954,13 +954,13 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                         onChange={(event) => updateNote(field, event.target.value)}
                         placeholder={placeholder}
                         maxLength={field === 'exam' ? 80 : field === 'subject' ? 120 : 160}
-                        className="w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm font-medium text-stone-900 placeholder:text-stone-400 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+                        className="w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-100"
                       />
                     </label>
                   ))}
                 </div>
 
-                <label className="block space-y-1.5 text-xs font-bold text-stone-700">
+                <label className="block space-y-1.5 text-xs font-medium text-stone-700">
                   <span>{text.titleLabel}</span>
                   <input
                     type="text"
@@ -968,11 +968,11 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                     onChange={(event) => updateNote('title', event.target.value)}
                     placeholder={text.titlePlaceholder}
                     maxLength={180}
-                    className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-lg font-extrabold text-stone-900 placeholder:font-semibold placeholder:text-stone-400 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+                    className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-lg font-semibold text-stone-900 placeholder:font-normal placeholder:text-stone-400 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-100"
                   />
                 </label>
 
-                <label className="block space-y-1.5 text-xs font-bold text-stone-700">
+                <label className="block space-y-1.5 text-xs font-medium text-stone-700">
                   <span>{text.content}</span>
                   <textarea
                     value={selectedNote.content}
@@ -990,7 +990,7 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
                   <button
                     type="button"
                     onClick={() => void toggleFavorite(selectedNote)}
-                    className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 font-bold transition ${
+                    className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 font-medium transition ${
                       selectedNote.is_favorite
                         ? 'bg-amber-100 text-amber-900 hover:bg-amber-200'
                         : 'bg-stone-100 text-stone-700 hover:bg-amber-100 hover:text-amber-900'
@@ -1007,13 +1007,13 @@ export const PersonalNotesView: React.FC<PersonalNotesViewProps> = ({ language }
               <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-900">
                 <FileText className="h-7 w-7" />
               </div>
-              <h3 className="text-lg font-extrabold text-stone-900">{text.emptyTitle}</h3>
+              <h3 className="text-lg font-semibold text-stone-900">{text.emptyTitle}</h3>
               <p className="mt-2 max-w-sm text-sm leading-relaxed text-stone-600">{text.emptyBody}</p>
               <button
                 type="button"
                 onClick={() => void createNote()}
                 disabled={creatingNote}
-                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-emerald-800 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-emerald-950"
+                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-emerald-800 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-950"
               >
                 <Plus className="h-4 w-4" />{text.newNote}
               </button>

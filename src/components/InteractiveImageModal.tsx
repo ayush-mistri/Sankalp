@@ -76,10 +76,10 @@ export const InteractiveImageModal: React.FC<InteractiveImageModalProps> = ({
               <Sparkles className="w-4 h-4 text-emerald-700" />
             </div>
             <div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">
+              <div className="text-[11px] font-medium uppercase tracking-wider text-emerald-800">
                 {language === 'gu' ? 'ઇન્ટરેક્ટિવ દ્રશ્ય વિશ્લેષણ' : 'Interactive Visual Deep Dive'}
               </div>
-              <h3 className="text-base sm:text-lg font-bold text-stone-900 leading-snug">
+              <h3 className="text-base sm:text-lg font-semibold text-stone-900 leading-snug">
                 {language === 'gu' ? titleGu : titleEn}
               </h3>
             </div>
@@ -131,7 +131,7 @@ export const InteractiveImageModal: React.FC<InteractiveImageModalProps> = ({
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
-              <span className="text-[11px] font-mono px-1 font-bold">
+              <span className="text-[11px] font-mono px-1 font-medium">
                 {Math.round(zoomLevel * 100)}%
               </span>
               <button
@@ -162,11 +162,11 @@ export const InteractiveImageModal: React.FC<InteractiveImageModalProps> = ({
             
             <div className="space-y-4">
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-1 flex items-center gap-1.5">
+                <h4 className="text-xs font-medium uppercase tracking-wider text-emerald-800 mb-1 flex items-center gap-1.5">
                   <Info className="w-3.5 h-3.5 text-emerald-700" />
                   <span>{language === 'gu' ? 'વિગત અને ઐતિહાસિક સંદર્ભ' : 'Historical & Exam Context'}</span>
                 </h4>
-                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
+                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
                   {language === 'gu' ? captionGu : captionEn}
                 </p>
               </div>
@@ -174,7 +174,7 @@ export const InteractiveImageModal: React.FC<InteractiveImageModalProps> = ({
               {/* Interactive Visual Annotations / Hotspot Pills */}
               {annotations.length > 0 && (
                 <div className="space-y-3 pt-2">
-                  <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider">
+                  <div className="text-[11px] font-medium text-stone-500 uppercase tracking-wider">
                     {language === 'gu' ? 'પરીક્ષાલક્ષી સંકેતો (ક્લિક કરીને વિગતો જુઓ):' : 'High-Yield Exam Clues (Click to inspect):'}
                   </div>
 
@@ -185,9 +185,9 @@ export const InteractiveImageModal: React.FC<InteractiveImageModalProps> = ({
                         <button
                           key={idx}
                           onClick={() => setSelectedAnnotationIndex(idx)}
-                          className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all text-left flex items-center gap-1.5 ${
+                          className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all text-left flex items-center gap-1.5 ${
                             isSelected
-                              ? 'bg-emerald-700 border-emerald-700 text-white shadow-xs'
+                              ? 'bg-emerald-700 border-emerald-700 text-white shadow-md'
                               : 'bg-white border-stone-200 text-stone-700 hover:border-emerald-400 hover:bg-emerald-50/50'
                           }`}
                         >
@@ -200,16 +200,16 @@ export const InteractiveImageModal: React.FC<InteractiveImageModalProps> = ({
 
                   {/* Active Selected Annotation Detail Card */}
                   {selectedAnnotationIndex !== null && annotations[selectedAnnotationIndex] && (
-                    <div className="p-4 rounded-2xl bg-white border border-emerald-200 shadow-xs space-y-2 animate-in fade-in duration-200">
+                    <div className="p-4 rounded-2xl bg-white border border-emerald-200 shadow-md space-y-2 animate-in fade-in duration-200">
                       <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-                        <span className="text-xs font-extrabold text-emerald-900">
+                        <span className="text-xs font-semibold text-emerald-900">
                           {language === 'gu' 
                             ? annotations[selectedAnnotationIndex].tagGu 
                             : annotations[selectedAnnotationIndex].tagEn}
                         </span>
                       </div>
-                      <p className="text-xs text-stone-700 leading-relaxed font-medium">
+                      <p className="text-xs text-stone-700 leading-relaxed">
                         {language === 'gu' 
                           ? annotations[selectedAnnotationIndex].noteGu 
                           : annotations[selectedAnnotationIndex].noteEn}
@@ -222,7 +222,7 @@ export const InteractiveImageModal: React.FC<InteractiveImageModalProps> = ({
 
             {/* Bottom Reminder / Tip */}
             <div className="p-3.5 rounded-xl bg-emerald-100/60 border border-emerald-200 text-emerald-950 text-[11px] leading-relaxed">
-              <span className="font-bold">💡 {language === 'gu' ? 'મેઈન્સ આન્સર રાઈટિંગ ટીપ:' : 'Mains Answer Writing Tip:'}</span>{' '}
+              <span className="font-semibold">💡 {language === 'gu' ? 'મેઈન્સ આન્સર રાઈટિંગ ટીપ:' : 'Mains Answer Writing Tip:'}</span>{' '}
               {language === 'gu'
                 ? 'આવા ઐતિહાસિક પુરાવા અને સ્થાપત્ય વિશેષતાઓને તમારા GS-1 અને GS-2 ના જવાબોમાં ડાયાગ્રામ સાથે ટાંકવાથી વધારાના ૨-૩ માર્કસ મળી શકે છે.'
                 : 'Citing authentic archaeological evidence and constitutional calligraphy in your GS answers sets your paper apart for top marks.'}

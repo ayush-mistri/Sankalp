@@ -44,7 +44,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-stone-900 via-emerald-950 to-stone-900 text-white p-7 sm:p-10 shadow-xl border border-emerald-900/40">
         <div className="absolute right-0 top-0 -mt-10 -mr-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold mb-4 border border-emerald-500/30">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-medium mb-4 border border-emerald-500/30">
             <Sparkles className="w-3.5 h-3.5" />
             <span>
               {language === 'gu'
@@ -52,7 +52,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                 : 'GPSC & UPSC Syllabus Knowledge Graph'}
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white mb-3">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3">
             {language === 'gu'
               ? 'શિખાઉથી અધિકારી સુધીનો સ્પષ્ટ, વૈજ્ઞાનિક માર્ગ'
               : 'From Beginner to Civil Servant: The Structured Path'}
@@ -63,7 +63,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
               : 'No more content overload. Every topic is decomposed into its exact exam weightage, historical question frequency, and prerequisite dependencies.'}
           </p>
 
-          <div className="flex flex-wrap gap-4 text-xs font-semibold text-stone-200">
+          <div className="flex flex-wrap gap-4 text-xs font-medium text-stone-200">
             <div className="flex items-center gap-1.5 bg-white/10 px-3.5 py-2 rounded-xl border border-white/10">
               <Compass className="w-4 h-4 text-emerald-400" />
               <span>{language === 'gu' ? '૫ તબક્કાની સફર' : '5-Stage Architecture'}</span>
@@ -83,7 +83,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
       {/* 5-Stage Stepper Navigation */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-xs font-extrabold uppercase tracking-wider text-stone-500">
+          <h2 className="text-xs font-medium uppercase tracking-wider text-stone-500">
             {language === 'gu' ? 'તમારી તૈયારીનો તબક્કો પસંદ કરો:' : 'Select Learning Stage:'}
           </h2>
         </div>
@@ -102,14 +102,14 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
+                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-md ${
                     isSelected ? 'bg-white/20 text-white' : 'bg-emerald-50 text-emerald-800'
                   }`}>
                     Stage {idx + 1}
                   </span>
                   {isSelected && <Sparkles className="w-3.5 h-3.5 text-emerald-200" />}
                 </div>
-                <div className="font-bold text-xs line-clamp-1">
+                <div className="font-semibold text-xs line-clamp-1">
                   {language === 'gu' ? stage.nameGu.split(':')[1] : stage.nameEn.split(':')[1]}
                 </div>
                 <div className={`text-[11px] mt-1 line-clamp-1 ${
@@ -124,14 +124,14 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
       </div>
 
       {/* Current Stage Overview Card */}
-      <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-bold text-emerald-700">
+            <span className="text-xs font-medium text-emerald-700">
               {stageData.badge}
             </span>
             <span className="text-stone-300">•</span>
-            <h3 className="font-extrabold text-base text-stone-900">
+            <h3 className="font-semibold text-base text-stone-900">
               {language === 'gu' ? stageData.nameGu : stageData.nameEn}
             </h3>
           </div>
@@ -141,12 +141,12 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
         </div>
 
         {/* Subject Filter Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-stone-100 rounded-2xl border border-stone-200 text-xs font-semibold max-w-full">
+        <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-stone-100 rounded-2xl border border-stone-200 text-xs font-medium max-w-full">
           <button
             onClick={() => setFilterSubject('all')}
             className={`px-3 py-1.5 rounded-xl transition-all ${
               filterSubject === 'all'
-                ? 'bg-emerald-700 text-white shadow-xs'
+                ? 'bg-emerald-700 text-white shadow-md'
                 : 'text-stone-600 hover:text-stone-900 bg-white/70'
             }`}
           >
@@ -164,13 +164,13 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                 onClick={() => setFilterSubject(sub.id)}
                 className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                   isSubSelected
-                    ? 'bg-emerald-700 text-white shadow-xs'
+                    ? 'bg-emerald-700 text-white shadow-md'
                     : 'text-stone-600 hover:text-stone-900 bg-white/70'
                 }`}
               >
                 <span>{language === 'gu' ? sub.nameGu.split(' ')[0] : sub.nameEn.split(' ')[0]}</span>
                 {countInStage > 0 && (
-                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-medium ${
                     isSubSelected ? 'bg-white/25 text-white' : 'bg-stone-200 text-stone-700'
                   }`}>
                     {countInStage}
@@ -184,7 +184,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
 
       {/* Topic Nodes Grid */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between text-xs text-stone-500 font-semibold px-1">
+        <div className="flex items-center justify-between text-xs text-stone-500 font-medium px-1">
           <span>{filteredTopics.length} {language === 'gu' ? 'ટોપિક ઉપલબ્ધ છે' : 'Topics in this Stage'}</span>
           <span>{language === 'gu' ? 'ભારાંક સ્કોર (૧-૧૦) અને PYQ સંખ્યા દર્શાવેલ છે' : 'Weightage score & PYQ count indexed'}</span>
         </div>
@@ -202,20 +202,20 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                   {/* Top Metadata Badges */}
                   <div className="flex items-center justify-between mb-3 text-xs">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono px-2.5 py-0.5 rounded-md bg-stone-100 text-stone-700 font-bold">
+                      <span className="font-mono px-2.5 py-0.5 rounded-md bg-stone-100 text-stone-700 font-medium">
                         {topic.code}
                       </span>
-                      <span className="text-[11px] font-semibold text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                      <span className="text-[11px] font-medium text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
                         {topic.paperCategory}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="flex items-center gap-1 font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
+                      <span className="flex items-center gap-1 font-medium text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
                         <Zap className="w-3 h-3 text-emerald-600" />
                         {topic.weightageScore}/10 {language === 'gu' ? 'ભારાંક' : 'Priority'}
                       </span>
                       {topic.pyqCount > 0 && (
-                        <span className="font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
+                        <span className="font-medium text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
                           {topic.pyqCount} PYQs
                         </span>
                       )}
@@ -223,7 +223,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                   </div>
 
                   {/* Topic Title */}
-                  <h3 className="font-extrabold text-base text-stone-900 mb-2 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="font-semibold text-base text-stone-900 mb-2 group-hover:text-emerald-700 transition-colors">
                     {language === 'gu' ? topic.titleGu : topic.titleEn}
                   </h3>
 
@@ -248,7 +248,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => onPracticeTopic(topic.id)}
-                      className="px-3.5 py-2 rounded-xl border border-stone-200 hover:bg-emerald-50 text-stone-700 font-bold text-xs flex items-center gap-1.5 transition-colors"
+                      className="px-3.5 py-2 rounded-xl border border-stone-200 hover:bg-emerald-50 text-stone-700 font-semibold text-xs flex items-center gap-1.5 transition-colors"
                     >
                       <Target className="w-3.5 h-3.5 text-emerald-700" />
                       <span>{language === 'gu' ? 'PYQ ટેસ્ટ' : 'PYQ'}</span>
@@ -256,7 +256,7 @@ export const RoadmapView: React.FC<RoadmapViewProps> = ({
 
                     <button
                       onClick={() => onOpenTopic(topic.id)}
-                      className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 shadow-xs transition-all ${
+                      className={`px-4 py-2 rounded-xl font-semibold text-xs flex items-center gap-1.5 shadow-md transition-all ${
                         hasModule
                           ? 'bg-emerald-700 hover:bg-emerald-800 text-white shadow-emerald-700/20'
                           : 'bg-stone-100 text-stone-500 hover:bg-stone-200'

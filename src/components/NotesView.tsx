@@ -53,13 +53,13 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
 
   return (
     <div className="w-full space-y-6 animate-in fade-in duration-300">
-      <div role="tablist" aria-label={language === 'gu' ? 'નોંધના પ્રકાર' : 'Notes type'} className="inline-flex rounded-xl border border-stone-200 bg-white p-1 shadow-xs">
+      <div role="tablist" aria-label={language === 'gu' ? 'નોંધના પ્રકાર' : 'Notes type'} className="inline-flex rounded-xl border border-stone-200 bg-white p-1 shadow-md">
         <button
           type="button"
           role="tab"
           aria-selected={viewMode === 'revision'}
           onClick={() => setViewMode('revision')}
-          className={`rounded-lg px-4 py-2.5 text-sm font-bold transition ${
+          className={`rounded-lg px-4 py-2.5 text-sm font-semibold transition ${
             viewMode === 'revision'
               ? 'bg-emerald-100 text-emerald-950 shadow-sm'
               : 'text-stone-600 hover:bg-emerald-50 hover:text-emerald-900'
@@ -72,7 +72,7 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
           role="tab"
           aria-selected={viewMode === 'personal'}
           onClick={() => setViewMode('personal')}
-          className={`rounded-lg px-4 py-2.5 text-sm font-bold transition ${
+          className={`rounded-lg px-4 py-2.5 text-sm font-semibold transition ${
             viewMode === 'personal'
               ? 'bg-emerald-100 text-emerald-950 shadow-sm'
               : 'text-stone-600 hover:bg-emerald-50 hover:text-emerald-900'
@@ -88,12 +88,12 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
       <div className="w-full space-y-8">
       
       {/* Top Banner - Clean White & Emerald */}
-      <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-emerald-800 via-emerald-800 to-emerald-700 text-white shadow-lg space-y-3">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 text-white text-xs font-bold">
+      <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-r from-emerald-800 via-emerald-800 to-emerald-700 text-white shadow-lg space-y-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 text-white text-xs font-medium">
           <FileText className="w-4 h-4 text-emerald-200" />
           <span>{language === 'gu' ? 'વિષયવાર પુનરાવર્તન નોટ્સ (Quick Summaries)' : 'High-Yield Topic Revision Notes'}</span>
         </div>
-        <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+        <h1 className="text-2xl sm:text-4xl font-bold tracking-tight leading-tight">
           {language === 'gu' ? '૫ મિનિટમાં સંપૂર્ણ ટોપિક રિવિઝન' : '5-Minute High-Yield Topic Summaries'}
         </h1>
         <p className="text-emerald-100 text-sm sm:text-base max-w-3xl leading-relaxed">
@@ -126,7 +126,7 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
               onClick={() => setSelectedSubject(sub.id)}
               className={`px-3.5 py-2 rounded-xl transition-all whitespace-nowrap shrink-0 border ${
                 selectedSubject === sub.id
-                  ? 'bg-emerald-700 text-white border-emerald-700 font-bold shadow-xs'
+                  ? 'bg-emerald-700 text-white border-emerald-700 font-bold shadow-md'
                   : 'bg-white text-stone-600 border-stone-200 hover:border-emerald-400'
               }`}
             >
@@ -154,37 +154,37 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
         {filteredNotes.map((note) => (
           <div
             key={note.id}
-            className="p-6 sm:p-7 rounded-3xl bg-white border border-stone-200 shadow-xs hover:border-emerald-500/80 transition-all flex flex-col justify-between space-y-5"
+            className="p-6 sm:p-7 rounded-3xl bg-white border border-stone-200 shadow-md hover:border-emerald-500/80 transition-all flex flex-col justify-between space-y-5"
           >
               <div className="space-y-4">
                 
                 {/* Meta Badges */}
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-extrabold flex items-center gap-1.5">
+                  <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-medium flex items-center gap-1.5">
                     <Tag className="w-3 h-3 text-emerald-700" />
                     <span>{language === 'gu' ? note.subjectGu : note.subject}</span>
                   </span>
-                  <span className="flex items-center gap-1 text-[11px] text-stone-500 font-medium">
-                    <Clock className="w-3.5 h-3.5 text-stone-400" />
+                  <span className="flex items-center gap-1 text-[11px] text-stone-400">
+                    <Clock className="w-3.5 h-3.5 text-stone-300" />
                     <span>{note.readTimeMins} {language === 'gu' ? 'મિનિટ રિવિઝન' : 'mins quick read'}</span>
                   </span>
                 </div>
 
                 {/* Title */}
-                <h2 className="text-lg sm:text-xl font-bold text-stone-900 tracking-tight leading-snug">
+                <h2 className="text-base sm:text-lg font-semibold text-stone-900 tracking-tight leading-snug">
                   {language === 'gu' ? note.titleGu : note.titleEn}
                 </h2>
 
                 {/* High-Yield Bullets */}
                 <div className="space-y-2 pt-1">
-                  <div className="text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+                  <div className="text-xs font-medium uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
                     <span>{language === 'gu' ? 'મુખ્ય પરીક્ષાલક્ષી તારણો:' : 'High-Yield Key Takeaways:'}</span>
                   </div>
-                  <ul className="space-y-2 text-xs sm:text-sm text-stone-700">
+                  <ul className="space-y-2 text-xs sm:text-sm text-stone-600">
                     {(language === 'gu' ? note.highYieldBulletsGu : note.highYieldBulletsEn).map((bullet, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                         <span className="leading-relaxed">{bullet}</span>
                       </li>
                     ))}
@@ -193,7 +193,7 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
 
                 {/* Articles & Key Dates Box */}
                 <div className="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-200/80 space-y-2">
-                  <div className="text-xs font-bold uppercase tracking-wider text-emerald-900 flex items-center gap-1.5">
+                  <div className="text-xs font-medium uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
                     <Key className="w-3.5 h-3.5 text-emerald-700" />
                     <span>{language === 'gu' ? 'અનિવાર્ય કલમો / તારીખો:' : 'Must-Remember Articles & Milestones:'}</span>
                   </div>
@@ -201,7 +201,7 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
                     {(language === 'gu' ? note.keyArticlesOrDatesGu : note.keyArticlesOrDatesEn).map((art, idx) => (
                       <span
                         key={idx}
-                        className="px-2.5 py-1 rounded-lg bg-white border border-emerald-200 text-stone-800 text-[11px] font-semibold"
+                        className="px-2.5 py-1 rounded-lg bg-white border border-emerald-200 text-stone-700 text-[11px] font-medium"
                       >
                         {art}
                       </span>
@@ -211,25 +211,25 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
 
                 {/* Prelims Trap Box */}
                 <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-xs space-y-1">
-                  <div className="flex items-center gap-1.5 font-bold text-stone-900">
-                    <AlertCircle className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                  <div className="flex items-center gap-1.5 font-semibold text-stone-800">
+                    <AlertCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                     <span>{language === 'gu' ? 'પ્રિલિમ્સ ટ્રેપ (પરીક્ષામાં થતી સામાન્ય ભૂલ):' : 'Prelims Elimination Trap:'}</span>
                   </div>
-                  <p className="text-stone-600 text-[11px] leading-relaxed">
+                  <p className="text-stone-500 text-[11px] leading-relaxed">
                     {language === 'gu' ? note.prelimsTrapsGu : note.prelimsTrapsEn}
                   </p>
                 </div>
 
                 {/* Mains Keywords */}
                 <div className="space-y-1.5">
-                  <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider">
+                  <div className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">
                     {language === 'gu' ? 'મેઈન્સ ઉત્તરલેખન કીવર્ડ્સ:' : 'Mains Scoring Keywords:'}
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {(language === 'gu' ? note.mainsKeywordsGu : note.mainsKeywordsEn).map((kw, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 font-mono text-[10px] font-bold border border-stone-200"
+                        className="px-2 py-0.5 rounded-md bg-stone-100 text-stone-600 font-mono text-[10px] border border-stone-200"
                       >
                         #{kw}
                       </span>
@@ -239,14 +239,14 @@ export const NotesView: React.FC<NotesViewProps> = ({ language, onReadFullModule
 
               </div>
 
-              {/* Bottom Action: Go to Full Interactive Module */}
+              {/* Bottom Action */}
               <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
                 <span className="text-[11px] text-stone-400">
                   {language === 'gu' ? 'સંપૂર્ણ મોડ્યુલ અને ક્વિઝ' : 'Includes Deep-Dive & Checkpoint Quiz'}
                 </span>
                 <button
                   onClick={() => onReadFullModule(note.topicId)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold transition-all shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold transition-all shadow-md"
                 >
                   <span>{language === 'gu' ? 'સંપૂર્ણ મોડ્યુલ વાંચો' : 'Read Full Lesson'}</span>
                   <ArrowRight className="w-3.5 h-3.5" />

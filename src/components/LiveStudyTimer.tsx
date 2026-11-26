@@ -42,7 +42,7 @@ export const LiveStudyTimer: React.FC<LiveStudyTimerProps> = ({ language }) => {
   };
 
   return (
-    <div className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200 shadow-2xs flex items-center justify-between gap-4">
+    <div className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200 shadow-sm flex items-center justify-between gap-4">
       <div className="flex items-center gap-3">
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
           isActive ? 'bg-emerald-600 text-white animate-pulse' : 'bg-emerald-50 text-emerald-800'
@@ -51,11 +51,11 @@ export const LiveStudyTimer: React.FC<LiveStudyTimerProps> = ({ language }) => {
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <span className="font-extrabold text-xs text-stone-900">
+            <span className="font-semibold text-xs text-stone-900">
               {language === 'gu' ? 'લાઇવ અભ્યાસ ટાઈમર' : 'Live Focus Timer'}
             </span>
             {isActive && (
-              <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              <span className="flex items-center gap-1 text-[10px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-ping" />
                 LIVE
               </span>
@@ -74,10 +74,10 @@ export const LiveStudyTimer: React.FC<LiveStudyTimerProps> = ({ language }) => {
 
         <button
           onClick={toggleTimer}
-          className={`p-2.5 rounded-xl font-bold text-xs flex items-center justify-center transition-all ${
+          className={`p-2.5 rounded-xl font-semibold text-xs flex items-center justify-center transition-all ${
             isActive
               ? 'bg-stone-800 text-white hover:bg-stone-700'
-              : 'bg-emerald-700 text-white hover:bg-emerald-800 shadow-xs'
+              : 'bg-emerald-700 text-white hover:bg-emerald-800 shadow-md'
           }`}
           title={isActive ? 'Pause' : 'Start'}
         >
